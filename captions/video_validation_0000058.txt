@@ -1,0 +1,396 @@
+0000.png : The image shows a person in a wheelchair at night, with the grass visible at the bottom. The photo is in black and white, and it appears to be taken in the evening.
+0001.png : The image shows a man standing in a dark room next to a computer, illuminated by a few lights. He is wearing a black shirt and has a serious expression on his face.
+0002.png : The image shows a man in a black shirt standing in a dark room, illuminated by a few lights. He is wearing an ID card, suggesting he is a security guard.
+0003.png : The image shows a man in a black shirt walking through a dark room, illuminated by a few lights in the background.
+0004.png : The image shows a man standing in front of a pool table in a dark room, illuminated by the lights in the background. He appears to be in a state of distress, likely due to the fact that he has been shot and killed by a police officer.
+0005.png : The image shows a man in a black shirt standing in a dark room, illuminated by a green light. He is wearing an ID card, suggesting he is a security guard.
+0006.png : The image shows a man standing in front of a pool table in a dark room, illuminated by lights. He is wearing a black dress and an ID card, and there are several other pool tables in the background.
+0007.png : The image shows a man standing in front of a pool table at night, illuminated by the lights in the background. He is wearing an ID card, suggesting he is a professional pool player.
+0008.png : The image shows a man standing in front of a pool table in a dark room, illuminated by lights. He is wearing a black shirt and is surrounded by other pool tables.
+0009.png : The image shows a man in a black shirt standing in front of a bowling alley, illuminated by a few lights in the background. He appears to be playing a game of bowling.
+0010.png : The image shows a man standing in front of a pool table in a dark room, illuminated by a few lights. He is wearing a black shirt, suggesting he is playing a game of pool.
+0011.png : The image shows a man standing in front of a pool table in a dark room, illuminated by lights. He is wearing a black shirt and there are several other pool tables in the background.
+0012.png : The image shows a man standing in front of a pool table in a dark room, illuminated by lights. He is wearing a black shirt and there are several other pool tables in the background.
+0013.png : The image shows Max Eberle, the author of Zen Pool, standing in front of a pool table with a few balls on it. On the right side of the image, there is a chair and a table, and on the wall behind him are several photo frames. At the bottom of the picture, the words "Zen Pool" are written.
+0014.png : The image shows Max Eberle, the author of Zen Pool, standing in front of a pool table with a few balls on it. On the right side of the image, there is a chair and a table, and on the wall behind him are several photo frames. At the bottom of the picture, the words "Zen Pool" are written.
+0015.png : The image shows Max Eberle, author of Zen Pool, standing in front of a pool table with balls on it. On the right side of the image, there is a stool and a table, and on the wall behind him there are photo frames. At the bottom of the picture, the words "Zen Pool" are written.
+0016.png : The image shows Max Eberle, author of Zen Pool, standing in front of a pool table with balls on it. On the right side of the image, there is a chair and a table, and in the background there are photo frames on the wall. At the bottom of the picture, the words "Zen Pool" are written.
+0017.png : The image shows Max Eberle, the author of Zen Pool, standing in front of a pool table with a few balls on it. On the right side of the image, there is a chair and a table, and on the wall behind him are several photo frames. At the bottom of the picture, the words "Zen Pool" are written.
+0018.png : The image shows Max Eberle, author of Zen Pool, standing in front of a pool table with balls on it. On the right side of the image, there is a chair and a table, and in the background there are photo frames on the wall. At the bottom of the picture, the words "Zen Pool" are written.
+0019.png : The image shows Max Eberle, author of Zen Pool, standing in front of a pool table with balls on it. On the wall behind him are several photo frames, and at the bottom of the image is some text.
+0020.png : The image shows Max Eberle, author of Zen Pool, standing in front of a pool table with balls on it. On the right side of the image, there is a chair and a table, and in the background there are photo frames on the wall. At the bottom of the picture, the words "Zen Pool" are written.
+0021.png : The image shows Max Eberle, author of Zen Pool, standing in front of a pool table with balls on it. On the right side of the image, there is a chair and a table, and in the background there are photo frames on the wall. At the bottom of the picture, the words "Zen Pool" are written.
+0022.png : The image shows Max Eberle, the author of Zen Pool, standing in front of a pool table with a few balls on it. On the right side of the image, there is a chair and a table, and on the wall behind him are several photo frames. At the bottom of the picture, the words "Zen Pool" are written.
+0023.png : The image shows Max Eberle, the author of Zen Pool, standing in front of a pool table with a few balls on it. On the right side of the image, there is a chair and a stool, and on the wall behind him are several photo frames. At the bottom of the picture, the words "Zen Pool" are written.
+0024.png : The image shows Max Eberle, author of Zen Pool, standing in front of a pool table with a few balls on it. On the right side of the image, there is a chair and a stool, and on the wall behind him are several photo frames. At the bottom of the picture, the words "Zen Pool" are written.
+0025.png : The image shows Max Eberle, author of Zen Pool, standing in front of a pool table with balls on it. On the right side of the image, there is a chair and a table, and in the background there are photo frames on the wall. At the bottom of the picture, the words "Zen Pool" are written.
+0026.png : The image shows Max Eberle, the author of Zen Pool, standing in front of a pool table with a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. At the bottom of the image there is some text.
+0027.png : The image shows Max Eberle, the author of Zen Pool, standing and holding a cue stick while surrounded by balls on the table. In the background, there are photo frames on the wall and lights on the ceiling.
+0028.png : The image shows Max Eberle, author of Zen Pool, standing and holding a cue stick while playing a game of pool. On the table in front of him are several balls, and in the background there are frames attached to the wall.
+0029.png : The image shows Max Eberle, the author of Zen Pool, standing and holding a cue stick while surrounded by balls on the table. In the background, there are photo frames on the wall and lights on the ceiling.
+0030.png : The image shows Max Eberle, the author of Zen Pool, standing and holding a cue stick while surrounded by balls on the table. In the background, there are photo frames on the wall and lights on the ceiling.
+0031.png : The image shows a man playing snooker on a green table, with a cue stick in his hand and a ball in front of him. In the background, there is a frame on the wall, suggesting that the man is in the middle of a game of billiards.
+0032.png : The image shows a man playing snooker on a green table, with a cue stick in his hand and a ball in front of him. In the background, there is a frame on the wall, suggesting that the man is in the middle of a game of billiards.
+0033.png : The image shows a man playing snooker on a green table, with a cue stick in his hand and a ball on the table. In the background, there is a frame on the wall, suggesting that the man is in the middle of a game of billiards.
+0034.png : The image shows a man playing snooker on a green table, with a cue stick in his hand and a ball on the table. In the background, there is a frame on the wall, suggesting that the man is in the middle of a game of billiards.
+0035.png : The image shows a man playing snooker on a green table, holding a cue stick in his hand. In the background, there is a frame on the wall, suggesting that the man is in the middle of a game of billiards.
+0036.png : The image shows a man playing snooker on a green table, holding a cue stick in his hand. In the background, there is a frame on the wall, suggesting that the man is in the middle of a game of billiards. He is wearing a blue shirt and has a determined expression on his face, indicating that he is focused on the task at hand.
+0037.png : The image shows a man playing snooker on a green table, holding a cue stick in his hand and a ball in front of him. On the right side of the image, there is a frame on the wall.
+0038.png : The image shows a white billiard ball with red dots on it, resting on a green table.
+0039.png : The image shows a white billiard ball on a green table with the words "Materials Needed" written on the left side. The ball is in the center of the table, surrounded by a green cloth.
+0040.png : The image shows a white billiard ball on a green table with the words "Materials Needed" written on the left side.
+0041.png : The image shows a white billiard ball on a green table with the words "Materials Needed" written on the left side.
+0042.png : The image shows three billiard balls on a green table with the words "Materials Needed" written on the left side. The balls are arranged in a triangular formation, with the largest ball in the center and two smaller balls on either side.
+0043.png : The image shows three billiard balls on a green table with the words "Materials Needed" written on the left side. The balls are arranged in a triangular formation, with the largest ball in the center and two smaller balls on either side.
+0044.png : The image shows three billiard balls on a green table with the words "Materials Needed" written on the left side. The balls are arranged in a triangular formation, with the largest ball in the center and two smaller balls on either side.
+0045.png : The image shows three billiard balls on a green table with the words "Materials Needed" written on the left side. The balls are arranged in a triangular formation, with the largest ball in the center and two smaller balls on either side.
+0046.png : The image shows three billiard balls on a green table with the words "Materials Needed" written on the left side. The balls are arranged in a triangular formation, with the largest ball in the center and two smaller balls on either side.
+0047.png : The image shows a snooker table with cues and cues on it, and text on the left side of the image. The cues are arranged neatly on the table, and the text provides instructions on how to use them.
+0048.png : The image shows a pool table with cues and cues on it, and text on the left side of the image. The cues are arranged neatly on the table, and the text provides instructions on how to use them.
+0049.png : The image shows a pool table with cues and cues on it, and text on the left side of the image. The cues are arranged neatly on the table, and the text provides instructions on how to use them.
+0050.png : The image shows a snooker table with cues and cues on it, and text on the left side of the image. The cues are arranged neatly on the table, and the text provides instructions on how to use them.
+0051.png : The image shows a snooker table with cues and cues on it, and text on the left side of the image. The cues are arranged neatly on the table, and the text provides instructions on how to use them.
+0052.png : The image shows a snooker table with a cue and cues on it, and text on the left side of the image. The table is green in color and the cues are arranged neatly on the table.
+0053.png : The image shows a person holding a pool cue on top of a green table, with text on the left side of the image. The person's hand is visible, indicating that they are about to take a shot at the cue.
+0054.png : The image shows a person holding a pool cue on top of a green table, with text on the left side of the image. The person's hand is visible, indicating that they are about to take a shot at the cue.
+0055.png : The image shows a person holding a pool cue on top of a green table, with text on the left side of the image. The person's hand is visible, indicating that they are about to take a shot at the cue.
+0056.png : The image shows a person holding a pool cue on top of a green table, with text on the left side of the image. The person's hand is visible, indicating that they are about to take a shot at the cue.
+0057.png : The image shows a red and blue cube sitting on top of a green field, with text on the left side of the image. The cube appears to be a hockey puck, with its red body and blue edges. The green field is lush and green, and the text is written in white.
+0058.png : The image shows a red and blue box with the words "Materials Needed" on it, sitting on a green surface. It appears to be a screenshot of a game, with the text indicating that the box contains a variety of materials needed for the game.
+0059.png : The image shows a red and blue cube sitting on top of a green field, with text on the left side of the image. The cube appears to be a hockey puck, with a white and red color scheme.
+0060.png : The image shows a red and blue cube sitting on top of a green field, with text on the left side of the image. The cube appears to be a hockey puck, with its red body and blue surface.
+0061.png : The image shows a red and blue cube sitting on top of a green field, with text on the left side of the image. The cube appears to be a hockey puck, with its red body and blue surface.
+0062.png : The image shows a red and blue cube sitting on top of a green field, with text on the left side of the image. The cube appears to be a hockey puck, with the text likely providing instructions or information about the game.
+0063.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0064.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, indicating that he is in the middle of a game.
+0065.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, and on the left side of the image is some text.
+0066.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, and at the bottom of the image is some text.
+0067.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, and on the left side of the image is some text.
+0068.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, and on the left side of the image is some text.
+0069.png : The image shows a man standing in front of a pool table, holding a cue in his hand. On the table there are several balls, and on the left side of the image there is some text and a number. The man appears to be attempting to determine the angle of shots on the table.
+0070.png : The image shows a man playing snooker in a dark room, holding a stick in his hand and surrounded by balls on the table. On the left side of the image, there is text and a number, suggesting that the man is attempting to determine the angle of shots.
+0071.png : The image shows a man playing snooker in a dark room, with a table in front of him and balls scattered across it. On the left side of the image, there is text that reads "Determine Angle of Shots".
+0072.png : The image shows a man playing snooker in a dark room, holding a cue in his hand. On the table in front of him are several balls, and on the left side of the image is some text.
+0073.png : The image shows a man playing snooker in a dark room, with a table in front of him. On the table are several balls, and on the left side of the image there is some text and a number. The man appears to be in the middle of a game, as if he is trying to determine the angle of shots.
+0074.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, and on the left side of the image is some text.
+0075.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, and on the left side of the image is some text.
+0076.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table. The text on the image reads "Determine Angle of Shots".
+0077.png : The image shows a man standing in front of a pool table, holding a cue in his hand. On the table there are several balls, and on the left side of the image there is some text and a number. The man appears to be attempting to determine the angle of shots on the table.
+0078.png : The image shows a man standing next to a pool table in a dark room, holding a cue in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0079.png : The image shows a man standing next to a pool table in a room, with a wall in the background. On the table are several billiard balls, suggesting that the man is playing a game of pool.
+0080.png : The image shows a man standing next to a pool table in a dark room, playing a game of billiard. He is wearing a black shirt and has a focused expression on his face as he focuses on the game. The table is covered in a green cloth and there are several billiard balls scattered across it.
+0081.png : The image shows a man standing next to a pool table in a dark room, holding a cue in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0082.png : The image shows a man standing next to a pool table in a dark room, holding a cue in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0083.png : The image shows a man standing next to a pool table in a dark room, holding a cue in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0084.png : The image shows a man standing next to a pool table in a dark room, holding a stick in his hand. On the table there are several billiard balls, indicating that he is in the middle of a game.
+0085.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0086.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0087.png : The image shows a man standing next to a pool table in a dark room, holding a cue in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0088.png : The image shows a man standing next to a pool table in a dark room, holding a cue in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0089.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0090.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0091.png : The image shows a man standing next to a pool table in a dark room, holding a cue in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0092.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0093.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0094.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. He is standing in front of the table, ready to take his shot.
+0095.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0096.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0097.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0098.png : The image shows a man standing next to a pool table in a dark room, holding a cue in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0099.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. On the table there are several billiard balls, indicating that he is in the middle of a game.
+0100.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. On the table there are several billiard balls, indicating that he is in the middle of a game.
+0101.png : The image shows a man standing in front of a pool table, holding a cue stick in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0102.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0103.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0104.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0105.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0106.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0107.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0108.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0109.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0110.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0111.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0112.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0113.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0114.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0115.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0116.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0117.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0118.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0119.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0120.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0121.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0122.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0123.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0124.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0125.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0126.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0127.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0128.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0129.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0130.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0131.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0132.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0133.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0134.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. On the table are several billiard balls, indicating that he is in the middle of a game.
+0135.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. On the table are several billiard balls, indicating that he is in the middle of a game.
+0136.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0137.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. On the table there are several billiard balls, indicating that he is in the middle of a game.
+0138.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0139.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0140.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0141.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0142.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0143.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0144.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0145.png : The image shows a man playing snooker in a dark room. He is holding a cue stick and there are several balls on the table.
+0146.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0147.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0148.png : The image shows a man playing snooker in a dark room, with a cue stick in hand and several balls scattered across the table. He appears to be in the middle of a game, ready to take his shot.
+0149.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0150.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0151.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0152.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0153.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0154.png : The image shows a man standing in front of a pool table, holding a cue stick in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0155.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0156.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0157.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0158.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and in the background, there are photo frames on the wall.
+0159.png : The image shows a man playing snooker in a room with a pool table, holding a stick in his hand and surrounded by balls on the table. On the right side of the image there is a stool, and in the background there are photo frames on the wall.
+0160.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and in the background, there are photo frames on the wall.
+0161.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and in the background, there are photo frames on the wall.
+0162.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a chair and a stool, and on the wall behind him there are photo frames. The room is illuminated by lights on the ceiling.
+0163.png : The image shows a man standing in front of a pool table, holding a stick in his hand. On the table there are several balls, and on the right side of the image there is a chair. In the background there are frames attached to the wall, suggesting that the man is playing a game of billiards.
+0164.png : The image shows a man playing pool in a room with a pool table, holding a stick in his hand. On the table there are several balls, and on the right side of the image there is a stool. In the background there are frames attached to the wall and lights at the top.
+0165.png : The image shows a man standing in front of a pool table in a room, holding a stick in his hand. On the table there are several balls, and on the right side of the image there is a chair. In the background there are frames attached to the wall, suggesting that the man is playing a game of billiards.
+0166.png : The image shows a man standing in front of a pool table in a room, surrounded by a chair, a door, some photo frames on the wall, and a roof with some ceiling lights. On the table are some balls, suggesting that the man is playing a game of billiards.
+0167.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. On the table there are balls and a stool, suggesting that the man is in the middle of a game.
+0168.png : The image shows a man standing in front of a pool table in a room, holding a cue stick in his hand. On the table there are several balls, and on the right side of the image there is a stool. In the background there are frames attached to the wall, and the room is illuminated by lights from the ceiling.
+0169.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and a photo frame on the wall. The room is illuminated by lights on the ceiling.
+0170.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0171.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and in the background, there are photo frames on the wall.
+0172.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0173.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a chair and a stool, and on the wall behind him there are photo frames. The room is illuminated by lights on the ceiling.
+0174.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0175.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0176.png : The image shows a man standing next to a pool table in a room, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. The room is illuminated by lights from the ceiling.
+0177.png : The image shows a man standing next to a pool table in a room, holding a stick in his hand. On the table there are several balls, and in the background there are frames attached to the wall.
+0178.png : The image shows a man standing next to a pool table in a room, holding a cue stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. The room is illuminated by lights from the ceiling.
+0179.png : The image shows a man standing next to a pool table in a room, holding a stick in his hand. On the table there are several balls, and in the background there are frames attached to the wall.
+0180.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. In the background, there are frames attached to the wall and lights illuminating the room.
+0181.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0182.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and in the background, there are photo frames on the wall.
+0183.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a chair and a table, and on the wall behind him there are photo frames. The room is illuminated by lights on the ceiling.
+0184.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0185.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and a photo frame on the wall. The room is illuminated by lights on the ceiling.
+0186.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0187.png : The image shows a man playing snooker in a room with a pool table in the center. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and a table, and on the wall behind him there are photo frames. The room is illuminated by lights on the ceiling.
+0188.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a chair and a stool, and on the wall behind him there are photo frames. The room is illuminated by lights on the ceiling.
+0189.png : The image shows a man playing snooker in a room with a pool table in the center. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a chair and a stool, and on the wall behind him there are photo frames. The room is illuminated by lights on the ceiling.
+0190.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and in the background, there are photo frames on the wall and lights on the ceiling.
+0191.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and a number on the left side. In the background, there are photo frames on the wall and lights on the ceiling.
+0192.png : The image shows a man playing snooker in a room with a pool table, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and at the bottom of the image there is some text which reads "calculate stroke speed".
+0193.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and a table, and on the wall behind him there are photo frames. At the top of the roof, there are lights illuminating the room. The text on the image reads "Calculate Stroking Speed".
+0194.png : The image shows a man playing snooker in a room with a pool table, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the table is a stool, and at the bottom of the image is text that reads "calculate stroke speed".
+0195.png : The image shows a man playing snooker in a room with a pool table, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and at the bottom of the image there is some text.
+0196.png : The image shows a man playing snooker in a room with a pool table, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and at the bottom of the image there is some text which reads "calculate stroke speed".
+0197.png : The image shows a man playing snooker in a room with a pool table, holding a cue stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a chair, and at the bottom of the image there is some text.
+0198.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and a table, and on the wall behind him there are photo frames. At the top of the room, there are lights illuminating the scene. The text on the image reads "Calculate Stroking Speed".
+0199.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a stool and some text. In the background, there are photo frames on the wall and lights on the ceiling.
+0200.png : The image shows a man playing snooker in a room with a pool table, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and at the bottom of the image there is some text.
+0201.png : The image shows a man playing snooker in a room with a pool table, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and at the bottom of the image there is some text which reads "calculate stroke speed".
+0202.png : The image shows a man playing snooker in a room with a pool table, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and at the bottom of the image there is some text and a number.
+0203.png : The image shows a man playing snooker in a room with a pool table, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and at the bottom of the image there is some text which reads "calculate stroke speed".
+0204.png : The image shows a man playing snooker in a room with a pool table, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and at the bottom of the image there is some text which reads "calculate stroke speed".
+0205.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by a pool table with several balls on it.
+0206.png : The image shows a man playing snooker in a dark room, with a pool table in front of him. He is holding a cue in his hand, ready to take his shot.
+0207.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. He is standing in front of a pool table, ready to take his shot.
+0208.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0209.png : The image shows a man playing snooker in a dark room, with a pool table in front of him. He is holding a cue in his hand, ready to take his shot.
+0210.png : The image shows a man playing snooker in a dark room, with a pool table in front of him. He is holding a cue stick in his hand, ready to take his shot.
+0211.png : The image shows a man playing snooker in a dark room, holding a stick in his hand and surrounded by a pool table with several balls on it.
+0212.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0213.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0214.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0215.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0216.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0217.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0218.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0219.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0220.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0221.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by a pool table with several balls on it.
+0222.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0223.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0224.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0225.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0226.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0227.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0228.png : The image shows a man playing snooker in a dark room, holding a stick in his hand and surrounded by a pool table with several balls on it.
+0229.png : The image shows a man playing snooker in a dark room, holding a stick in his hand and surrounded by a pool table with several balls on it.
+0230.png : The image shows a man playing snooker in a dark room, holding a stick in his hand and surrounded by a pool table with several balls on it.
+0231.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0232.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, and on the left side of the image is a number.
+0233.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, and on the left side of the image is some text.
+0234.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, and on the left side of the image is some text.
+0235.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, and on the left side of the image is some text.
+0236.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, and on the left side of the image is some text.
+0237.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table. The text on the image reads "How to Play Snooker".
+0238.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table. On the left side of the image, there is text and numbers, suggesting that this is a screenshot of a game.
+0239.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table. On the left side of the image, there is text and numbers, suggesting that this is a screenshot of a game of pool.
+0240.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table. On the left side of the image, there is text and numbers, suggesting that this is a screenshot of a game of pool.
+0241.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table. On the left side of the image, there is text and numbers, suggesting that this is a screenshot of a game of pool.
+0242.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table. On the left side of the image, there is text and numbers, suggesting that this is a screenshot of a game of pool.
+0243.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table. On the left side of the image, there is text and numbers, suggesting that this is a screenshot of a game of pool.
+0244.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table. On the left side of the image, there is text and numbers, suggesting that this is a screenshot of a game of pool.
+0245.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table. The text on the image reads "Snooker World Championship".
+0246.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table. On the left side of the image, there is text and numbers, suggesting that this is a screenshot of a game of pool.
+0247.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0248.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0249.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0250.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0251.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0252.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0253.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0254.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0255.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0256.png : The image shows a man playing snooker in a dark room, holding a stick in his hand and surrounded by balls on the table.
+0257.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0258.png : The image shows a man playing snooker in a dark room, holding a stick in his hand and surrounded by balls on the table.
+0259.png : The image shows a man standing next to a pool table in a dark room, holding a snooker stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0260.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0261.png : The image shows a man standing next to a pool table in a dark room, playing a game of billiards. He is holding a cue stick in his hand, ready to take his shot.
+0262.png : The image shows a man standing next to a pool table in a dark room, holding a cue in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0263.png : The image shows a man standing next to a pool table in a dark room, holding a cue in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0264.png : The image shows a man playing pool in a dark room, with a pool table in the center of the room. He is holding a cue stick in his hand, ready to take his shot.
+0265.png : The image shows a man standing next to a pool table in a dark room, holding a cue in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0266.png : The image shows a man playing pool in a dark room, with a pool table in the center of the room. He is holding a cue stick in his right hand, ready to take his shot.
+0267.png : The image shows a man playing pool in a dark room, with a pool table in the center of the room. He is holding a cue stick in his hand, ready to take his shot.
+0268.png : The image shows a man playing pool in a dark room, with a pool table in the center of the room surrounded by a wall. He is holding a cue stick in his hand, ready to take his shot.
+0269.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by a few balls on the table.
+0270.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0271.png : The image shows a man playing pool in a dark room, with a pool table in the center of the room. He is holding a cue stick in his hand, ready to take his shot.
+0272.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0273.png : The image shows a man standing next to a pool table in a dark room, with a few balls scattered across the table. He appears to be playing a game of billiards, with his arms outstretched and a focused expression on his face.
+0274.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0275.png : The image shows a man playing pool in a dark room, with a snooker table in the center of the room. He is standing on the left side of the table, ready to take his shot.
+0276.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0277.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0278.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, indicating that he is in the middle of a game.
+0279.png : The image shows a man playing snooker in a dark room, with a pool table in the center of the room. He is holding a cue stick in his hand, ready to take his shot.
+0280.png : The image shows a man playing snooker in a dark room, holding a stick in his hand and surrounded by balls on the table.
+0281.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0282.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0283.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0284.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0285.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0286.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0287.png : The image shows a man standing next to a pool table in a dark room, holding a billiard stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0288.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0289.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0290.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0291.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0292.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. On the table are several billiard balls, indicating that he is in the middle of a game.
+0293.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. On the table are several billiard balls, indicating that he is in the middle of a game.
+0294.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0295.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0296.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0297.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. On the table there are several balls, suggesting he is in the middle of a game of billiards.
+0298.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0299.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0300.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0301.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0302.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0303.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0304.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0305.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0306.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0307.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0308.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0309.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0310.png : The image shows a man playing pool in a dark room, with a snooker table in the center of the room. He is holding a cue stick in his hand, ready to take his shot.
+0311.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls scattered across it.
+0312.png : The image shows a man playing snooker in a dark room, with a pool table in the center of the room. He is holding a cue stick in his hand, ready to take his shot.
+0313.png : The image shows a man playing snooker in a dark room, with a pool table in the center of the room. He is holding a cue stick in his hand, ready to take his shot.
+0314.png : The image shows a man playing snooker in a dark room, with a pool table in the center of the room. He is holding a cue stick in his hand, ready to take his shot.
+0315.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0316.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls on it.
+0317.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several balls on it.
+0318.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0319.png : The image shows a person playing pool in a dark room, holding a cue stick and surrounded by a pool table with balls on it.
+0320.png : The image shows a man playing pool in a dark room, with a pool table in front of him. He is holding a cue stick in his hand, ready to take his shot.
+0321.png : The image shows a man playing pool in a dark room, with a pool table in the center of the room surrounded by a wall. He is holding a cue stick in his hand, ready to take his shot.
+0322.png : The image shows a pool table in a dark room with a cue in it, surrounded by a wall in the background. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0323.png : The image shows a man playing snooker in a dark room, with a pool table in the center of the room. He is holding a cue stick in his hand, ready to take his shot.
+0324.png : The image shows a man playing snooker in a dark room, holding a cue stick in his hand. On the table in front of him are several balls, indicating that he is in the middle of a game.
+0325.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0326.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0327.png : The image shows a man playing snooker in a dark room, with a pool table in the center of the room. He is holding a cue stick in his hand, ready to take his shot.
+0328.png : The image shows a man playing pool in a dark room, with a snooker table in the center of the room. On the table are several billiard balls, ready to be played.
+0329.png : The image shows a man playing pool in a dark room, with a snooker stick in his hand. He is standing on the right side of the pool table, ready to take his shot.
+0330.png : The image shows a man playing pool in a dark room, with a pool table in the center of the room. He is holding a cue stick in his hand, ready to take his shot.
+0331.png : The image shows a man standing next to a pool table in a dark room, holding a cue stick in his hand. The table is covered with a green cloth and there are several billiard balls scattered across it.
+0332.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand. The pool table is in the center of the room, surrounded by a wall in the background.
+0333.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by a few balls on the table.
+0334.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0335.png : The image shows a man playing snooker in a dark room, with a pool table in the center of the room. On the table there are several balls, and in the background there is a wall.
+0336.png : The image shows a man playing snooker in a dark room, with a pool table in the center of the room. On the table are several balls, and the man is holding a cue in his hand.
+0337.png : The image shows a man playing pool in a dark room, with a snooker table in the center of the room. On the table there are several balls, and in the background there is a wall.
+0338.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by balls on the table.
+0339.png : The image shows a man playing snooker in a dark room, with a pool table in front of him. He is holding a cue stick and there are several balls on the table, indicating that he is in the middle of a game.
+0340.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0341.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0342.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0343.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0344.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0345.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0346.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0347.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0348.png : The image shows a man playing snooker in a room with a pool table, surrounded by a wall with photo frames and a ceiling with lights. He is holding a cue stick and there are several balls on the table.
+0349.png : The image shows a man playing snooker in a room with a pool table. He is holding a cue stick and there are several balls on the table. In the background, there are frames attached to the wall and lights illuminating the room.
+0350.png : The image shows a man standing next to a pool table in a room, holding a stick in his hand. On the table there are several balls, and in the background there are frames attached to the wall.
+0351.png : The image shows a man standing next to a pool table in a room, holding a stick in his hand. On the table there are several snooker balls, and in the background there are frames attached to the wall.
+0352.png : The image shows a man standing next to a pool table in a room, holding a stick in his hand. On the table there are several balls, and in the background there are frames attached to the wall.
+0353.png : The image shows a man standing next to a pool table in a room, holding a cue stick in his hand. The room is illuminated by lights from the ceiling, and there are frames attached to the wall in the background.
+0354.png : The image shows a man standing next to a pool table in a room, holding a stick in his hand. The room is illuminated by lights from the ceiling, and there are frames attached to the wall in the background.
+0355.png : The image shows a man standing next to a pool table in a room, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and the room is illuminated by lights from the ceiling.
+0356.png : The image shows a man standing next to a pool table in a room, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and the room is illuminated by lights from the ceiling.
+0357.png : The image shows a man standing in front of a pool table in a room, surrounded by a wall with photo frames and a ceiling with lights. On the table there are balls, suggesting that the man is playing a game of billiards.
+0358.png : The image shows a man standing in front of a pool table in a room, surrounded by a wall with a photo frame, a staircase, and a roof with ceiling lights. He is holding a cue in his hand, ready to take a shot.
+0359.png : The image shows a man standing in front of a pool table in a room, surrounded by chairs, a staircase, a photo frame on the wall, and a roof with ceiling lights. The pool table is covered with a green cloth and there are several balls on it.
+0360.png : The image shows a man standing in front of a pool table in a room, holding a cue stick and surrounded by balls. On the right side of the image there is a stool, and in the background there are frames attached to the wall.
+0361.png : The image shows a man playing pool in a dark room, with a snooker table in the center of the room. He is holding a cue stick and there are several balls scattered around the table. On the right side of the image, there is a stool and a photo frame on the wall, and the room is illuminated by lights from the ceiling.
+0362.png : The image shows a man playing snooker in a room with a pool table in the center. On the table there are several balls, and on the right side of the image there is a stool. In the background there are frames attached to the wall and lights at the top.
+0363.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0364.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0365.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0366.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0367.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0368.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0369.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0370.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0371.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0372.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0373.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0374.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand and surrounded by balls on the table.
+0375.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0376.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0377.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0378.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0379.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0380.png : The image shows a man playing pool in a dark room, holding a cue stick and surrounded by balls on the table.
+0381.png : The image shows a man playing pool in a dark room, holding a cue stick in his hand. The room is illuminated by a few lights attached to the ceiling, and there are a few frames attached to a wall in the background.
+0382.png : The image shows a man standing in front of a pool table in a room, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and the room is illuminated by lights from the ceiling.
+0383.png : The image shows a man standing in front of a pool table in a room, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a stool, and the room is illuminated by lights from the ceiling.
+0384.png : The image shows a man standing in front of a pool table in a room, holding a stick in his hand. On the right side of the image there is a stool, and in the background there are frames attached to the wall.
+0385.png : The image shows a man standing in front of a pool table in a room, illuminated by lights from the ceiling. On the wall behind him are several photo frames, adding to the atmosphere of the room.
+0386.png : The image shows a man standing in front of a pool table in a room, surrounded by a chair, a table, some photo frames on the wall, and a roof with some ceiling lights. He appears to be playing a game of billiards.
+0387.png : The image shows a man standing next to a pool table in a room, with a few frames attached to the wall in the background and a few lights illuminating the room. The pool table is in the center of the image, with the man standing on the left side.
+0388.png : The image shows a man standing next to a pool table in a room. He is holding a cue stick and there are several balls on the table. On the right side of the image, there is a chair and a table, and on the wall behind him there are photo frames. The room is illuminated by lights on the ceiling.
+0389.png : The image shows a man standing next to a pool table in a room, holding a stick in his hand. On the table there are several balls, and on the wall behind him there are photo frames. To the right of the man is a chair, and the room is illuminated by lights from the ceiling.
+0390.png : The image shows a man standing next to a pool table in a room, holding a snooker stick in his hand. On the table there are several balls, and on the right side of the image there is a chair. In the background there are frames attached to the wall, suggesting that the man is playing a game of billiards.
+0391.png : The image shows a man standing next to a pool table in a room, holding a stick in his hand. On the table there are several balls, and on the right side of the image there is a stool. In the background there are frames attached to the wall, suggesting that the man is playing a game of billiards.
+0392.png : The image shows a man standing next to a pool table in a room, holding a cue stick in his hand. On the table there are several balls, and on the right side of the image there is a stool. In the background there are frames attached to the wall, suggesting that the man is playing a game of billiards.
+0393.png : The image shows a man standing next to a pool table in a room, holding a snooker stick in his hand. On the table there are several balls, and on the right side of the image there is a stool. In the background there are frames attached to the wall, and the room is illuminated by lights from the ceiling.
+0394.png : The image shows a man playing snooker in a dark room, holding a cue stick and surrounded by a wall with photo frames.
+0395.png : The image shows a pool table in a dark room with a green cloth on it, surrounded by a wall with a window in the background.
