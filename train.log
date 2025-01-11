@@ -510,3 +510,327 @@ hydra.errors.InstantiationException: Error in call to target 'src.models.compone
 FileNotFoundError(2, 'No such file or directory')
 full_key: model.net
 [2025-01-11 18:01:42,638][src.utils.utils][INFO] - Output dir: /home/def/fewshot/logs/train/runs/2025-01-11_18-01-34
+[2025-01-11 18:04:34,509][src.utils.utils][INFO] - Enforcing tags! <cfg.extras.enforce_tags=True>
+[2025-01-11 18:04:34,512][src.utils.utils][INFO] - Printing config tree with Rich! <cfg.extras.print_config=True>
+[2025-01-11 18:04:34,535][__main__][INFO] - Instantiating datamodule <src.data.custom_datamodule.T3ALDataModule>
+[2025-01-11 18:04:34,775][__main__][INFO] - Instantiating model <src.models.tt_method_module.T3ALModule>
+[2025-01-11 18:04:35,490][root][INFO] - Loaded coca_ViT-L-14 model config.
+[2025-01-11 18:04:39,226][root][INFO] - Loading pretrained coca_ViT-L-14 weights (mscoco_finetuned_laion2B-s13B-b90k).
+[2025-01-11 18:04:41,465][__main__][INFO] - Instantiating callbacks...
+[2025-01-11 18:04:41,466][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.ModelCheckpoint>
+[2025-01-11 18:04:41,469][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichModelSummary>
+[2025-01-11 18:04:41,469][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichProgressBar>
+[2025-01-11 18:04:41,469][__main__][INFO] - Instantiating loggers...
+[2025-01-11 18:04:41,470][src.utils.instantiators][INFO] - Instantiating logger <lightning.pytorch.loggers.wandb.WandbLogger>
+[2025-01-11 18:04:41,472][__main__][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2025-01-11 18:04:41,613][__main__][INFO] - Logging hyperparameters!
+[2025-01-11 18:05:06,281][src.utils.utils][ERROR] - 
+Traceback (most recent call last):
+  File "/home/def/fewshot/src/utils/utils.py", line 65, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+                               ^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/train.py", line 85, in train
+    utils.log_hyperparameters(object_dict)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning_utilities/core/rank_zero.py", line 42, in wrapped_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/utils/logging_utils.py", line 51, in log_hyperparameters
+    logger.log_hyperparams(hparams)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning_utilities/core/rank_zero.py", line 42, in wrapped_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loggers/wandb.py", line 429, in log_hyperparams
+    self.experiment.config.update(params, allow_val_change=True)
+    ^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/fabric/loggers/logger.py", line 118, in experiment
+    return fn(self)
+           ^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loggers/wandb.py", line 407, in experiment
+    self._experiment = wandb.init(**self._wandb_init)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 1303, in init
+    wandb._sentry.reraise(e)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/wandb/analytics/sentry.py", line 156, in reraise
+    raise exc.with_traceback(sys.exc_info()[2])
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 1289, in init
+    return wi.init()
+           ^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 821, in init
+    result = run_init_handle.wait(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/wandb/sdk/lib/mailbox.py", line 277, in wait
+    raise MailboxError("transport failed")
+wandb.sdk.lib.mailbox.MailboxError: transport failed
+[2025-01-11 18:05:06,284][src.utils.utils][INFO] - Output dir: /home/def/fewshot/logs/train/runs/2025-01-11_18-04-34
+[2025-01-11 18:20:27,363][src.utils.utils][INFO] - Enforcing tags! <cfg.extras.enforce_tags=True>
+[2025-01-11 18:20:27,365][src.utils.utils][INFO] - Printing config tree with Rich! <cfg.extras.print_config=True>
+[2025-01-11 18:20:27,395][__main__][INFO] - Instantiating datamodule <src.data.custom_datamodule.T3ALDataModule>
+[2025-01-11 18:20:27,872][__main__][INFO] - Instantiating model <src.models.tt_method_module.T3ALModule>
+[2025-01-11 18:20:28,925][root][INFO] - Loaded coca_ViT-L-14 model config.
+[2025-01-11 18:20:32,220][root][INFO] - Loading pretrained coca_ViT-L-14 weights (mscoco_finetuned_laion2B-s13B-b90k).
+[2025-01-11 18:20:35,624][__main__][INFO] - Instantiating callbacks...
+[2025-01-11 18:20:35,624][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.ModelCheckpoint>
+[2025-01-11 18:20:35,629][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichModelSummary>
+[2025-01-11 18:20:35,629][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichProgressBar>
+[2025-01-11 18:20:35,630][__main__][INFO] - Instantiating loggers...
+[2025-01-11 18:20:35,630][src.utils.instantiators][INFO] - Instantiating logger <lightning.pytorch.loggers.wandb.WandbLogger>
+[2025-01-11 18:20:35,633][__main__][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2025-01-11 18:20:35,752][__main__][INFO] - Logging hyperparameters!
+[2025-01-11 18:20:35,758][__main__][INFO] - Starting training!
+[2025-01-11 18:20:38,017][__main__][INFO] - Starting testing!
+[2025-01-11 18:20:38,017][__main__][WARNING] - Best ckpt not found! Using current weights for testing...
+[2025-01-11 18:20:40,365][src.utils.utils][ERROR] - 
+Traceback (most recent call last):
+  File "/home/def/fewshot/src/utils/utils.py", line 65, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+                               ^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/train.py", line 103, in train
+    trainer.test(model=model, datamodule=datamodule, ckpt_path=ckpt_path)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 749, in test
+    return call._call_and_handle_interrupt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 47, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 789, in _test_impl
+    results = self._run(model, ckpt_path=ckpt_path)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 982, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1019, in _run_stage
+    return self._evaluation_loop.run()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 137, in run
+    batch, batch_idx, dataloader_idx = next(data_fetcher)
+                                       ^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loops/fetchers.py", line 134, in __next__
+    batch = super().__next__()
+            ^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loops/fetchers.py", line 61, in __next__
+    batch = next(self.iterator)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/utilities/combined_loader.py", line 341, in __next__
+    out = next(self._iterator)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/utilities/combined_loader.py", line 142, in __next__
+    out = next(self.iterators[0])
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 701, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1465, in _next_data
+    return self._process_data(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 1491, in _process_data
+    data.reraise()
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/_utils.py", line 715, in reraise
+    raise exception
+FileNotFoundError: Caught FileNotFoundError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/utils/data/_utils/worker.py", line 351, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/home/def/fewshot/src/data/components/dataset.py", line 74, in __getitem__
+    video_idx, video = self.baselinegetFeatureData(index)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/data/components/dataset.py", line 39, in baselinegetFeatureData
+    video = self.loadFeature(video_idx)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/data/components/dataset.py", line 94, in loadFeature
+    video_data = np.load(os.path.join(self.feature_path, idx + ".npy"))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/numpy/lib/npyio.py", line 427, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './data/Thumos14/features/video_validation_0000365.npy'
+
+[2025-01-11 18:20:40,381][src.utils.utils][INFO] - Output dir: /home/def/fewshot/logs/train/runs/2025-01-11_18-20-27
+[2025-01-11 18:20:40,381][src.utils.utils][INFO] - Closing wandb!
+[2025-01-11 18:22:14,129][src.utils.utils][INFO] - Enforcing tags! <cfg.extras.enforce_tags=True>
+[2025-01-11 18:22:14,132][src.utils.utils][INFO] - Printing config tree with Rich! <cfg.extras.print_config=True>
+[2025-01-11 18:22:14,160][__main__][INFO] - Instantiating datamodule <src.data.custom_datamodule.T3ALDataModule>
+[2025-01-11 18:22:14,651][__main__][INFO] - Instantiating model <src.models.tt_method_module.T3ALModule>
+[2025-01-11 18:22:15,719][root][INFO] - Loaded coca_ViT-L-14 model config.
+[2025-01-11 18:22:19,505][root][INFO] - Loading pretrained coca_ViT-L-14 weights (mscoco_finetuned_laion2B-s13B-b90k).
+[2025-01-11 18:22:22,429][__main__][INFO] - Instantiating callbacks...
+[2025-01-11 18:22:22,429][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.ModelCheckpoint>
+[2025-01-11 18:22:22,431][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichModelSummary>
+[2025-01-11 18:22:22,431][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichProgressBar>
+[2025-01-11 18:22:22,432][__main__][INFO] - Instantiating loggers...
+[2025-01-11 18:22:22,432][src.utils.instantiators][INFO] - Instantiating logger <lightning.pytorch.loggers.wandb.WandbLogger>
+[2025-01-11 18:22:22,434][__main__][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2025-01-11 18:22:22,537][__main__][INFO] - Logging hyperparameters!
+[2025-01-11 18:22:22,541][__main__][INFO] - Starting training!
+[2025-01-11 18:22:24,598][__main__][INFO] - Starting testing!
+[2025-01-11 18:22:24,599][__main__][WARNING] - Best ckpt not found! Using current weights for testing...
+[2025-01-11 18:22:26,968][src.utils.utils][ERROR] - 
+Traceback (most recent call last):
+  File "/home/def/fewshot/src/utils/utils.py", line 65, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+                               ^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/train.py", line 103, in train
+    trainer.test(model=model, datamodule=datamodule, ckpt_path=ckpt_path)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 749, in test
+    return call._call_and_handle_interrupt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 47, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 789, in _test_impl
+    results = self._run(model, ckpt_path=ckpt_path)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 982, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1019, in _run_stage
+    return self._evaluation_loop.run()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 144, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 433, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 323, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/strategies/strategy.py", line 425, in test_step
+    return self.lightning_module.test_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/models/tt_method_module.py", line 105, in test_step
+    self.model_step(
+  File "/home/def/fewshot/src/models/tt_method_module.py", line 83, in model_step
+    return self.forward(batch, opt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/models/tt_method_module.py", line 77, in forward
+    return self.net(x, opt)
+           ^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/models/components/tt_method.py", line 346, in forward
+    fps = self.get_video_fps(video_name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/models/components/tt_method.py", line 210, in get_video_fps
+    return fps
+           ^^^
+UnboundLocalError: cannot access local variable 'fps' where it is not associated with a value
+[2025-01-11 18:22:26,975][src.utils.utils][INFO] - Output dir: /home/def/fewshot/logs/train/runs/2025-01-11_18-22-14
+[2025-01-11 18:22:26,975][src.utils.utils][INFO] - Closing wandb!
+[2025-01-11 18:30:51,718][src.utils.utils][INFO] - Enforcing tags! <cfg.extras.enforce_tags=True>
+[2025-01-11 18:30:51,721][src.utils.utils][INFO] - Printing config tree with Rich! <cfg.extras.print_config=True>
+[2025-01-11 18:30:51,748][__main__][INFO] - Instantiating datamodule <src.data.custom_datamodule.T3ALDataModule>
+[2025-01-11 18:30:52,192][__main__][INFO] - Instantiating model <src.models.tt_method_module.T3ALModule>
+[2025-01-11 18:30:53,243][root][INFO] - Loaded coca_ViT-L-14 model config.
+[2025-01-11 18:30:56,196][root][INFO] - Loading pretrained coca_ViT-L-14 weights (mscoco_finetuned_laion2B-s13B-b90k).
+[2025-01-11 18:30:58,525][__main__][INFO] - Instantiating callbacks...
+[2025-01-11 18:30:58,526][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.ModelCheckpoint>
+[2025-01-11 18:30:58,528][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichModelSummary>
+[2025-01-11 18:30:58,529][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichProgressBar>
+[2025-01-11 18:30:58,529][__main__][INFO] - Instantiating loggers...
+[2025-01-11 18:30:58,529][src.utils.instantiators][INFO] - Instantiating logger <lightning.pytorch.loggers.wandb.WandbLogger>
+[2025-01-11 18:30:58,531][__main__][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2025-01-11 18:30:58,663][__main__][INFO] - Logging hyperparameters!
+[2025-01-11 18:30:58,669][__main__][INFO] - Starting training!
+[2025-01-11 18:31:01,048][__main__][INFO] - Starting testing!
+[2025-01-11 18:31:01,048][__main__][WARNING] - Best ckpt not found! Using current weights for testing...
+[2025-01-11 18:31:06,804][src.utils.utils][ERROR] - 
+Traceback (most recent call last):
+  File "/home/def/fewshot/src/utils/utils.py", line 65, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+                               ^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/train.py", line 103, in train
+    trainer.test(model=model, datamodule=datamodule, ckpt_path=ckpt_path)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 749, in test
+    return call._call_and_handle_interrupt(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 47, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 789, in _test_impl
+    results = self._run(model, ckpt_path=ckpt_path)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 982, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1019, in _run_stage
+    return self._evaluation_loop.run()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 144, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 433, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 323, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/lightning/pytorch/strategies/strategy.py", line 425, in test_step
+    return self.lightning_module.test_step(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/models/tt_method_module.py", line 105, in test_step
+    self.model_step(
+  File "/home/def/fewshot/src/models/tt_method_module.py", line 83, in model_step
+    return self.forward(batch, opt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/models/tt_method_module.py", line 77, in forward
+    return self.net(x, opt)
+           ^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/fewshot/src/models/components/tt_method.py", line 481, in forward
+    with open(f"./data/Thumos14/captions/{video_name}.txt", "r", encoding='utf-8') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './data/Thumos14/captions/video_validation_0000365.txt'
+[2025-01-11 18:31:06,811][src.utils.utils][INFO] - Output dir: /home/def/fewshot/logs/train/runs/2025-01-11_18-30-51
+[2025-01-11 18:31:06,811][src.utils.utils][INFO] - Closing wandb!
+[2025-01-11 18:32:30,380][src.utils.utils][INFO] - Enforcing tags! <cfg.extras.enforce_tags=True>
+[2025-01-11 18:32:30,382][src.utils.utils][INFO] - Printing config tree with Rich! <cfg.extras.print_config=True>
+[2025-01-11 18:32:30,407][__main__][INFO] - Instantiating datamodule <src.data.custom_datamodule.T3ALDataModule>
+[2025-01-11 18:32:30,641][__main__][INFO] - Instantiating model <src.models.tt_method_module.T3ALModule>
+[2025-01-11 18:32:31,482][root][INFO] - Loaded coca_ViT-L-14 model config.
+[2025-01-11 18:32:34,825][root][INFO] - Loading pretrained coca_ViT-L-14 weights (mscoco_finetuned_laion2B-s13B-b90k).
+[2025-01-11 18:32:38,101][__main__][INFO] - Instantiating callbacks...
+[2025-01-11 18:32:38,102][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.ModelCheckpoint>
+[2025-01-11 18:32:38,105][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichModelSummary>
+[2025-01-11 18:32:38,106][src.utils.instantiators][INFO] - Instantiating callback <lightning.pytorch.callbacks.RichProgressBar>
+[2025-01-11 18:32:38,106][__main__][INFO] - Instantiating loggers...
+[2025-01-11 18:32:38,106][src.utils.instantiators][INFO] - Instantiating logger <lightning.pytorch.loggers.wandb.WandbLogger>
+[2025-01-11 18:32:38,110][__main__][INFO] - Instantiating trainer <lightning.pytorch.trainer.Trainer>
+[2025-01-11 18:32:38,229][__main__][INFO] - Logging hyperparameters!
+[2025-01-11 18:32:38,234][__main__][INFO] - Starting training!
+[2025-01-11 18:32:40,675][__main__][INFO] - Starting testing!
+[2025-01-11 18:32:40,676][__main__][WARNING] - Best ckpt not found! Using current weights for testing...

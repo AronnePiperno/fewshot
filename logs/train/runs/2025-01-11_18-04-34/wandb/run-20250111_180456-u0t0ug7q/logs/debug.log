@@ -1,0 +1,28 @@
+2025-01-11 18:04:56,848 INFO    MainThread:23728 [wandb_setup.py:_flush():68] Current SDK version is 0.19.2
+2025-01-11 18:04:56,848 INFO    MainThread:23728 [wandb_setup.py:_flush():68] Configure stats pid to 23728
+2025-01-11 18:04:56,848 INFO    MainThread:23728 [wandb_setup.py:_flush():68] Loading settings from /home/def/.config/wandb/settings
+2025-01-11 18:04:56,848 INFO    MainThread:23728 [wandb_setup.py:_flush():68] Loading settings from /home/def/fewshot/wandb/settings
+2025-01-11 18:04:56,848 INFO    MainThread:23728 [wandb_setup.py:_flush():68] Loading settings from environment variables
+2025-01-11 18:04:56,848 INFO    MainThread:23728 [wandb_init.py:_log_setup():523] Logging user logs to /home/def/fewshot/logs/train/runs/2025-01-11_18-04-34/wandb/run-20250111_180456-u0t0ug7q/logs/debug.log
+2025-01-11 18:04:56,848 INFO    MainThread:23728 [wandb_init.py:_log_setup():524] Logging internal logs to /home/def/fewshot/logs/train/runs/2025-01-11_18-04-34/wandb/run-20250111_180456-u0t0ug7q/logs/debug-internal.log
+2025-01-11 18:04:56,848 INFO    MainThread:23728 [wandb_init.py:init():641] calling init triggers
+2025-01-11 18:04:56,848 INFO    MainThread:23728 [wandb_init.py:init():647] wandb.init called with sweep_config: {}
+config: {}
+2025-01-11 18:04:56,848 INFO    MainThread:23728 [wandb_init.py:init():674] starting backend
+2025-01-11 18:04:57,067 INFO    MainThread:23728 [wandb_init.py:init():678] sending inform_init request
+2025-01-11 18:04:57,072 INFO    MainThread:23728 [backend.py:_multiprocessing_setup():104] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-01-11 18:04:57,074 INFO    MainThread:23728 [wandb_init.py:init():693] backend started and connected
+2025-01-11 18:04:57,075 INFO    MainThread:23728 [wandb_init.py:init():786] updated telemetry
+2025-01-11 18:04:57,078 INFO    MainThread:23728 [wandb_init.py:init():818] communicating run to backend with 90.0 second timeout
+2025-01-11 18:04:57,084 WARNING MsgRouterThr:23728 [router.py:message_loop():75] message_loop has been closed
+2025-01-11 18:05:06,266 ERROR   MainThread:23728 [wandb_init.py:init():1299] error in wandb.init()
+Traceback (most recent call last):
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 1289, in init
+    return wi.init()
+           ^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/wandb/sdk/wandb_init.py", line 821, in init
+    result = run_init_handle.wait(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.11/site-packages/wandb/sdk/lib/mailbox.py", line 277, in wait
+    raise MailboxError("transport failed")
+wandb.sdk.lib.mailbox.MailboxError: transport failed

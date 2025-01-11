@@ -1,0 +1,2 @@
+{"time":"2025-01-11T18:04:57.077021285+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.2","symlink path":"/home/def/fewshot/logs/train/runs/2025-01-11_18-04-34/wandb/run-20250111_180456-u0t0ug7q/logs/debug-core.log"}
+{"time":"2025-01-11T18:04:57.078276253+01:00","level":"ERROR+4","msg":"stream_init: failed to fetch credentials: api: couldn't get API key: settings: failed to get API key from netrc: open /home/def/.netrc: no such file or directory"}

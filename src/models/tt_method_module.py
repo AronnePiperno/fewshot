@@ -10,6 +10,8 @@ import importlib
 
 log = utils.get_pylogger(__name__)
 
+wandb.init(mode="disabled")
+
 
 class T3ALModule(LightningModule):
     """LightningModule.
