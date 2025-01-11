@@ -123,31 +123,64 @@ class T3ALNet(nn.Module):
         if not os.path.exists(path):
             raise FileNotFoundError(f"Average features folder not found: {path}")
         
-        for file_name in os.listdir(path):
-            if file_name.endswith("average.npy"):
-                print(os.path.splitext(file_name)[0])
-                class_name = os.path.splitext(file_name)[0]
-                file_path = os.path.join(path, file_name)
-                feature_array = np.load(file_path)
-                avg_features[class_name] = torch.tensor(feature_array, dtype=torch.float32)
+        for class_folder in os.listdir(path):
+            class_folder_path = os.path.join(path, class_folder)
+            if os.path.isdir(class_folder_path):
+                avg_file_path = os.path.join(class_folder_path, class_folder + "_average.npy")
+            if os.path.exists(avg_file_path):
+                feature_array = np.load(avg_file_path)
+                avg_features[class_folder] = torch.tensor(feature_array, dtype=torch.float32)
+
+        print(f"Loaded {len(avg_features)} class-specific average features.")
         return avg_features
 
     def infer_pseudo_labels(self, image_features):
         """Infer pseudo-labels using class-specific average features."""
+        if image_features is None or image_features.numel() == 0:
+            raise ValueError("image_features is empty or None.")
+
+
         image_features_avg = image_features.mean(dim=0)
         self.background_embedding = image_features_avg.unsqueeze(0)
         self.text_features = self.text_features.to(image_features.device)
 
-        combined_scores = []
-        for class_name, avg_feature in self.avg_features.items():
-            combined_feature = torch.cat([image_features_avg.unsqueeze(0), avg_feature.unsqueeze(0)])
-            combined_feature = combined_feature / combined_feature.norm(dim=-1, keepdim=True)
-            _, scores_avg = self.compute_score(combined_feature, self.text_features)
-            combined_scores.append(scores_avg)
+        if not self.avg_features:
+            raise ValueError("avg_features is empty. Ensure class-specific features are loaded correctly.")
 
-        combined_scores = torch.cat(combined_scores)
-        _, index = torch.topk(combined_scores, self.topk)
-        return index[0][0], combined_scores
+        scores = []
+        for class_name, avg_feature in self.avg_features.items():
+            if avg_feature is None or avg_feature.numel() == 0:
+                print(f"[Warning] avg_feature for class '{class_name}' is empty or None. Skipping.")
+                continue
+
+            # Move avg_feature to the same device as image_features_avg
+            avg_feature = avg_feature.to(image_features_avg.device)
+            
+            # make the avg_feature the same shape as image_features_avg
+            avg_feature = avg_feature.mean(dim=0).unsqueeze(0)
+            
+            # Combine and normalize features
+            #combined_feature = torch.cat([image_features_avg.unsqueeze(0), avg_feature.unsqueeze(0)])
+            #combined_feature = combined_feature / combined_feature.norm(dim=-1, keepdim=True)
+            
+
+            #TODO solve error score
+            # Compute scores
+            
+            _, scores_avg = self.compute_score(image_features_avg, avg_feature)
+            if scores_avg is None or scores_avg.numel() == 0:
+                print(f"[Warning] compute_score returned None or empty for class '{class_name}'. Skipping.")
+                continue
+                
+            scores.append(scores_avg)
+
+        if len(scores) == 0:
+            raise RuntimeError("Scores is empty. Check avg_features and compute_score outputs.")
+
+        scores = torch.cat(scores)
+        _, index = torch.topk(scores, self.topk)
+
+        return index[0][0], scores
 
     def get_text_features(self, model):
         prompts = []
@@ -209,7 +242,7 @@ class T3ALNet(nn.Module):
                 continue
         return fps
 
-    def infer_pseudo_labels(self, image_features):
+    """def infer_pseudo_labels(self, image_features):
         image_features_avg = image_features.mean(dim=0)
         self.background_embedding = image_features_avg.unsqueeze(0)
         self.text_features = self.text_features.to(image_features.device)
@@ -218,7 +251,7 @@ class T3ALNet(nn.Module):
             self.text_features,
         )
         _, indexes = torch.topk(scores_avg, self.topk)
-        return indexes[0][0], scores_avg
+        return indexes[0][0], scores_avg"""
 
     def moving_average(self, data, window_size):
         padding_size = window_size

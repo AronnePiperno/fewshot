@@ -1,6 +1,13 @@
-import torch
+class pippo:
+    def __init__(self):
+        pass
 
-# put device on gpu
-device = "cuda:0" if torch.cuda.is_available() else "cpu"
+    def pippopippo(self):
+        print("pippo")
 
-print(device)
+    def pippopippo(self):
+        print("pippoppsfkaposdfk")
+
+
+test = pippo()
+test.pippopippo()
