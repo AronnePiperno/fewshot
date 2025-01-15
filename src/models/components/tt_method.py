@@ -95,17 +95,20 @@ class T3ALNet(nn.Module):
         else:
             raise ValueError(f"Not implemented dataset: {self.dataset}")
 
-        # Load average features
-        self.avg_features = self.load_avg_features(self.avg_features_path)
+        
 
         # Rest of the initialization remains the same
         self.dict_test = getattr(
             importlib.import_module("config.zero_shot"), dict_test_name, None
         )
         self.cls_names = self.dict_test
+        print(f"Loaded {self.cls_names} classes for zero-shot learning.")
         self.num_classes = len(self.cls_names)
         self.inverted_cls = {v: k for k, v in self.cls_names.items()}
         self.text_features = self.get_text_features(self.model)
+        
+        # Load average features
+        self.avg_features = self.load_avg_features(self.avg_features_path)
 
         with open(self.annotations_path, "r") as f:
             self.annotations = json.load(f)
@@ -117,70 +120,78 @@ class T3ALNet(nn.Module):
         else:
             raise ValueError(f"Not implemented loss type: {self.ltype}")
 
+
     def load_avg_features(self, path):
-        """Load precomputed average features (.npy) for each class."""
+        """Load precomputed average features (.npy) only for classes in cls_names."""
         avg_features = {}
         if not os.path.exists(path):
             raise FileNotFoundError(f"Average features folder not found: {path}")
         
-        for class_folder in os.listdir(path):
-            class_folder_path = os.path.join(path, class_folder)
-            if os.path.isdir(class_folder_path):
-                avg_file_path = os.path.join(class_folder_path, class_folder + "_average.npy")
+        for class_name in self.cls_names:
+            class_folder_path = os.path.join(path, class_name)
+            avg_file_path = os.path.join(class_folder_path, class_name + "_average.npy")
+            
             if os.path.exists(avg_file_path):
                 feature_array = np.load(avg_file_path)
-                avg_features[class_folder] = torch.tensor(feature_array, dtype=torch.float32)
 
+                avg_features[class_name] = torch.tensor(feature_array, dtype=torch.float32)
+            else:
+                print(f"Warning: Average feature file not found for class {class_name}")
+        
         print(f"Loaded {len(avg_features)} class-specific average features.")
-        return avg_features
+
+        
+        # Average over the second dimension to reduce [10, 402, 768] -> [10, 768]
+        avg_features_tensor = torch.stack([feature.mean(dim=0) for feature in avg_features.values()])
+
+        return avg_features_tensor
 
     def infer_pseudo_labels(self, image_features):
         """Infer pseudo-labels using class-specific average features."""
         if image_features is None or image_features.numel() == 0:
             raise ValueError("image_features is empty or None.")
 
-
+        # Average the image features
         image_features_avg = image_features.mean(dim=0)
         self.background_embedding = image_features_avg.unsqueeze(0)
         self.text_features = self.text_features.to(image_features.device)
 
-        if not self.avg_features:
+        # Check if avg_features is properly loaded
+        if self.avg_features is None or len(self.avg_features) == 0:
             raise ValueError("avg_features is empty. Ensure class-specific features are loaded correctly.")
 
         scores = []
-        for class_name, avg_feature in self.avg_features.items():
+        for avg_feature in self.avg_features:
             if avg_feature is None or avg_feature.numel() == 0:
-                print(f"[Warning] avg_feature for class '{class_name}' is empty or None. Skipping.")
+                print(f"[Warning] avg_feature is empty or None. Skipping.")
                 continue
 
             # Move avg_feature to the same device as image_features_avg
             avg_feature = avg_feature.to(image_features_avg.device)
             
-            # make the avg_feature the same shape as image_features_avg
-            avg_feature = avg_feature.mean(dim=0).unsqueeze(0)
-            
-            # Combine and normalize features
-            #combined_feature = torch.cat([image_features_avg.unsqueeze(0), avg_feature.unsqueeze(0)])
-            #combined_feature = combined_feature / combined_feature.norm(dim=-1, keepdim=True)
-            
+            # Ensure avg_feature matches the shape of image_features_avg
 
-            #TODO solve error score
-            # Compute scores
+            #avg_feature = avg_feature.mean(dim=0)
             
+            # Compute scores
             _, scores_avg = self.compute_score(image_features_avg, avg_feature)
             if scores_avg is None or scores_avg.numel() == 0:
-                print(f"[Warning] compute_score returned None or empty for class '{class_name}'. Skipping.")
+                print(f"[Warning] compute_score returned None or empty. Skipping.")
                 continue
-                
             scores.append(scores_avg)
 
         if len(scores) == 0:
             raise RuntimeError("Scores is empty. Check avg_features and compute_score outputs.")
 
-        scores = torch.cat(scores)
-        _, index = torch.topk(scores, self.topk)
+        # Convert scores to a tensor
+        scores = torch.stack(scores)
 
-        return index[0][0], scores
+        print(f"Scores: {scores}")
+        # Select top-k scores
+        _, index = torch.topk(scores, self.topk)
+        print(f"Index: {index}")
+        return index[0], scores
+
 
     def get_text_features(self, model):
         prompts = []
@@ -195,10 +206,26 @@ class T3ALNet(nn.Module):
         text_features = model.encode_text(text)
         text_features = text_features / text_features.norm(dim=-1, keepdim=True)
         return text_features
-
+    
     def compute_score(self, x, y):
+        #normalize
         x = x / x.norm(dim=-1, keepdim=True)
-        scores = (self.model.logit_scale.exp() * x @ y.T).softmax(dim=-1)
+        y = y / y.norm(dim=-1, keepdim=True)
+
+        # Set the temperature scaling factor
+        temperature = 0.3
+        #self.model.logit_scale = torch.nn.Parameter(torch.tensor([.1]))
+        
+    
+        with torch.no_grad():
+            # Calculate dot product between image features and average features
+            dot_product = (x @ y.T)
+            #print(f"Dot product: {dot_product}")
+
+            # Apply temperature scaling to logits
+            scores = dot_product / temperature
+
+        # Get the predicted class
         pred = scores.argmax(dim=-1)
         return pred, scores
 
@@ -420,6 +447,7 @@ class T3ALNet(nn.Module):
             tta_emb = self.compute_tta_embedding(class_label, image_features.device)
             
             features = image_features - self.background_embedding if self.remove_background else image_features
+            
             similarity = self.model.logit_scale.exp() * tta_emb @ features.T
             
             if self.dataset == "thumos":
