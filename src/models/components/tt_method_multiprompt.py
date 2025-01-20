@@ -1,5 +1,5 @@
 # FIRST STAGE: IMAGE
-# SECOND STAGE: TEXT
+# SECOND STAGE: TEXT MULTIPROMPT
 
 import torch
 from torch import nn
@@ -197,19 +197,58 @@ class T3ALNet(nn.Module):
 
 
     def get_text_features(self, model):
-        prompts = []
-        for c in self.cls_names:
-            c = re.sub(r"([a-z])([A-Z])", r"\1 \2", c)
-            prompts.append("a video of action" + " " + c)
+        synonym_dict = {
+            "running": ["jogging", "sprinting", "marathon running"],
+            "swimming": ["freestyling", "breaststroking", "lap swimming"],
+            "jumping": ["leaping", "hopping", "vaulting"],
+            # Add more class-specific synonyms here
+        }
 
-        text = [tokenize(p) for p in prompts]
-        text = torch.stack(text)
-        text = text.squeeze()
+        expanded_prompts = []
+        for c in self.cls_names:
+            # Convert CamelCase -> spaced
+            c_spaced = re.sub(r"([a-z])([A-Z])", r"\1 \2", c)
+            synonyms = synonym_dict.get(c_spaced.lower(), [c_spaced])
+
+            # For each synonym, create multiple diverse prompts
+            variations = []
+            for syn in synonyms:
+                variations.extend([
+                    f"a video of action {syn}",
+                    f"a short clip of the activity {syn}",
+                    f"an example of {syn}"
+                ])
+            expanded_prompts.append(variations)
+
+        # Flatten the list of prompt sets
+        flattened_prompts = [prompt for sublist in expanded_prompts for prompt in sublist]
+
+        # Tokenize and encode prompts
+        tokens = [tokenize(p) for p in flattened_prompts]
+        text = torch.stack(tokens).squeeze()
         text = text.to(next(model.parameters()).device)
-        text_features = model.encode_text(text)
-        text_features = text_features / text_features.norm(dim=-1, keepdim=True)
+
+        # Encode and normalize
+        text_features_all = model.encode_text(text)
+        text_features_all = text_features_all / text_features_all.norm(dim=-1, keepdim=True)
+
+        # Group prompts by class (each class has len(synonyms)*3 prompts)
+        class_text_features = []
+        idx = 0
+        for c in self.cls_names:
+            # Use the number of synonyms to slice text_features_all correctly
+            c_spaced = re.sub(r"([a-z])([A-Z])", r"\1 \2", c)
+            synonyms = synonym_dict.get(c_spaced.lower(), [c_spaced])
+            prompt_count = len(synonyms) * 3
+            segment = text_features_all[idx : idx + prompt_count]
+            averaged_feature = segment.mean(dim=0, keepdim=True)
+            class_text_features.append(averaged_feature)
+            idx += prompt_count
+
+        # Concatenate into a single tensor
+        text_features = torch.cat(class_text_features, dim=0)
         return text_features
-    
+        
     def compute_score(self, x, y):
         #normalize
         x = x / x.norm(dim=-1, keepdim=True)

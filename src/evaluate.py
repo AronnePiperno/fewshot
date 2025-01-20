@@ -154,7 +154,7 @@ def evaluate(dataset, predicted_data, split, setting, video_path):
         )
     elif dataset == "anet":
         annotations_path = "./data/activitynet_annotations/anet_anno_action.json"
-        video_dir = "./data/ActivityNetVideos/videos/"
+        video_dir = "./data/ActivityNet/videos/"
         tiou_thresholds = np.array([0.5, 0.75, 0.95])
         dict_test_name = (
             f"t2_dict_test_{split}"

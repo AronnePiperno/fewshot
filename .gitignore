@@ -3,3 +3,8 @@ videos_to_caption/
 data/Thumos14/features/
 data/Thumos14/videos/
 notes.txt
+data/ActivityNet/features/
+data/ActivityNet/videos/
+data/ActivityNet/captions_anet/
+data/ActivityNet/support_videos/
+data/ActivityNet/support_videos_features/

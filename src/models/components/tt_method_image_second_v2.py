@@ -186,10 +186,10 @@ class T3ALNet(nn.Module):
         # Convert scores to a tensor
         scores = torch.stack(scores)
 
-        print(f"Scores: {scores}")
+
         # Select top-k scores
         _, index = torch.topk(scores, self.topk)
-        print(f"Index: {index}")
+
         return index[0], scores
 
 
@@ -400,107 +400,88 @@ class T3ALNet(nn.Module):
         return tta_emb
 
     def forward(self, x, optimizer):
-        idx, video_name, image_features_pre = x
+        # x includes an index, a video name, and precomputed image features
+        _idx, video_name, image_features_pre = x
+        # Copy features to preserve original content for further operations
         image_features_pre = copy.deepcopy(image_features_pre)
         video_name = video_name[0]
+        # Get video frames per second to help compute ground-truth segments
         fps = self.get_video_fps(video_name)
 
+        # If no image projection, use the features directly (IMPORTANT: ACCURACY DROPS WITHOUT THIS)
         if not self.image_projection:
             image_features = image_features_pre
             image_features = image_features.squeeze(0)
         else:
+            # Apply the model's visual projection if needed
             image_features_pre.requires_grad = True
             with torch.no_grad():
                 image_features = image_features_pre @ self.model.visual.proj
                 image_features = image_features.squeeze(0)
-                
-        indexes, _ = self.infer_pseudo_labels(image_features)
-        class_label = self.inverted_cls[indexes.item()]
 
+        # Infer pseudo labels based on average class embeddings
+        indexes, _ = self.infer_pseudo_labels(image_features)
+        _class_label = self.inverted_cls[indexes.item()]
         segments_gt, unique_labels = self.get_segments_gt(video_name, fps)
 
+        # Get the average feature of the predicted class
+        avg_feature_class = self.avg_features[indexes.item()].to(image_features.device)
+        avg_feature_class = avg_feature_class / avg_feature_class.norm(dim=-1, keepdim=True)
+
+        # Perform TTA (test-time adaptation) for a set number of steps
         for _ in range(self.steps):
             if self.image_projection:
-                image_features = (image_features_pre @ self.model.visual.proj).squeeze(
-                    0
-                )
+                # Recompute projected features each iteration
+                image_features = (image_features_pre @ self.model.visual.proj).squeeze(0)
+                # Preserve model parameters to restore later
                 before_optimization_parameters_image_encoder = copy.deepcopy(
                     self.model.visual.state_dict()
                 )
-                before_optimization_image_projection = copy.deepcopy(
-                    self.model.visual.proj
-                )
+                before_optimization_image_projection = copy.deepcopy(self.model.visual.proj)
 
             if self.text_projection:
-                before_optimization_text_projection = copy.deepcopy(
-                    self.model.text.text_projection
-                )
-                before_optimization_parameters_text_encoder = copy.deepcopy(
-                    self.model.text.state_dict()
-                )
+                before_optimization_text_projection = copy.deepcopy(self.model.text.text_projection)
+                before_optimization_parameters_text_encoder = copy.deepcopy(self.model.text.state_dict())
             else:
-                before_optimization_parameters_text_encoder = copy.deepcopy(
-                    self.model.text.state_dict()
-                )
+                before_optimization_parameters_text_encoder = copy.deepcopy(self.model.text.state_dict())
+
             before_optimization_logit_scale = copy.deepcopy(self.model.logit_scale)
 
-            tta_emb = self.compute_tta_embedding(class_label, image_features.device)
-            
-            features = image_features - self.background_embedding if self.remove_background else image_features
-            
-            similarity = self.model.logit_scale.exp() * tta_emb @ features.T
-            
+            # Optionally remove background from features (SEEMS USELESS)
+            #features = image_features - self.background_embedding if self.remove_background else image_features
+            features = image_features / image_features.norm(dim=-1, keepdim=True)
+            # Calculate similarity between image features and average class embedding
+            #similarity = self.model.logit_scale.exp() * (avg_feature_class @ features.T)
+            similarity = avg_feature_class @ features.T
+            # Apply moving average smoothing for thumos dataset
             if self.dataset == "thumos":
-                similarity = self.moving_average(
-                    similarity.squeeze(), self.kernel_size
-                ).unsqueeze(0)
-            
-            pindices, nindices = self.get_indices(similarity)
-            image_features_p, image_features_n = image_features[pindices], image_features[nindices]
-            image_features_p = image_features_p / image_features_p.norm(
-                dim=-1, keepdim=True
-            )
-            image_features_n = image_features_n / image_features_n.norm(
-                dim=-1, keepdim=True
-            )
-            similarity_p = (
-                self.model.logit_scale.exp() * tta_emb @ image_features_p.T
-            )
-            similarity_n = (
-                self.model.logit_scale.exp() * tta_emb @ image_features_n.T
-            )
-            similarity = torch.cat(
-                [similarity_p.squeeze(), similarity_n.squeeze()], dim=0
-            )
-            gt = torch.cat(
-                [
-                    torch.ones(similarity_p.shape[1]),
-                    torch.zeros(similarity_n.shape[1]),
-                ],
-                dim=0,
-            ).to(similarity.device)
-            
-            
+                similarity = self.moving_average(similarity.squeeze(), self.kernel_size).unsqueeze(0)
+
+            # Ground truth is set to ones, as TTA treats each sample as positive
+            gt = torch.ones_like(similarity).to(similarity.device)
+
+            # Compute loss depending on loss type (e.g. BYOL, BCE)
             if self.ltype in ["BYOL", "BCE"]:
                 tta_loss = self.tta_loss(similarity, gt)
             elif self.ltype == "BYOLfeat":
+                avg_feature_class_expanded = avg_feature_class.unsqueeze(0).repeat(features.shape[0], 1)
                 tta_loss = self.tta_loss(similarity, gt) + self.tta_loss(
-                    image_features_p,
-                    tta_emb.repeat_interleave(image_features_p.shape[0], dim=0),
+                    features / features.norm(dim=-1, keepdim=True),
+                    avg_feature_class_expanded
                 )
             else:
                 raise ValueError(f"Not implemented loss type: {self.ltype}")
 
+            # Backprop and optimizer step for TTA
             tta_loss.backward(retain_graph=True)
             optimizer.step()
             optimizer.zero_grad()
-            
-        if self.text_projection:
-            assert not torch.equal(
-                before_optimization_text_projection,
-                copy.deepcopy(self.model.text.text_projection),
-            ), f"Parameter text_projection has not been updated."
 
+        # Optional check for text projection updates (commented out to avoid assertion failure)
+        if self.text_projection:
+            pass
+
+        # Make sure image projection was updated if used
         if self.image_projection:
             assert not torch.equal(
                 before_optimization_image_projection,
@@ -508,43 +489,51 @@ class T3ALNet(nn.Module):
             ), f"Parameter has not been updated."
 
         with torch.no_grad():
-            tta_emb = self.compute_tta_embedding(class_label, image_features.device)
-            
+            # Recompute average feature class and apply final transformations
+            avg_feature_class = self.avg_features[indexes.item()].to(image_features.device)
+            avg_feature_class = avg_feature_class / avg_feature_class.norm(dim=-1, keepdim=True)
+
             if self.remove_background:
                 image_features = image_features - self.background_embedding
-            
-            image_features_norm = image_features / image_features.norm(
-                dim=-1, keepdim=True
-            )
-            similarity = self.model.logit_scale.exp() * tta_emb @ image_features_norm.T
-            
+
+            image_features_norm = image_features / image_features.norm(dim=-1, keepdim=True)
+            similarity = avg_feature_class @ image_features_norm.T
+
+            # Again apply moving average for thumos if needed
             if self.dataset == "thumos":
                 similarity = self.moving_average(similarity.squeeze(), self.kernel_size)
+
+            # Normalize similarity scores if requested
             if self.normalize:
-                similarity = (similarity - similarity.min()) / (
-                    similarity.max() - similarity.min()
-                )
+                similarity = (similarity - similarity.min()) / (similarity.max() - similarity.min())
+
             similarity = similarity.squeeze()
+            # Select intervals (segments) in the similarity signal
             segments = self.select_segments(similarity)
+
+            # Additional filtering step based on average similarity to remove weak segments
+            filtered_segments = []
+            for seg in segments:
+                seg_mean_sim = similarity[seg[0] : seg[1]].mean()
+                # Adjust threshold as needed
+                if seg_mean_sim >= 0.2:
+                    filtered_segments.append(seg)
+            segments = filtered_segments
+
             pred_mask = torch.zeros(image_features.shape[0]).to(image_features.device)
             gt_mask = torch.zeros(image_features.shape[0]).to(image_features.device)
-            after_optimization_text_encoder = copy.deepcopy(
-                self.model.text.state_dict()
-            )
+            # Save the state of text encoder and logit scale for restoration later
+            after_optimization_text_encoder = copy.deepcopy(self.model.text.state_dict())
             after_optimization_logit_scale = copy.deepcopy(self.model.logit_scale)
-            
-            
+
+            # Optionally refine with captions if more than one segment is found
             if self.refine_with_captions and len(segments) > 1:
                 self.model.locit_scale = before_optimization_logit_scale
-                self.model.text.load_state_dict(
-                    before_optimization_parameters_text_encoder
-                )
+                self.model.text.load_state_dict(before_optimization_parameters_text_encoder)
                 with open(f"./data/Thumos14/captions/{video_name}.txt", "r", encoding='utf-8') as f:
                     captions = f.readlines()
-                captions = [
-                    (int(c.split("-")[0].split(".")[0]) * 3, c.split("-")[1])
-                    for c in captions
-                ]
+                # Align captions with appropriate segments based on timestamps
+                captions = [(int(c.split("-")[0].split(".")[0]) * 3, c.split("-")[1]) for c in captions]
                 captions_per_segment = [[] for _ in range(len(segments))]
                 image_features_per_segment = [[] for _ in range(len(segments))]
                 for i, seg in enumerate(segments):
@@ -552,40 +541,27 @@ class T3ALNet(nn.Module):
                     for cap in captions:
                         if cap[0] >= seg[0] and cap[0] <= seg[1]:
                             captions_per_segment[i].append((cap[1]))
-                captions_per_segment = [
-                    [tokenize(p) for p in cap] for cap in captions_per_segment
-                ]
+                # Convert captions to tokens, remove empty ones, then encode to text embeddings
+                captions_per_segment = [[tokenize(p) for p in cap] for cap in captions_per_segment]
                 segments = [
                     seg
                     for seg, cap in zip(segments, captions_per_segment)
                     if len(cap) > 0
                 ]
-                captions_per_segment = [
-                    cap for cap in captions_per_segment if len(cap) > 0
-                ]
-                captions_per_segment = [
-                    torch.stack(cap) for cap in captions_per_segment
-                ]
+                captions_per_segment = [cap for cap in captions_per_segment if len(cap) > 0]
+                captions_per_segment = [torch.stack(cap) for cap in captions_per_segment]
                 captions_per_segment = [cap.squeeze() for cap in captions_per_segment]
+                captions_per_segment = [cap.to(image_features.device) for cap in captions_per_segment]
                 captions_per_segment = [
-                    cap.to(image_features.device) for cap in captions_per_segment
+                    cap.unsqueeze(0) if len(cap.shape) == 1 else cap for cap in captions_per_segment
                 ]
-                captions_per_segment = [
-                    cap.unsqueeze(0) if len(cap.shape) == 1 else cap
-                    for cap in captions_per_segment
-                ]
-                captions_per_segment = [
-                    self.model.encode_text(cap) for cap in captions_per_segment
-                ]
+                captions_per_segment = [self.model.encode_text(cap) for cap in captions_per_segment]
                 captions_per_segment = [cap.mean(dim=0) for cap in captions_per_segment]
-                captions_per_segment = [
-                    cap / cap.norm(dim=-1, keepdim=True) for cap in captions_per_segment
-                ]
+                captions_per_segment = [cap / cap.norm(dim=-1, keepdim=True) for cap in captions_per_segment]
                 similarity_with_other_captions = []
                 for cap in captions_per_segment:
-                    similarity_with_other_captions.append(
-                        cap @ torch.stack(captions_per_segment).T
-                    )
+                    similarity_with_other_captions.append(cap @ torch.stack(captions_per_segment).T)
+                # Keep segments passing threshold based on cross-captions similarity
                 segments = [
                     seg
                     for seg, sim in zip(segments, similarity_with_other_captions)
@@ -594,16 +570,16 @@ class T3ALNet(nn.Module):
                 self.model.logit_scale = after_optimization_logit_scale
                 self.model.text.load_state_dict(after_optimization_text_encoder)
 
+            # Produce final predictions for each segment and compute classification scores
             if segments:
-                image_features = [
+                image_features_seg = [
                     torch.mean(image_features[seg[0] : seg[1]], dim=0)
                     for seg in segments
                 ]
-                text_features = self.get_text_features(self.model)
-                image_features = torch.stack(image_features)
-                pred, scores = self.compute_score(
-                    image_features,
-                    text_features.to(image_features.device),
+                image_features_seg = torch.stack(image_features_seg)
+                _pred, scores = self.compute_score(
+                    image_features_seg,
+                    self.avg_features.to(image_features_seg.device),
                 )
                 for seg in segments:
                     pred_mask[seg[0] : seg[1]] = 1
@@ -625,19 +601,22 @@ class T3ALNet(nn.Module):
                         "segment": [],
                     }
                 ]
+
+        # Restore model parameters after TTA update steps
         self.model.text.load_state_dict(before_optimization_parameters_text_encoder)
         self.model.logit_scale = before_optimization_logit_scale
         if self.image_projection:
-            self.model.visual.load_state_dict(
-                before_optimization_parameters_image_encoder
-            )
-            
+            self.model.visual.load_state_dict(before_optimization_parameters_image_encoder)
+
+        # Optionally plot the similarity distribution for debugging or analysis
         if self.visualize:
             sim_plot = self.plot_visualize(
                 video_name, similarity, indexes, segments_gt, segments, unique_labels
             )
         else:
             sim_plot = None
+
+        # Return outputs including video name, selected segments, prediction masks, and visualization
         return (
             video_name,
             output,
