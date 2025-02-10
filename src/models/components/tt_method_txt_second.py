@@ -56,7 +56,7 @@ class T3ALNet(nn.Module):
         self.logit_scale = logit_scale
         self.remove_background = remove_background
         self.ltype = ltype
-        self.steps = 1
+        self.steps = 60
         self.refine_with_captions = True
         self.split = 50
         self.setting = setting
@@ -354,8 +354,6 @@ class T3ALNet(nn.Module):
             signal.shape[1] - 1,
         )
 
-        print(f"Positive indices inside: {pindices.shape}")
-        print(F"Negative indices inside: {nindices.shape}")
 
 
         return pindices, nindices
@@ -434,6 +432,7 @@ class T3ALNet(nn.Module):
         class_label = self.inverted_cls[indexes.item()]
 
         segments_gt, unique_labels = self.get_segments_gt(video_name, fps)
+        print(f"indexes: {indexes.item()}")
 
         for _ in range(self.steps):
             if self.image_projection:
@@ -471,20 +470,12 @@ class T3ALNet(nn.Module):
                 similarity = self.moving_average(
                     similarity.squeeze(), self.kernel_size
                 ).unsqueeze(0)
-            
-            print(f"similarity shape: {similarity.shape}")
+
 
             pindices, nindices = self.get_indices(similarity)
             image_features_p, image_features_n = image_features[pindices], image_features[nindices]
 
-            print(f"pindices: {pindices.shape}")
-            print(f"nindices: {nindices.shape}")
 
-            print(f"Positive indices: {pindices.shape}")
-            print(f"tta_emb: {tta_emb.shape}")
-            print(f"image_ features : {features.shape}")
-            print(f"image_features_p: {image_features_p.shape}")
-            print(f"image_features_n: {image_features_n.shape}")
             image_features_p = image_features_p / image_features_p.norm(
                 dim=-1, keepdim=True
             )

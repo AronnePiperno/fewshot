@@ -21,7 +21,7 @@ net:
   kernel_size: 20
   stride: 20
   randper: 10
-  p: 0.65
+  p: 0.75
   n: 4
   remove_background: True
   visualize: False  
@@ -31,5 +31,5 @@ net:
 optimizer:
   _target_: torch.optim.Adam
   _partial_: true 
-  lr: 0.0000001
+  lr: 0.00001
   weight_decay: 0.0001

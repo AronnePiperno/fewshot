@@ -28,6 +28,7 @@ class Fusion(nn.Module):
     def forward(self, text_feats, video_feats, only_video=False):
 
         if only_video:
+            print("Only video")
             return video_feats
 
         combined = torch.cat([text_feats, video_feats], dim=-1)
@@ -50,13 +51,14 @@ class VideoProjector(nn.Module):
             nn.Dropout(dropout)
         )
 
-        #nn.init.xavier_uniform_(self.proj_matrix)
+    def set_proj_matrix(self, proj_matrix):
+        self.proj_matrix = proj_matrix
     
     def get_proj_matrix(self):
         return self.proj_matrix
 
     def forward(self, x):
-
+        x = x.to(self.proj_matrix.device)
         x = self.transform(x)
         return x @ self.proj_matrix
 
@@ -93,13 +95,13 @@ class T3ALNet(nn.Module):
         self.p = p
         self.n = n
         self.normalize = normalize
-        self.text_projection = True
+        self.text_projection = False
         self.text_encoder = text_encoder
         self.image_projection = image_projection
         self.logit_scale = logit_scale
         self.remove_background = remove_background
         self.ltype = ltype
-        self.steps = 120
+        self.steps = 25
         self.refine_with_captions = False
         self.split = 50
         self.setting = setting
@@ -120,7 +122,6 @@ class T3ALNet(nn.Module):
         #self.model.train()
         print(f"Loaded COCA model")
 
-        # Dataset-specific configuration
         if self.dataset == "thumos":
             dict_test_name = (
                 f"t2_dict_test_thumos_{split}"
@@ -132,7 +133,7 @@ class T3ALNet(nn.Module):
         elif self.dataset == "anet":
             dict_test_name = (
                 f"t2_dict_test_{split}"
-                if self.setting == 50
+                if self.setting == 10
                 else f"t1_dict_test_{split}" if self.setting == 75 else None
             )
             self.annotations_path = (
@@ -142,9 +143,7 @@ class T3ALNet(nn.Module):
         else:
             raise ValueError(f"Not implemented dataset: {self.dataset}")
 
-        
 
-        # Rest of the initialization remains the same
         self.dict_test = getattr(
             importlib.import_module("config.zero_shot"), dict_test_name, None
         )
@@ -173,7 +172,7 @@ class T3ALNet(nn.Module):
 
             
         
-        # Store original features for restoration
+
         self.original_features = self.avg_video_features.clone()
         
         # create video projection tensor as identity tensor
@@ -188,14 +187,16 @@ class T3ALNet(nn.Module):
 
         self.optim = torch.optim.AdamW(
             [
-                {"params": self.model.parameters()},
+                #{"params": self.model.parameters()},
+                {"params": self.model.text.text_projection},
+                {"params": self.model.visual.proj},
                 {"params": self.fusion.parameters()},
-                {"params": self.video_proj.parameters()},
+                {"params": self.video_proj.parameters(), "lr": 1e-2},
             ], 
-            lr=1e-7, weight_decay=1e-4
+            lr= 0.00001
         )
         self.scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(self.optim, T_max=self.steps)
-        self.only_support_videos = True
+        self.only_support_videos = False
         
 
         
@@ -220,8 +221,7 @@ class T3ALNet(nn.Module):
         
         print(f"Loaded {len(avg_features)} class-specific average features.")
 
-        
-        # Average over the second dimension to reduce [10, 402, 768] -> [10, 768]
+
         avg_features_tensor = torch.stack([feature.mean(dim=0) for feature in avg_features.values()])
 
         return avg_features_tensor
@@ -521,40 +521,11 @@ class T3ALNet(nn.Module):
     
 
 
-    def prototypical_loss(query_features, class_prototypes,class_label_idx, margin: float = 0.5, temperature: float = 0.1):
-
-
-
-        #print(f"Query features: {query_features}")
-        # Normalize features
-        query_features = F.normalize(query_features, dim=-1)  # (B, D)
-        class_prototypes = F.normalize(class_prototypes, dim=-1)  # (C, D)
-
-        # Get positive prototype
-        positive_proto = class_prototypes[class_label_idx]  # (D,)
-        
-        # Calculate similarity scores
-        sim_to_positive = (query_features @ positive_proto.T) / temperature  # (B,)
-        sim_to_negatives = (query_features @ class_prototypes.T) / temperature  # (B, C)
-
-        # Create mask to exclude positive class
-        mask = torch.ones_like(sim_to_negatives)
-        mask[:, class_label_idx] = 0
-        
-        # Compute logits for negative classes
-        sim_to_negatives = sim_to_negatives - (1 - mask) * 1e9  # mask out positive
-        
-        # Calculate loss
-        numerator = torch.exp(sim_to_positive)
-        denominator = torch.exp(sim_to_negatives).sum(dim=-1) + numerator
-        loss = -torch.log(numerator / denominator).mean()
-        
-        return loss
-
     
 
     def forward(self, x, optimizer):
         self.video_proj.requires_grad_(True)
+        #self.model.requires_grad_(False)
         #torch.nn.utils.clip_grad_norm_(self.video_proj, max_norm=1.0)
 
         idx, video_name, image_features_pre = x
@@ -634,6 +605,8 @@ class T3ALNet(nn.Module):
 
 
             tta_emb = self.fusion(text_features, projected_video_features, only_video=self.only_support_videos)
+
+            tta_emb = tta_emb.to(image_features.device)
 
             similarity = self.model.logit_scale.exp() * tta_emb @ features.T
 
@@ -718,8 +691,6 @@ class T3ALNet(nn.Module):
             tta_loss.backward(retain_graph=True)
 
 
-
-
             self.optim.step()
 
 
@@ -731,12 +702,17 @@ class T3ALNet(nn.Module):
         #self.original_features = self.original_features.to(image_features.device)
 
 
-        assert not torch.equal(
-            before_optimization_video_projection,
-            copy.deepcopy(self.video_proj.get_proj_matrix()),
-        ), f"Parameter video_features has not been updated."
 
-        print(f"Video projection matrix: {self.video_proj.get_proj_matrix()}")
+        #assert not torch.equal(
+        #    before_optimization_video_projection,
+        #    copy.deepcopy(self.video_proj.get_proj_matrix()),
+        #), f"Parameter video_features has not been updated."
+
+        if torch.equal( before_optimization_video_projection, copy.deepcopy(self.video_proj.get_proj_matrix())):
+            print(f"Before optimization video projection matrix: {before_optimization_video_projection}")
+            print(f"After optimization video projection matrix: {self.video_proj.get_proj_matrix()}")
+            print(f"Video projection matrix has not been updated.")
+
 
         if not self.only_support_videos:
             if self.text_projection:
@@ -745,11 +721,11 @@ class T3ALNet(nn.Module):
                     copy.deepcopy(self.model.text.text_projection),
                 ), f"Parameter text_projection has not been updated."
 
-        if self.image_projection:
-            assert not torch.equal(
-                before_optimization_image_projection,
-                copy.deepcopy(self.model.visual.proj),
-            ), f"Parameter has not been updated."
+        #if self.image_projection :
+        #    assert not torch.equal(
+        #        before_optimization_image_projection,
+        #        copy.deepcopy(self.model.visual.proj),
+        #    ), f"Parameter has not been updated."
 
         with torch.no_grad():
             if not self.only_support_videos:
@@ -772,6 +748,8 @@ class T3ALNet(nn.Module):
             image_features_norm = image_features / image_features.norm(
                 dim=-1, keepdim=True
             )
+
+            tta_emb = tta_emb.to(image_features.device)
             similarity = self.model.logit_scale.exp() * tta_emb @ image_features_norm.T
 
             
@@ -925,9 +903,17 @@ class T3ALNet(nn.Module):
                 before_optimization_parameters_image_encoder
             )
 
-        # restore the original video projection
-        self.video_proj.requires_grad_(False)
-        self.video_proj.data = before_optimization_video_projection
+        # reinitialize the video projection matrix
+
+        with torch.no_grad():
+            init_matrix = torch.eye(768).to(self.video_proj.proj_matrix.device) + 0.001 * torch.randn(768, 768).to(self.video_proj.proj_matrix.device)
+            self.video_proj.proj_matrix.data = init_matrix
+            # Also reinitialize LayerNorm and Dropout if needed
+            for layer in self.video_proj.transform.children():
+                if isinstance(layer, nn.LayerNorm):
+                    layer.reset_parameters()
+                elif isinstance(layer, nn.Dropout):
+                    layer.p = 0.1
 
         
             
