@@ -1,0 +1,3 @@
+- experiment=tt_thumos
+- model.video_path=/home/def/fewshot/data/
+- model.split=75

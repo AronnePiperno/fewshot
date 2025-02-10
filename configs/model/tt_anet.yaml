@@ -26,6 +26,7 @@ net:
   remove_background: False
   visualize: False  
   video_path: ${model.video_path}
+  avg_features_path: "./data/ActivityNet/support_videos_features/"
 
 optimizer:
   _target_: torch.optim.Adam

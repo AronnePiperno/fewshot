@@ -1,0 +1,15 @@
+{"time":"2025-01-29T09:56:06.540992558+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-01-29_09-55-55/wandb/offline-run-20250129_095606-ds2taioa/logs/debug-core.log"}
+{"time":"2025-01-29T09:56:06.856657086+01:00","level":"INFO","msg":"created new stream","id":"ds2taioa"}
+{"time":"2025-01-29T09:56:06.856695912+01:00","level":"INFO","msg":"stream: started","id":"ds2taioa"}
+{"time":"2025-01-29T09:56:06.856740366+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"ds2taioa"}
+{"time":"2025-01-29T09:56:06.856820427+01:00","level":"INFO","msg":"handler: started","stream_id":"ds2taioa"}
+{"time":"2025-01-29T09:56:06.856846187+01:00","level":"INFO","msg":"sender: started","stream_id":"ds2taioa"}
+{"time":"2025-01-29T09:56:06.859483503+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-29T09:57:27.587499319+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-29T09:57:27.588275521+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-29T09:57:27.588890563+01:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-01-29T09:57:28.596844077+01:00","level":"INFO","msg":"stream: closing","id":"ds2taioa"}
+{"time":"2025-01-29T09:57:28.596889095+01:00","level":"INFO","msg":"handler: closed","stream_id":"ds2taioa"}
+{"time":"2025-01-29T09:57:28.59690108+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ds2taioa"}
+{"time":"2025-01-29T09:57:28.596940358+01:00","level":"INFO","msg":"sender: closed","stream_id":"ds2taioa"}
+{"time":"2025-01-29T09:57:28.596963677+01:00","level":"INFO","msg":"stream: closed","id":"ds2taioa"}

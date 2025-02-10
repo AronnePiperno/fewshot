@@ -202,6 +202,7 @@ def evaluate(dataset, predicted_data, split, setting, video_path):
             video_path = os.path.join(video_dir, video + ext)
             if os.path.exists(video_path):
                 fps = cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FPS)
+                print(f"predicted_data: {predicted_data[video]}")
                 for el in predicted_data[video]:
                     if el["label"] != -1:
                         predicted_list.append(

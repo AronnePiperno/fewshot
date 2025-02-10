@@ -8,6 +8,7 @@ import os
 import cv2
 import re
 import importlib
+import numpy as np
 tokenize = open_clip.get_tokenizer("coca_ViT-L-14")
 
 class T3AL0Net(nn.Module):
@@ -42,6 +43,7 @@ class T3AL0Net(nn.Module):
         self.split = split
         self.setting = setting
         self.video_path = video_path
+        self.avg_features_path = "./data/Thumos14/support_videos_features/"
 
         if self.dataset == "thumos":
             dict_test_name = (
@@ -71,11 +73,48 @@ class T3AL0Net(nn.Module):
         self.cls_names = self.dict_test
         self.num_classes = len(self.cls_names)
         self.inverted_cls = {v: k for k, v in self.cls_names.items()}
-        self.text_features = self.get_text_features()
+        #self.text_features = self.get_text_features()
 
         with open(self.annotations_path, "r") as f:
             self.annotations = json.load(f)
 
+        self.avg_video_features = self.load_avg_features(self.avg_features_path)
+        self.text_features = self.get_text_features()
+        print(f"classes loaded: {self.cls_names}")
+
+
+
+
+    def load_avg_features(self, path):
+        """Load precomputed average features (.npy) only for classes in cls_names."""
+        avg_features = {}
+        if not os.path.exists(path):
+            raise FileNotFoundError(f"Average features folder not found: {path}")
+        
+        feature_name = {}
+        i = 0
+        for class_name in self.cls_names:
+            feature_name[class_name] = i
+            class_folder_path = os.path.join(path, class_name)
+            avg_file_path = os.path.join(class_folder_path, class_name + "_average.npy")
+            
+            if os.path.exists(avg_file_path):
+                feature_array = np.load(avg_file_path)
+
+                avg_features[class_name] = torch.tensor(feature_array, dtype=torch.float32)
+            else:
+                print(f"Warning: Average feature file not found for class {class_name}")
+
+            i += 1
+        
+        print(f"Loaded {len(avg_features)} class-specific average features.")
+
+        
+        # Average over the second dimension to reduce [10, 402, 768] -> [10, 768]
+        avg_features_tensor = torch.stack([feature.mean(dim=0) for feature in avg_features.values()])
+        print(f"feature name extracted{feature_name}")
+        return avg_features_tensor
+    
     def get_text_features(self):
         prompts = []
         for c in self.cls_names:
@@ -90,23 +129,76 @@ class T3AL0Net(nn.Module):
         text_features = text_features / text_features.norm(dim=-1, keepdim=True)
         return text_features
 
-    def compute_score(self, model, x, y):
+    def compute_score_pseudo(self, x, y):
+        #normalize
         x = x / x.norm(dim=-1, keepdim=True)
-        scores = (model.logit_scale.exp() * x @ y.T).softmax(dim=-1)
+        y = y / y.norm(dim=-1, keepdim=True)
+
+        # Set the temperature scaling factor
+        temperature = 0.3
+        #self.model.logit_scale = torch.nn.Parameter(torch.tensor([.1]))
+        
+    
+        with torch.no_grad():
+            # Calculate dot product between image features and average features
+            dot_product = (x @ y.T)
+            #print(f"Dot product: {dot_product}")
+
+            # Apply temperature scaling to logits
+            scores = dot_product / temperature
+
+        # Get the predicted class
         pred = scores.argmax(dim=-1)
         return pred, scores
 
+
     def infer_pseudo_labels(self, image_features):
+        """Infer pseudo-labels using class-specific average features."""
+        if image_features is None or image_features.numel() == 0:
+            raise ValueError("image_features is empty or None.")
+
+        # Average the image features
         image_features_avg = image_features.mean(dim=0)
         self.background_embedding = image_features_avg.unsqueeze(0)
-        self.text_features = self.text_features.to(image_features.device)
-        _, scores_avg = self.compute_score(
-            self.model,
-            image_features_avg.unsqueeze(0),
-            self.text_features,
-        )
-        _, indexes = torch.topk(scores_avg, self.topk)
-        return indexes[0][0]
+        #self.text_features = self.text_features.to(image_features.device)
+
+        # Check if avg_features is properly loaded
+        if self.fuse_features is None or len(self.fuse_features) == 0:
+            raise ValueError("avg_features is empty. Ensure class-specific features are loaded correctly.")
+
+        scores = []
+        for avg_feature in self.fuse_features:
+            if avg_feature is None or avg_feature.numel() == 0:
+                print(f"[Warning] avg_feature is empty or None. Skipping.")
+                continue
+
+            # Move avg_feature to the same device as image_features_avg
+            avg_feature = avg_feature.to(image_features_avg.device)
+            
+            # Ensure avg_feature matches the shape of image_features_avg
+
+            #avg_feature = avg_feature.mean(dim=0)
+            
+            # Compute scores
+            _, scores_avg = self.compute_score_pseudo(image_features_avg, avg_feature)
+            if scores_avg is None or scores_avg.numel() == 0:
+                print(f"[Warning] compute_score returned None or empty. Skipping.")
+                continue
+            scores.append(scores_avg)
+
+        if len(scores) == 0:
+            raise RuntimeError("Scores is empty. Check avg_features and compute_score outputs.")
+
+        # Convert scores to a tensor
+        scores = torch.stack(scores)
+
+
+        # Select top-k scores
+        _, index = torch.topk(scores, self.topk)
+
+        print(f"Top-k scores: {index}")
+
+        return index[0], scores
 
     def moving_average(self, data, window_size):
         padding_size = window_size
@@ -169,6 +261,13 @@ class T3AL0Net(nn.Module):
                 alpha=0.1,
             )
 
+    def compute_score(self, model, x, y):
+        #x = x / x.norm(dim=-1, keepdim=True)
+        scores = x @ y.T
+        pred = scores.argmax(dim=-1)
+        return pred, scores
+
+
     def select_segments(self, similarity):
         if self.dataset == 'thumos':
             mask = similarity > similarity.mean()
@@ -211,19 +310,32 @@ class T3AL0Net(nn.Module):
         with torch.no_grad():
             image_features = image_features @ self.model.visual.proj
         image_features = image_features.squeeze(0)
-        indexes = self.infer_pseudo_labels(image_features)
+
+        
+        # vision-language fusion query
+        text_features = self.text_features.to(image_features.device)
+        video_features = self.avg_video_features.to(image_features.device)
+
+        self.fuse_features = (text_features + video_features) / 2
+        print(self.fuse_features.shape)
+
+
+        indexes, _ = self.infer_pseudo_labels(image_features)
         class_label = self.inverted_cls[indexes.item()]
-        pseudolabel_feature = self.text_features[indexes].squeeze()
-        pseudolabel_feature = pseudolabel_feature / pseudolabel_feature.norm(
-            dim=-1, keepdim=True
-        )
+
+        pseudolabel_feature = self.fuse_features[indexes]
+
+
+        
 
         if self.remove_background:
             image_features = image_features - self.background_embedding
 
         image_features_norm = image_features / image_features.norm(dim=-1, keepdim=True)
+
+
         similarity = (
-            self.model.logit_scale.exp() * pseudolabel_feature @ image_features_norm.T
+            pseudolabel_feature @ image_features_norm.T
         )
 
         if self.dataset == "thumos":
@@ -259,8 +371,13 @@ class T3AL0Net(nn.Module):
             pred, scores = self.compute_score(
                 self.model,
                 image_features,
-                self.text_features.to(image_features.device),
+                self.fuse_features.to(image_features.device),
             )
+
+
+
+
+            
             for seg in segments:
                 pred_mask[seg[0] : seg[1]] = 1
             for anno in segments_gt:

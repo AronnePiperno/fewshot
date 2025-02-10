@@ -1,0 +1,15 @@
+{"time":"2025-01-29T09:46:51.501686322+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-01-29_09-46-41/wandb/offline-run-20250129_094651-8ehpcnev/logs/debug-core.log"}
+{"time":"2025-01-29T09:46:51.810910299+01:00","level":"INFO","msg":"created new stream","id":"8ehpcnev"}
+{"time":"2025-01-29T09:46:51.810960437+01:00","level":"INFO","msg":"stream: started","id":"8ehpcnev"}
+{"time":"2025-01-29T09:46:51.811008194+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"8ehpcnev"}
+{"time":"2025-01-29T09:46:51.81110238+01:00","level":"INFO","msg":"sender: started","stream_id":"8ehpcnev"}
+{"time":"2025-01-29T09:46:51.811081665+01:00","level":"INFO","msg":"handler: started","stream_id":"8ehpcnev"}
+{"time":"2025-01-29T09:46:51.814113316+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-29T09:47:19.173517855+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-29T09:47:19.174088507+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-29T09:47:19.174583015+01:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-01-29T09:47:20.179844487+01:00","level":"INFO","msg":"stream: closing","id":"8ehpcnev"}
+{"time":"2025-01-29T09:47:20.179888053+01:00","level":"INFO","msg":"handler: closed","stream_id":"8ehpcnev"}
+{"time":"2025-01-29T09:47:20.179899308+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"8ehpcnev"}
+{"time":"2025-01-29T09:47:20.179933475+01:00","level":"INFO","msg":"sender: closed","stream_id":"8ehpcnev"}
+{"time":"2025-01-29T09:47:20.179953777+01:00","level":"INFO","msg":"stream: closed","id":"8ehpcnev"}

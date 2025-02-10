@@ -5,6 +5,10 @@ data/Thumos14/videos/
 notes.txt
 data/ActivityNet/features/
 data/ActivityNet/videos/
-data/ActivityNet/captions_anet/
+data/ActivityNet/captions/
 data/ActivityNet/support_videos/
 data/ActivityNet/support_videos_features/
+data/Thumos14/*/
+data/Thumos14/support_videos/
+data/Thumos14/support_videos_features/
+data/Thumos14/captions/

@@ -73,6 +73,8 @@ class T3ALModule(LightningModule):
         self.scaling_factor = 0.001
         self.split = split
 
+        
+
     def forward(self, x: torch.Tensor, opt):
         return self.net(x, opt)
 
@@ -181,6 +183,7 @@ class T3ALModule(LightningModule):
             params_list.append(
                 {"params": self.net.model.text.parameters(), "lr": self.lr}
             )
+
 
         if self.net.logit_scale:
             self.net.model.logit_scale.requires_grad = True

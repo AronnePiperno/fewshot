@@ -1,0 +1,87 @@
+task_name: train
+tags:
+- dev
+train: true
+test: true
+compile: false
+ckpt_path: null
+seed: 12345
+data:
+  _target_: src.data.custom_datamodule.T3ALDataModule
+  batch_size: 1
+  num_workers: 1
+  pin_memory: false
+  nsplit: 0
+  config: ./config/thumos.yaml
+model:
+  _target_: src.models.tf_method_module.T3AL0Module
+  split: 0
+  dataset: thumos
+  setting: 50
+  video_path: /home/def/fewshot/data/
+  net:
+    _target_: src.models.components.tf_method.T3AL0Net
+    dataset: ${model.dataset}
+    split: ${model.split}
+    setting: ${model.setting}
+    kernel_size: 20
+    stride: 20
+    visualize: false
+    normalize: true
+    remove_background: true
+    video_path: ${model.video_path}
+callbacks:
+  model_checkpoint:
+    _target_: lightning.pytorch.callbacks.ModelCheckpoint
+    dirpath: ${paths.output_dir}/checkpoints
+    filename: epoch_{epoch:03d}
+    monitor: null
+    verbose: false
+    save_last: true
+    save_top_k: 1
+    mode: max
+    auto_insert_metric_name: false
+    save_weights_only: false
+    every_n_train_steps: null
+    train_time_interval: null
+    every_n_epochs: null
+    save_on_train_epoch_end: null
+  model_summary:
+    _target_: lightning.pytorch.callbacks.RichModelSummary
+    max_depth: -1
+  rich_progress_bar:
+    _target_: lightning.pytorch.callbacks.RichProgressBar
+logger:
+  wandb:
+    _target_: lightning.pytorch.loggers.wandb.WandbLogger
+    save_dir: ${paths.output_dir}
+    offline: false
+    id: null
+    anonymous: null
+    project: TAD
+    log_model: false
+    prefix: ''
+    group: ''
+    tags: []
+    job_type: ''
+    name: ${exp_name}
+trainer:
+  _target_: lightning.pytorch.trainer.Trainer
+  default_root_dir: ${paths.output_dir}
+  min_epochs: 1
+  max_epochs: 0
+  accelerator: gpu
+  devices: 1
+  check_val_every_n_epoch: 1
+  deterministic: false
+paths:
+  root_dir: ${oc.env:PROJECT_ROOT}
+  data_dir: ${paths.root_dir}/data/
+  log_dir: ${paths.root_dir}/logs/
+  output_dir: ${hydra:runtime.output_dir}
+  work_dir: ${hydra:runtime.cwd}
+extras:
+  ignore_warnings: false
+  enforce_tags: true
+  print_config: true
+exp_name: thumos

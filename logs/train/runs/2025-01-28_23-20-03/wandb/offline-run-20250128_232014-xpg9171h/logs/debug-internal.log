@@ -1,0 +1,15 @@
+{"time":"2025-01-28T23:20:14.245734331+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-01-28_23-20-03/wandb/offline-run-20250128_232014-xpg9171h/logs/debug-core.log"}
+{"time":"2025-01-28T23:20:14.580065633+01:00","level":"INFO","msg":"created new stream","id":"xpg9171h"}
+{"time":"2025-01-28T23:20:14.580109352+01:00","level":"INFO","msg":"stream: started","id":"xpg9171h"}
+{"time":"2025-01-28T23:20:14.580142131+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"xpg9171h"}
+{"time":"2025-01-28T23:20:14.580176191+01:00","level":"INFO","msg":"handler: started","stream_id":"xpg9171h"}
+{"time":"2025-01-28T23:20:14.580203692+01:00","level":"INFO","msg":"sender: started","stream_id":"xpg9171h"}
+{"time":"2025-01-28T23:20:14.582570118+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-28T23:20:19.019789585+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-28T23:20:19.020270641+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-28T23:20:19.020801391+01:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-01-28T23:20:20.039933512+01:00","level":"INFO","msg":"stream: closing","id":"xpg9171h"}
+{"time":"2025-01-28T23:20:20.039968527+01:00","level":"INFO","msg":"handler: closed","stream_id":"xpg9171h"}
+{"time":"2025-01-28T23:20:20.039981454+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"xpg9171h"}
+{"time":"2025-01-28T23:20:20.0399959+01:00","level":"INFO","msg":"sender: closed","stream_id":"xpg9171h"}
+{"time":"2025-01-28T23:20:20.040031729+01:00","level":"INFO","msg":"stream: closed","id":"xpg9171h"}

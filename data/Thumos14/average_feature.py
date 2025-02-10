@@ -4,19 +4,16 @@ import os
 
 base_folder = './data/Thumos14/support_videos_features'
 
-def fourier_transform(array, target_length):
-    # Apply Fourier Transform along the temporal axis
-    freq_array = np.fft.fft(array, axis=0)
+def time_domain_adjust(array, target_length):
+    # Adjust length in time domain through padding/truncation
+    current_length = array.shape[0]
     
-    # Truncate or pad in the frequency domain
-    current_length = freq_array.shape[0]
     if current_length > target_length:
-        freq_array = freq_array[:target_length]  # Truncate
+        return array[:target_length]  # Truncate temporal dimension
     else:
-        pad_width = ((0, target_length - current_length),) + ((0, 0),) * (freq_array.ndim - 1)
-        freq_array = np.pad(freq_array, pad_width, mode='constant')  # Pad
-    
-    return freq_array
+        # Pad with zeros along temporal dimension
+        pad_width = ((0, target_length - current_length),) + ((0, 0),) * (array.ndim - 1)
+        return np.pad(array, pad_width, mode='constant')
 
 # Iterate through each subfolder in the base folder
 for subfolder in os.listdir(base_folder):
@@ -31,17 +28,14 @@ for subfolder in os.listdir(base_folder):
 
         arrays = [np.load(npy_file) for npy_file in npy_files]
 
-        # Determine a common target length (e.g., median length)
+        # Determine a common target length (median of array lengths)
         target_length = int(np.median([array.shape[0] for array in arrays]))
 
-        # Apply Fourier transform and adjust shapes
-        transformed_arrays = [fourier_transform(array, target_length) for array in arrays]
+        # Adjust arrays to common length in time domain
+        adjusted_arrays = [time_domain_adjust(array, target_length) for array in arrays]
 
-        # Average in the frequency domain
-        average_freq_array = np.mean(transformed_arrays, axis=0)
-
-        # Inverse Fourier Transform to return to the original domain
-        average_array = np.fft.ifft(average_freq_array, axis=0).real  # Keep only the real part
+        # Simple element-wise average
+        average_array = np.mean(adjusted_arrays, axis=0)
 
         # Save the averaged array
         average_file_path = os.path.join(subfolder_path, f'{subfolder}_average.npy')

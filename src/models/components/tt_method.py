@@ -1,6 +1,3 @@
-# FIRST STAGE: IMAGE
-# SECOND STAGE: TEXT
-
 import torch
 from torch import nn
 from torch.functional import F
@@ -16,6 +13,52 @@ import importlib
 import numpy as np
 
 tokenize = open_clip.get_tokenizer("coca_ViT-L-14")
+
+
+class Fusion(nn.Module):
+    def __init__(self, embed_dim):
+        super().__init__()
+        self.attn = nn.Sequential(
+            nn.Linear(embed_dim * 2, 4),
+            nn.Linear(4, 2),             
+            nn.Softmax(dim=-1)
+        )
+        
+    
+    def forward(self, text_feats, video_feats, only_video=False):
+
+        if only_video:
+            return video_feats
+
+        combined = torch.cat([text_feats, video_feats], dim=-1)
+
+        weights = self.attn(combined)
+        #print(f"Attention weights: {weights}")
+
+        return weights[:, 0:1] * text_feats + weights[:, 1:2] * video_feats
+    
+
+class VideoProjector(nn.Module):
+    def __init__(self, dim=768, dropout=0.1):
+        super().__init__()
+
+        self.proj_matrix = nn.Parameter(torch.eye(dim) + 0.001 * torch.randn(dim, dim))
+        
+
+        self.transform = nn.Sequential(
+            nn.LayerNorm(dim),
+            nn.Dropout(dropout)
+        )
+
+        #nn.init.xavier_uniform_(self.proj_matrix)
+    
+    def get_proj_matrix(self):
+        return self.proj_matrix
+
+    def forward(self, x):
+
+        x = self.transform(x)
+        return x @ self.proj_matrix
 
 class T3ALNet(nn.Module):
     def __init__(
@@ -50,15 +93,15 @@ class T3ALNet(nn.Module):
         self.p = p
         self.n = n
         self.normalize = normalize
-        self.text_projection = text_projection
+        self.text_projection = True
         self.text_encoder = text_encoder
         self.image_projection = image_projection
         self.logit_scale = logit_scale
         self.remove_background = remove_background
         self.ltype = ltype
-        self.steps = steps
-        self.refine_with_captions = refine_with_captions
-        self.split = split
+        self.steps = 120
+        self.refine_with_captions = False
+        self.split = 50
         self.setting = setting
         self.dataset = dataset
         self.visualize = visualize
@@ -74,6 +117,7 @@ class T3ALNet(nn.Module):
             model_name="coca_ViT-L-14", pretrained="mscoco_finetuned_laion2B-s13B-b90k"
         )
         self.model = self.model.float()
+        #self.model.train()
         print(f"Loaded COCA model")
 
         # Dataset-specific configuration
@@ -109,9 +153,8 @@ class T3ALNet(nn.Module):
         self.num_classes = len(self.cls_names)
         self.inverted_cls = {v: k for k, v in self.cls_names.items()}
         self.text_features = self.get_text_features(self.model)
-        
-        # Load average features
-        self.avg_features = self.load_avg_features(self.avg_features_path)
+
+
 
         with open(self.annotations_path, "r") as f:
             self.annotations = json.load(f)
@@ -122,6 +165,40 @@ class T3ALNet(nn.Module):
             self.tta_loss = ByolLoss()
         else:
             raise ValueError(f"Not implemented loss type: {self.ltype}")
+        
+
+        self.avg_video_features = self.load_avg_features(self.avg_features_path)
+
+
+
+            
+        
+        # Store original features for restoration
+        self.original_features = self.avg_video_features.clone()
+        
+        # create video projection tensor as identity tensor
+
+        #self.video_proj = nn.Parameter(torch.eye(768) + 0.001 * torch.randn(768, 768))
+        #self.video_proj = nn.Parameter(self.video_proj)
+
+        self.video_proj = VideoProjector(dim=768)
+
+        self.fusion = Fusion(embed_dim=768)
+        
+
+        self.optim = torch.optim.AdamW(
+            [
+                {"params": self.model.parameters()},
+                {"params": self.fusion.parameters()},
+                {"params": self.video_proj.parameters()},
+            ], 
+            lr=1e-7, weight_decay=1e-4
+        )
+        self.scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(self.optim, T_max=self.steps)
+        self.only_support_videos = True
+        
+
+        
 
 
     def load_avg_features(self, path):
@@ -149,7 +226,7 @@ class T3ALNet(nn.Module):
 
         return avg_features_tensor
 
-    def infer_pseudo_labels(self, image_features):
+    def infer_pseudo_labels(self, image_features, fuse_features):
         """Infer pseudo-labels using class-specific average features."""
         if image_features is None or image_features.numel() == 0:
             raise ValueError("image_features is empty or None.")
@@ -157,14 +234,14 @@ class T3ALNet(nn.Module):
         # Average the image features
         image_features_avg = image_features.mean(dim=0)
         self.background_embedding = image_features_avg.unsqueeze(0)
-        self.text_features = self.text_features.to(image_features.device)
+        #self.text_features = self.text_features.to(image_features.device)
 
         # Check if avg_features is properly loaded
-        if self.avg_features is None or len(self.avg_features) == 0:
+        if fuse_features is None or len(fuse_features) == 0:
             raise ValueError("avg_features is empty. Ensure class-specific features are loaded correctly.")
 
         scores = []
-        for avg_feature in self.avg_features:
+        for avg_feature in fuse_features:
             if avg_feature is None or avg_feature.numel() == 0:
                 print(f"[Warning] avg_feature is empty or None. Skipping.")
                 continue
@@ -177,7 +254,8 @@ class T3ALNet(nn.Module):
             #avg_feature = avg_feature.mean(dim=0)
             
             # Compute scores
-            _, scores_avg = self.compute_score(image_features_avg, avg_feature)
+            #_, scores_avg = self.compute_score(image_features_avg, avg_feature)
+            _, scores_avg = self.compute_score(avg_feature, image_features_avg)
             if scores_avg is None or scores_avg.numel() == 0:
                 print(f"[Warning] compute_score returned None or empty. Skipping.")
                 continue
@@ -189,10 +267,13 @@ class T3ALNet(nn.Module):
         # Convert scores to a tensor
         scores = torch.stack(scores)
 
-        print(f"Scores: {scores}")
+
         # Select top-k scores
         _, index = torch.topk(scores, self.topk)
-        print(f"Index: {index}")
+
+        #print("Fused features norm:", fuse_features.norm(dim=-1).mean().item())  # Should be ~1.0
+        #print("Similarity range:", scores.min().item(), scores.max().item())  # Should be reasonable (e.g., -5 to 10)
+
         return index[0], scores
 
 
@@ -236,10 +317,12 @@ class T3ALNet(nn.Module):
         
         if self.dataset == "thumos":
             mask = similarity > similarity.mean()
+
         elif self.dataset == "anet":
             mask = similarity > self.m
         else:
             raise ValueError(f"Not implemented dataset: {self.dataset}")
+        
         
         selected = torch.nonzero(mask).squeeze()
         segments = []
@@ -330,7 +413,9 @@ class T3ALNet(nn.Module):
             pindices = pindices.repeat_interleave(self.n // pindices.shape[0] + 1)
             pindices = pindices[: self.n]
         if nindices.shape[0] < self.n:
+
             nindices = nindices.repeat_interleave(self.n // nindices.shape[0] + 1)
+
             nindices = nindices[: self.n]
         pindices = pindices[:: (len(pindices) - 1) // (self.n - 1)][: self.n]
         nindices = nindices[:: (len(nindices) - 1) // (self.n - 1)][: self.n]
@@ -346,6 +431,7 @@ class T3ALNet(nn.Module):
             0,
             signal.shape[1] - 1,
         )
+
 
         return pindices, nindices
 
@@ -396,13 +482,81 @@ class T3ALNet(nn.Module):
 
     def compute_tta_embedding(self, class_label, device):
         class_label = re.sub(r"([a-z])([A-Z])", r"\1 \2", class_label)
+        
+        # if class label is Billiards, change the name in pool
+        if class_label == "Billiards":
+            class_label = "pool sport"
+        elif class_label == "ThrowDiscus":
+            class_label = "disc throw"
+        elif class_label == "TennisSwing":
+            class_label = "tennis forehand"            
+
+
         class_label = "a video of action" + " " + class_label
         text = tokenize(class_label).to(device)
         tta_emb = self.model.encode_text(text)
         tta_emb = tta_emb / tta_emb.norm(dim=-1, keepdim=True)
         return tta_emb
+    
+    def generate_negatives(self, video_features, current_class, device):
+        """Generate 3 types of synthetic negatives"""
+        negatives = []
+
+        video_features = video_features.unsqueeze(0)
+        
+
+        noise = torch.randn_like(video_features) * self.neg_noise_scale
+        negatives.append(video_features + noise)
+        
+
+        other_class = np.random.choice([i for i in range(self.num_classes) if i != current_class])
+        negatives.append(self.avg_video_features[other_class].unsqueeze(0).to(device))
+        
+
+        if video_features.dim() > 1: 
+            roll_amount = np.random.randint(1, 5)
+            negatives.append(torch.roll(video_features, shifts=roll_amount, dims=0))
+        
+        return torch.stack(negatives)
+    
+
+
+    def prototypical_loss(query_features, class_prototypes,class_label_idx, margin: float = 0.5, temperature: float = 0.1):
+
+
+
+        #print(f"Query features: {query_features}")
+        # Normalize features
+        query_features = F.normalize(query_features, dim=-1)  # (B, D)
+        class_prototypes = F.normalize(class_prototypes, dim=-1)  # (C, D)
+
+        # Get positive prototype
+        positive_proto = class_prototypes[class_label_idx]  # (D,)
+        
+        # Calculate similarity scores
+        sim_to_positive = (query_features @ positive_proto.T) / temperature  # (B,)
+        sim_to_negatives = (query_features @ class_prototypes.T) / temperature  # (B, C)
+
+        # Create mask to exclude positive class
+        mask = torch.ones_like(sim_to_negatives)
+        mask[:, class_label_idx] = 0
+        
+        # Compute logits for negative classes
+        sim_to_negatives = sim_to_negatives - (1 - mask) * 1e9  # mask out positive
+        
+        # Calculate loss
+        numerator = torch.exp(sim_to_positive)
+        denominator = torch.exp(sim_to_negatives).sum(dim=-1) + numerator
+        loss = -torch.log(numerator / denominator).mean()
+        
+        return loss
+
+    
 
     def forward(self, x, optimizer):
+        self.video_proj.requires_grad_(True)
+        #torch.nn.utils.clip_grad_norm_(self.video_proj, max_norm=1.0)
+
         idx, video_name, image_features_pre = x
         image_features_pre = copy.deepcopy(image_features_pre)
         video_name = video_name[0]
@@ -416,56 +570,97 @@ class T3ALNet(nn.Module):
             with torch.no_grad():
                 image_features = image_features_pre @ self.model.visual.proj
                 image_features = image_features.squeeze(0)
+
+        if not self.only_support_videos:
+            text_features = self.get_text_features(self.model).to(image_features.device)
+            text_features =  F.normalize(text_features, dim=-1)
+        else:
+            text_features = torch.zeros(768).to(image_features.device)
+
+        video_features = self.avg_video_features.to(image_features.device)
+        #video_features.requires_grad = True
+
+
+        video_features =  self.video_proj(video_features)
+        
+        #self.fuse_features = self.fusion_weights[0] * text_features + self.fusion_weights[1] * video_features
+
+        self.fuse_features = self.fusion(text_features, video_features, only_video=self.only_support_videos)
+
+
                 
-        indexes, _ = self.infer_pseudo_labels(image_features)
+        indexes, _ = self.infer_pseudo_labels(image_features, self.fuse_features)
         class_label = self.inverted_cls[indexes.item()]
+        print(f"Class label: {class_label}")
 
         segments_gt, unique_labels = self.get_segments_gt(video_name, fps)
 
+        original_video_features = self.avg_video_features[indexes.item()].unsqueeze(0).to(image_features.device)
+
+        before_optimization_video_projection = copy.deepcopy(self.video_proj.get_proj_matrix())
+
         for _ in range(self.steps):
             if self.image_projection:
-                image_features = (image_features_pre @ self.model.visual.proj).squeeze(
-                    0
-                )
-                before_optimization_parameters_image_encoder = copy.deepcopy(
-                    self.model.visual.state_dict()
-                )
-                before_optimization_image_projection = copy.deepcopy(
-                    self.model.visual.proj
-                )
+                image_features = (image_features_pre @ self.model.visual.proj).squeeze(0)
+                before_optimization_parameters_image_encoder = copy.deepcopy(self.model.visual.state_dict())
+                before_optimization_image_projection = copy.deepcopy(self.model.visual.proj)
+                
 
             if self.text_projection:
-                before_optimization_text_projection = copy.deepcopy(
-                    self.model.text.text_projection
-                )
-                before_optimization_parameters_text_encoder = copy.deepcopy(
-                    self.model.text.state_dict()
-                )
+                before_optimization_text_projection = copy.deepcopy(self.model.text.text_projection)
+                before_optimization_parameters_text_encoder = copy.deepcopy(self.model.text.state_dict())
             else:
                 before_optimization_parameters_text_encoder = copy.deepcopy(
                     self.model.text.state_dict()
                 )
             before_optimization_logit_scale = copy.deepcopy(self.model.logit_scale)
-
-            tta_emb = self.compute_tta_embedding(class_label, image_features.device)
+            
+            if not self.only_support_videos:
+                text_features = self.compute_tta_embedding(class_label, image_features.device)
+                text_features = F.normalize(text_features, dim=-1)
+            else:
+                text_features = torch.zeros(768).to(image_features.device)
             
             features = image_features - self.background_embedding if self.remove_background else image_features
-            
+
+
+
+
+
+            #projected_video_features = video_features @ self.video_proj
+            projected_video_features = self.video_proj(original_video_features)
+
+
+
+
+            tta_emb = self.fusion(text_features, projected_video_features, only_video=self.only_support_videos)
+
             similarity = self.model.logit_scale.exp() * tta_emb @ features.T
+
+
+
             
             if self.dataset == "thumos":
                 similarity = self.moving_average(
                     similarity.squeeze(), self.kernel_size
                 ).unsqueeze(0)
             
+
+
             pindices, nindices = self.get_indices(similarity)
             image_features_p, image_features_n = image_features[pindices], image_features[nindices]
+
+
             image_features_p = image_features_p / image_features_p.norm(
                 dim=-1, keepdim=True
             )
             image_features_n = image_features_n / image_features_n.norm(
                 dim=-1, keepdim=True
             )
+
+            #self.update_support_features(image_features_p, indexes.item())
+            #video_features = self.feature_memory['video_features'][indexes.item()].to(image_features.device)
+
             similarity_p = (
                 self.model.logit_scale.exp() * tta_emb @ image_features_p.T
             )
@@ -475,6 +670,8 @@ class T3ALNet(nn.Module):
             similarity = torch.cat(
                 [similarity_p.squeeze(), similarity_n.squeeze()], dim=0
             )
+
+
             gt = torch.cat(
                 [
                     torch.ones(similarity_p.shape[1]),
@@ -483,7 +680,11 @@ class T3ALNet(nn.Module):
                 dim=0,
             ).to(similarity.device)
             
+
+
             
+            #proto_loss = self.prototypical_loss(tta_emb, self.avg_video_features, indexes.item())
+
             if self.ltype in ["BYOL", "BCE"]:
                 tta_loss = self.tta_loss(similarity, gt)
             elif self.ltype == "BYOLfeat":
@@ -491,18 +692,58 @@ class T3ALNet(nn.Module):
                     image_features_p,
                     tta_emb.repeat_interleave(image_features_p.shape[0], dim=0),
                 )
+                #print(f"step {_} - TTA Loss: {tta_loss.item():.4f}")
             else:
                 raise ValueError(f"Not implemented loss type: {self.ltype}")
-
-            tta_loss.backward(retain_graph=True)
-            optimizer.step()
-            optimizer.zero_grad()
             
-        if self.text_projection:
-            assert not torch.equal(
-                before_optimization_text_projection,
-                copy.deepcopy(self.model.text.text_projection),
-            ), f"Parameter text_projection has not been updated."
+           # negatives = self.generate_negatives(video_features, indexes.item(), image_features.device)
+            #contrast_loss = self.compute_contrastive_loss(tta_emb, video_features, negatives)
+
+            #tta_loss = self.tta_loss(similarity, gt) + self.lambda_contrast * contrast_loss
+            #tta_loss = contrast_loss
+
+
+            # print magnitudes of self.video_proj gradients
+
+            
+
+
+            #tta_loss = tta_loss +  proto_loss
+            
+            if _ % 10 ==  0:
+                print(f"Step {_} - TTA Loss: {tta_loss.item():.4f}")
+
+
+            
+            tta_loss.backward(retain_graph=True)
+
+
+
+
+            self.optim.step()
+
+
+
+            self.optim.zero_grad()
+            self.scheduler.step()
+
+        # check if the parameters are update
+        #self.original_features = self.original_features.to(image_features.device)
+
+
+        assert not torch.equal(
+            before_optimization_video_projection,
+            copy.deepcopy(self.video_proj.get_proj_matrix()),
+        ), f"Parameter video_features has not been updated."
+
+        print(f"Video projection matrix: {self.video_proj.get_proj_matrix()}")
+
+        if not self.only_support_videos:
+            if self.text_projection:
+                assert not torch.equal(
+                    before_optimization_text_projection,
+                    copy.deepcopy(self.model.text.text_projection),
+                ), f"Parameter text_projection has not been updated."
 
         if self.image_projection:
             assert not torch.equal(
@@ -511,7 +752,19 @@ class T3ALNet(nn.Module):
             ), f"Parameter has not been updated."
 
         with torch.no_grad():
-            tta_emb = self.compute_tta_embedding(class_label, image_features.device)
+            if not self.only_support_videos:
+                text_features = self.compute_tta_embedding(class_label, image_features.device)
+                text_features = F.normalize(text_features, dim=-1)
+            else:
+                text_features = torch.zeros(768).to(image_features.device)
+            
+            video_features = self.avg_video_features[indexes.item()].unsqueeze(0)
+            video_features = video_features.to('cuda')
+            video_features = self.video_proj(video_features)
+            video_features = F.normalize(video_features, dim=-1)
+           
+
+            tta_emb = self.fusion(text_features, video_features, only_video=self.only_support_videos)
             
             if self.remove_background:
                 image_features = image_features - self.background_embedding
@@ -520,6 +773,7 @@ class T3ALNet(nn.Module):
                 dim=-1, keepdim=True
             )
             similarity = self.model.logit_scale.exp() * tta_emb @ image_features_norm.T
+
             
             if self.dataset == "thumos":
                 similarity = self.moving_average(similarity.squeeze(), self.kernel_size)
@@ -528,6 +782,7 @@ class T3ALNet(nn.Module):
                     similarity.max() - similarity.min()
                 )
             similarity = similarity.squeeze()
+
             segments = self.select_segments(similarity)
             pred_mask = torch.zeros(image_features.shape[0]).to(image_features.device)
             gt_mask = torch.zeros(image_features.shape[0]).to(image_features.device)
@@ -542,6 +797,7 @@ class T3ALNet(nn.Module):
                 self.model.text.load_state_dict(
                     before_optimization_parameters_text_encoder
                 )
+
                 with open(f"./data/Thumos14/captions/{video_name}.txt", "r", encoding='utf-8') as f:
                     captions = f.readlines()
                 captions = [
@@ -602,24 +858,55 @@ class T3ALNet(nn.Module):
                     torch.mean(image_features[seg[0] : seg[1]], dim=0)
                     for seg in segments
                 ]
-                text_features = self.get_text_features(self.model)
+
+                if not self.only_support_videos:
+                    text_features = self.get_text_features(self.model).to(image_features[0].device)
+                    text_features =  F.normalize(text_features, dim=-1)
+                else:
+                    text_features = torch.zeros(768).to(image_features[0].device)
+
+                video_features = self.avg_video_features
+                video_features = video_features.to(image_features[0].device)
+                video_features = F.normalize(video_features, dim=-1)
+                video_features = self.video_proj(video_features)
+                
+
+
+                fuse_features = self.fusion(text_features, video_features, only_video=self.only_support_videos)
+
                 image_features = torch.stack(image_features)
+
                 pred, scores = self.compute_score(
                     image_features,
-                    text_features.to(image_features.device),
+                    fuse_features.to(image_features.device),
                 )
+                
                 for seg in segments:
                     pred_mask[seg[0] : seg[1]] = 1
                 for anno in segments_gt:
                     gt_mask[anno[0] : anno[1]] = 1
+
+                
+
+
                 output = [
                     {
                         "label": indexes.item(),
                         "score": scores[i],
                         "segment": segments[i],
                     }
-                    for i in range((len(segments)))
+                    for i in range((len(segments))) 
                 ]
+
+                if len(output) == 0:
+                    output = [
+                        {
+                            "label": -1,
+                            "score": 0,
+                            "segment": [],
+                        }
+                    ]
+
             else:
                 output = [
                     {
@@ -628,13 +915,23 @@ class T3ALNet(nn.Module):
                         "segment": [],
                     }
                 ]
+
+        #self.restore_original_features()
+
         self.model.text.load_state_dict(before_optimization_parameters_text_encoder)
         self.model.logit_scale = before_optimization_logit_scale
         if self.image_projection:
             self.model.visual.load_state_dict(
                 before_optimization_parameters_image_encoder
             )
+
+        # restore the original video projection
+        self.video_proj.requires_grad_(False)
+        self.video_proj.data = before_optimization_video_projection
+
+        
             
+
         if self.visualize:
             sim_plot = self.plot_visualize(
                 video_name, similarity, indexes, segments_gt, segments, unique_labels

@@ -1,0 +1,15 @@
+{"time":"2025-01-29T00:02:48.05783667+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-01-29_00-02-41/wandb/offline-run-20250129_000247-t8igfipa/logs/debug-core.log"}
+{"time":"2025-01-29T00:02:48.384855706+01:00","level":"INFO","msg":"created new stream","id":"t8igfipa"}
+{"time":"2025-01-29T00:02:48.38489364+01:00","level":"INFO","msg":"stream: started","id":"t8igfipa"}
+{"time":"2025-01-29T00:02:48.38492605+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"t8igfipa"}
+{"time":"2025-01-29T00:02:48.384975348+01:00","level":"INFO","msg":"sender: started","stream_id":"t8igfipa"}
+{"time":"2025-01-29T00:02:48.385016257+01:00","level":"INFO","msg":"handler: started","stream_id":"t8igfipa"}
+{"time":"2025-01-29T00:02:48.387307268+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-29T00:02:53.190932464+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-29T00:02:53.191380839+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-29T00:02:53.191828248+01:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-01-29T00:02:54.197491147+01:00","level":"INFO","msg":"stream: closing","id":"t8igfipa"}
+{"time":"2025-01-29T00:02:54.197529451+01:00","level":"INFO","msg":"handler: closed","stream_id":"t8igfipa"}
+{"time":"2025-01-29T00:02:54.197548597+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"t8igfipa"}
+{"time":"2025-01-29T00:02:54.197580779+01:00","level":"INFO","msg":"sender: closed","stream_id":"t8igfipa"}
+{"time":"2025-01-29T00:02:54.197602519+01:00","level":"INFO","msg":"stream: closed","id":"t8igfipa"}

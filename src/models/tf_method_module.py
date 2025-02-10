@@ -10,6 +10,8 @@ import importlib
 
 log = utils.get_pylogger(__name__)
 
+wandb.init(mode="disabled")
+
 
 class T3AL0Module(LightningModule):
     """LightningModule.
@@ -105,6 +107,8 @@ class T3AL0Module(LightningModule):
         self.predictions[video_name] = output
         self.binary_gt.append(gt_mask)
         self.binary_pred.append(pred_mask)
+
+        print(f"unique_labels: {unique_labels}")
 
         for ulabel in list(unique_labels):
             if ulabel in self.dict_test.keys():

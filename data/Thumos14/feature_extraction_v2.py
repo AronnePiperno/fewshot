@@ -29,7 +29,7 @@ for folder in os.listdir(support_videos_path):
     for video in os.listdir(class_path):
         video_path = os.path.join(class_path, video)
         cap = cv2.VideoCapture(video_path)
-        frames, frame_skip = [], 20
+        frames, frame_skip = [], 5
         frame_count = 0
 
         while True:
