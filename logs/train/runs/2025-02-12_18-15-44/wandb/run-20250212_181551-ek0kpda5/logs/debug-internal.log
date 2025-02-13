@@ -1,0 +1,16 @@
+{"time":"2025-02-12T18:15:51.501589401+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-12_18-15-44/wandb/run-20250212_181551-ek0kpda5/logs/debug-core.log"}
+{"time":"2025-02-12T18:15:51.714593852+01:00","level":"INFO","msg":"created new stream","id":"ek0kpda5"}
+{"time":"2025-02-12T18:15:51.714635164+01:00","level":"INFO","msg":"stream: started","id":"ek0kpda5"}
+{"time":"2025-02-12T18:15:51.714669998+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"ek0kpda5"}
+{"time":"2025-02-12T18:15:51.714707023+01:00","level":"INFO","msg":"sender: started","stream_id":"ek0kpda5"}
+{"time":"2025-02-12T18:15:51.715064279+01:00","level":"INFO","msg":"handler: started","stream_id":"ek0kpda5"}
+{"time":"2025-02-12T18:15:52.171160002+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-12T18:32:42.754892897+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-12T18:32:42.755960214+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-12T18:32:43.716667551+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.745962464,"progress":"239.7KB/239.7KB"},{"desc":"uploading wandb-summary.json","runtime_seconds":0.745904423,"progress":"638B/638B"},{"desc":"uploading config.yaml","runtime_seconds":0.055569201,"progress":"5.6KB/5.6KB"}],"total_operations":3}}
+{"time":"2025-02-12T18:32:44.192609131+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-12T18:32:45.549359567+01:00","level":"INFO","msg":"stream: closing","id":"ek0kpda5"}
+{"time":"2025-02-12T18:32:45.549399527+01:00","level":"INFO","msg":"handler: closed","stream_id":"ek0kpda5"}
+{"time":"2025-02-12T18:32:45.549411299+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ek0kpda5"}
+{"time":"2025-02-12T18:32:45.549435865+01:00","level":"INFO","msg":"sender: closed","stream_id":"ek0kpda5"}
+{"time":"2025-02-12T18:32:45.549459881+01:00","level":"INFO","msg":"stream: closed","id":"ek0kpda5"}

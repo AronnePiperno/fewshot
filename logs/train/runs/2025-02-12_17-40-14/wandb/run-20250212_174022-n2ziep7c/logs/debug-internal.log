@@ -1,0 +1,16 @@
+{"time":"2025-02-12T17:40:23.224854082+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-12_17-40-14/wandb/run-20250212_174022-n2ziep7c/logs/debug-core.log"}
+{"time":"2025-02-12T17:40:23.448926832+01:00","level":"INFO","msg":"created new stream","id":"n2ziep7c"}
+{"time":"2025-02-12T17:40:23.448966686+01:00","level":"INFO","msg":"stream: started","id":"n2ziep7c"}
+{"time":"2025-02-12T17:40:23.449025741+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"n2ziep7c"}
+{"time":"2025-02-12T17:40:23.449060376+01:00","level":"INFO","msg":"sender: started","stream_id":"n2ziep7c"}
+{"time":"2025-02-12T17:40:23.449103133+01:00","level":"INFO","msg":"handler: started","stream_id":"n2ziep7c"}
+{"time":"2025-02-12T17:40:24.005728829+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-12T17:56:36.304980982+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-12T17:56:36.306032803+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-12T17:56:37.288600544+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.75727581,"progress":"205.8KB/205.8KB"},{"desc":"uploading config.yaml","runtime_seconds":0.128696906,"progress":"5.2KB/5.2KB"}],"total_operations":2}}
+{"time":"2025-02-12T17:56:36.338380068+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-12T17:56:37.673553303+01:00","level":"INFO","msg":"stream: closing","id":"n2ziep7c"}
+{"time":"2025-02-12T17:56:37.673612489+01:00","level":"INFO","msg":"handler: closed","stream_id":"n2ziep7c"}
+{"time":"2025-02-12T17:56:37.673629695+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"n2ziep7c"}
+{"time":"2025-02-12T17:56:37.673660099+01:00","level":"INFO","msg":"sender: closed","stream_id":"n2ziep7c"}
+{"time":"2025-02-12T17:56:37.673712014+01:00","level":"INFO","msg":"stream: closed","id":"n2ziep7c"}

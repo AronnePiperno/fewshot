@@ -145,7 +145,7 @@ def evaluate(dataset, predicted_data, split, setting, video_path):
 
     if dataset == "thumos":
         annotations_path = "./data/thumos_annotations/thumos_anno_action.json"
-        video_dir = "./data/Thumos14/videos/"
+        video_dir = video_path + "Thumos14/videos/"
         tiou_thresholds = np.array([0.3, 0.4, 0.5, 0.6, 0.7])
         dict_test_name = (
             f"t2_dict_test_thumos_{split}"
@@ -154,7 +154,7 @@ def evaluate(dataset, predicted_data, split, setting, video_path):
         )
     elif dataset == "anet":
         annotations_path = "./data/activitynet_annotations/anet_anno_action.json"
-        video_dir = "./data/ActivityNet/videos/"
+        video_dir = video_path + "ActivityNetVideos/videos/"
         tiou_thresholds = np.array([0.5, 0.75, 0.95])
         dict_test_name = (
             f"t2_dict_test_{split}"
@@ -202,7 +202,6 @@ def evaluate(dataset, predicted_data, split, setting, video_path):
             video_path = os.path.join(video_dir, video + ext)
             if os.path.exists(video_path):
                 fps = cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FPS)
-                print(f"predicted_data: {predicted_data[video]}")
                 for el in predicted_data[video]:
                     if el["label"] != -1:
                         predicted_list.append(

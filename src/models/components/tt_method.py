@@ -11,6 +11,7 @@ import re
 import copy
 import importlib
 import numpy as np
+import glob
 
 tokenize = open_clip.get_tokenizer("coca_ViT-L-14")
 
@@ -191,7 +192,7 @@ class T3ALNet(nn.Module):
                 {"params": self.model.text.text_projection},
                 {"params": self.model.visual.proj, "lr": 0.00001*0.001},
                 {"params": self.fusion.parameters()},
-                {"params": self.video_proj.parameters(), "lr": 1e-4},
+                {"params": self.video_proj.parameters(), "lr": 1e-6},
                 {"params": self.model.logit_scale},
             ], 
             lr= 0.00001, weight_decay=1e-4
@@ -226,6 +227,16 @@ class T3ALNet(nn.Module):
         avg_features_tensor = torch.stack([feature.mean(dim=0) for feature in avg_features.values()])
 
         return avg_features_tensor
+    
+    def load_support_features(self):
+        path = "./data/Thumos14/support_videos_features"
+        support_features = np.load(os.path.join(path, "stacked_features.npy"))
+
+        # cast to tensor
+        support_features = torch.tensor(support_features, dtype=torch.float32).to("cuda")
+        return support_features
+
+
 
     def infer_pseudo_labels(self, image_features, fuse_features):
         """Infer pseudo-labels using class-specific average features."""
@@ -521,6 +532,12 @@ class T3ALNet(nn.Module):
             with torch.no_grad():
                 image_features = image_features_pre @ self.model.visual.proj
                 image_features = image_features.squeeze(0)
+                before_optimization_parameters_image_encoder = copy.deepcopy(self.model.visual.state_dict())
+                before_optimization_image_projection = copy.deepcopy(self.model.visual.proj)
+
+        if self.text_projection:
+            before_optimization_text_projection = copy.deepcopy(self.model.text.text_projection)
+            before_optimization_parameters_text_encoder = copy.deepcopy(self.model.text.state_dict())
 
         if not self.only_support_videos:
             text_features = self.get_text_features(self.model).to(image_features.device)
@@ -540,7 +557,7 @@ class T3ALNet(nn.Module):
 
 
                 
-        indexes, _ = self.infer_pseudo_labels(image_features, self.fuse_features.to(image_features.device))
+        indexes, scores_to_return = self.infer_pseudo_labels(image_features, self.fuse_features.to(image_features.device))
         class_label = self.inverted_cls[indexes.item()]
         print(f"Class label: {class_label}")
 
@@ -553,13 +570,11 @@ class T3ALNet(nn.Module):
         for _ in range(self.steps):
             if self.image_projection:
                 image_features = (image_features_pre @ self.model.visual.proj).squeeze(0)
-                before_optimization_parameters_image_encoder = copy.deepcopy(self.model.visual.state_dict())
-                before_optimization_image_projection = copy.deepcopy(self.model.visual.proj)
+
                 
 
             if self.text_projection:
-                before_optimization_text_projection = copy.deepcopy(self.model.text.text_projection)
-                before_optimization_parameters_text_encoder = copy.deepcopy(self.model.text.state_dict())
+                pass
             else:
                 before_optimization_parameters_text_encoder = copy.deepcopy(
                     self.model.text.state_dict()
@@ -689,10 +704,10 @@ class T3ALNet(nn.Module):
 
 
 
-        #assert not torch.equal(
-        #    before_optimization_video_projection,
-        #    copy.deepcopy(self.video_proj.get_proj_matrix()),
-        #), f"Parameter video_features has not been updated."
+        assert not torch.equal(
+            before_optimization_video_projection,
+            copy.deepcopy(self.video_proj.get_proj_matrix()),
+        ), f"Parameter video_features has not been updated."
 
         if torch.equal( before_optimization_video_projection, copy.deepcopy(self.video_proj.get_proj_matrix())):
             print(f"Before optimization video projection matrix: {before_optimization_video_projection}")
@@ -707,11 +722,11 @@ class T3ALNet(nn.Module):
                     copy.deepcopy(self.model.text.text_projection),
                 ), f"Parameter text_projection has not been updated."
 
-        #if self.image_projection :
-        #    assert not torch.equal(
-        #        before_optimization_image_projection,
-        #        copy.deepcopy(self.model.visual.proj),
-        #    ), f"Parameter has not been updated."
+        if self.image_projection :
+            assert not torch.equal(
+                before_optimization_image_projection,
+                copy.deepcopy(self.model.visual.proj),
+            ), f"Parameter has not been updated."
 
         with torch.no_grad():
             if not self.only_support_videos:
@@ -919,4 +934,5 @@ class T3ALNet(nn.Module):
             gt_mask,
             unique_labels,
             sim_plot,
+            scores_to_return,
         )

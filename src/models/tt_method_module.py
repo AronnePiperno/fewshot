@@ -10,8 +10,7 @@ import importlib
 
 log = utils.get_pylogger(__name__)
 
-wandb.init(mode="disabled")
-
+# diable wandb
 
 class T3ALModule(LightningModule):
     """LightningModule.
@@ -50,6 +49,7 @@ class T3ALModule(LightningModule):
         self.binary_pred, self.binary_gt = [], []
         self.binary_acc = Accuracy("binary")
         self.label_gt, self.label_pred = [], []
+        self.scores = []
 
         if self.dataset == "thumos":
             dict_test_name = (
@@ -103,7 +103,7 @@ class T3ALModule(LightningModule):
     @torch.inference_mode(False)
     @torch.enable_grad()
     def test_step(self, batch: Any, batch_idx: int):
-        video_name, output, pred_mask, gt_mask, unique_labels, sim_plt = (
+        video_name, output, pred_mask, gt_mask, unique_labels, sim_plt, score_for_topk = (
             self.model_step(
                 batch,
                 self.optimizer,
@@ -112,6 +112,7 @@ class T3ALModule(LightningModule):
         self.predictions[video_name] = output
         self.binary_gt.append(gt_mask)
         self.binary_pred.append(pred_mask)
+        self.scores.append(score_for_topk)
 
         for ulabel in list(unique_labels):
             if ulabel in self.dict_test.keys():
@@ -147,6 +148,9 @@ class T3ALModule(LightningModule):
         self.log("avg_AP", np.mean(aps))
         self.log("AP_0", aps[0])
 
+        self.log("label top-1 accuracy", top_k_accuracy(self.scores, self.label_gt, 1))
+        self.log("label top-3 accuracy", top_k_accuracy(self.scores, self.label_gt, 3))
+        self.log("label top-5 accuracy", top_k_accuracy(self.scores, self.label_gt, 5))
         return
 
     def configure_optimizers(self):
@@ -193,3 +197,53 @@ class T3ALModule(LightningModule):
         self.optimizer = optimizer
 
         return {"optimizer": optimizer}
+
+
+
+def top_k_accuracy(preds, target, top_k=1):
+    """
+    Computes the Top-k accuracy for any k >= 1.
+    
+    Args:
+        preds: List of prediction tensors or a single tensor of shape (num_samples, num_classes)
+        target: List of target labels or a tensor of shape (num_samples,)
+        top_k: Number of top predictions to consider
+    
+    Returns:
+        float: Top-k accuracy
+    """
+
+
+    #print(f"target_tensor: {target}")
+    # Convert predictions to tensor if not already
+    if isinstance(preds, list):
+        preds_tensor = torch.stack(preds)
+    else:
+        preds_tensor = preds
+
+    # if 3 dims tensor squeeze it
+    if preds_tensor.dim() == 3:
+        preds_tensor = preds_tensor.squeeze(1)
+    
+    print(f"preds_tensor: {preds_tensor.shape}")
+    # Convert target to tensor if not already
+    if isinstance(target, list):
+        target_tensor = torch.tensor(target)
+    else:
+        target_tensor = target
+    
+    # Get the indices of the top-k predictions for each sample
+    _, topk_indices = torch.topk(preds_tensor, k=top_k, dim=1)
+    
+    # Expand target tensor for comparison
+    target_expanded = target_tensor.view(-1, 1).expand_as(topk_indices)
+
+
+    
+    # Check if target is in top-k predictions for each sample
+    target_expanded = target_expanded.to(topk_indices.device)
+    correct = (topk_indices == target_expanded).any(dim=1).sum().item()
+    
+    accuracy = correct / len(preds_tensor)
+    print(f"Top-{top_k} accuracy: {accuracy}")
+    return accuracy

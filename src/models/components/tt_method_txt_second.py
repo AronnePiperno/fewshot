@@ -152,6 +152,9 @@ class T3ALNet(nn.Module):
 
         return avg_features_tensor
 
+        
+
+
     def infer_pseudo_labels(self, image_features):
         """Infer pseudo-labels using class-specific average features."""
         if image_features is None or image_features.numel() == 0:
@@ -167,6 +170,7 @@ class T3ALNet(nn.Module):
             raise ValueError("avg_features is empty. Ensure class-specific features are loaded correctly.")
 
         scores = []
+        print(f"self.avg_features.shape {self.avg_features.shape}")
         for avg_feature in self.avg_features:
             if avg_feature is None or avg_feature.numel() == 0:
                 print(f"[Warning] avg_feature is empty or None. Skipping.")
@@ -179,6 +183,8 @@ class T3ALNet(nn.Module):
 
             #avg_feature = avg_feature.mean(dim=0)
             
+
+
             # Compute scores
             _, scores_avg = self.compute_score(image_features_avg, avg_feature)
             if scores_avg is None or scores_avg.numel() == 0:
@@ -427,8 +433,10 @@ class T3ALNet(nn.Module):
             with torch.no_grad():
                 image_features = image_features_pre @ self.model.visual.proj
                 image_features = image_features.squeeze(0)
+
+        
                 
-        indexes, _ = self.infer_pseudo_labels(image_features)
+        indexes, scores_to_return = self.infer_pseudo_labels(image_features)
         class_label = self.inverted_cls[indexes.item()]
 
         segments_gt, unique_labels = self.get_segments_gt(video_name, fps)
@@ -721,4 +729,5 @@ class T3ALNet(nn.Module):
             gt_mask,
             unique_labels,
             sim_plot,
+            scores_to_return,
         )

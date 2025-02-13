@@ -1,0 +1,17 @@
+{"time":"2025-02-12T21:13:07.536872018+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-12_21-13-01/wandb/run-20250212_211307-5713dl8n/logs/debug-core.log"}
+{"time":"2025-02-12T21:13:07.845516337+01:00","level":"INFO","msg":"created new stream","id":"5713dl8n"}
+{"time":"2025-02-12T21:13:07.845553558+01:00","level":"INFO","msg":"stream: started","id":"5713dl8n"}
+{"time":"2025-02-12T21:13:07.845593272+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"5713dl8n"}
+{"time":"2025-02-12T21:13:07.845629977+01:00","level":"INFO","msg":"handler: started","stream_id":"5713dl8n"}
+{"time":"2025-02-12T21:13:07.845856533+01:00","level":"INFO","msg":"sender: started","stream_id":"5713dl8n"}
+{"time":"2025-02-12T21:13:08.382414985+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-12T21:13:38.728859624+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded"}
+{"time":"2025-02-12T21:15:55.813991107+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-12T21:15:55.814610807+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-12T21:15:56.71474072+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-12T21:15:56.81459363+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 0-11, summary, console lines 723-1099","runtime_seconds":0.099292258}],"total_operations":1}}
+{"time":"2025-02-12T21:15:58.06443856+01:00","level":"INFO","msg":"stream: closing","id":"5713dl8n"}
+{"time":"2025-02-12T21:15:58.064500143+01:00","level":"INFO","msg":"handler: closed","stream_id":"5713dl8n"}
+{"time":"2025-02-12T21:15:58.064512794+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"5713dl8n"}
+{"time":"2025-02-12T21:15:58.06453796+01:00","level":"INFO","msg":"sender: closed","stream_id":"5713dl8n"}
+{"time":"2025-02-12T21:15:58.064554463+01:00","level":"INFO","msg":"stream: closed","id":"5713dl8n"}

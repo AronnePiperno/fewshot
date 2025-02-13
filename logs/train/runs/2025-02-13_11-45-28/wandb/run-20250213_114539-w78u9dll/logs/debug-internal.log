@@ -1,0 +1,16 @@
+{"time":"2025-02-13T11:45:39.230051641+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-13_11-45-28/wandb/run-20250213_114539-w78u9dll/logs/debug-core.log"}
+{"time":"2025-02-13T11:45:39.53713493+01:00","level":"INFO","msg":"created new stream","id":"w78u9dll"}
+{"time":"2025-02-13T11:45:39.537168754+01:00","level":"INFO","msg":"stream: started","id":"w78u9dll"}
+{"time":"2025-02-13T11:45:39.537200174+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"w78u9dll"}
+{"time":"2025-02-13T11:45:39.537237425+01:00","level":"INFO","msg":"handler: started","stream_id":"w78u9dll"}
+{"time":"2025-02-13T11:45:39.537276924+01:00","level":"INFO","msg":"sender: started","stream_id":"w78u9dll"}
+{"time":"2025-02-13T11:45:40.055802036+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-13T11:49:26.954350218+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-13T11:49:26.954929877+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-13T11:49:27.961399672+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.765681713,"progress":"464.7KB/464.7KB"}],"total_operations":1}}
+{"time":"2025-02-13T11:49:28.149896535+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-13T11:49:29.544953222+01:00","level":"INFO","msg":"stream: closing","id":"w78u9dll"}
+{"time":"2025-02-13T11:49:29.544991349+01:00","level":"INFO","msg":"handler: closed","stream_id":"w78u9dll"}
+{"time":"2025-02-13T11:49:29.545005468+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"w78u9dll"}
+{"time":"2025-02-13T11:49:29.545022316+01:00","level":"INFO","msg":"sender: closed","stream_id":"w78u9dll"}
+{"time":"2025-02-13T11:49:29.54506093+01:00","level":"INFO","msg":"stream: closed","id":"w78u9dll"}

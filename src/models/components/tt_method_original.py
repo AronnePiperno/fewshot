@@ -35,6 +35,7 @@ class T3ALNet(nn.Module):
         split: int,
         setting: int,
         video_path: str,
+        avg_features_path: bool,
     ):
         super(T3ALNet, self).__init__()
 
@@ -49,8 +50,8 @@ class T3ALNet(nn.Module):
         self.logit_scale = logit_scale
         self.remove_background = remove_background
         self.ltype = ltype
-        self.steps = steps
-        self.refine_with_captions = refine_with_captions
+        self.steps = 60
+        self.refine_with_captions = True
         self.split = split
         self.setting = setting
         self.dataset = dataset
@@ -307,7 +308,8 @@ class T3ALNet(nn.Module):
                 image_features = image_features_pre @ self.model.visual.proj
                 image_features = image_features.squeeze(0)
                 
-        indexes, _ = self.infer_pseudo_labels(image_features)
+        indexes, scores_to_return = self.infer_pseudo_labels(image_features)
+        #print(f"scores_to_return: {scores_to_return}")
         class_label = self.inverted_cls[indexes.item()]
 
         segments_gt, unique_labels = self.get_segments_gt(video_name, fps)
@@ -431,7 +433,7 @@ class T3ALNet(nn.Module):
                 self.model.text.load_state_dict(
                     before_optimization_parameters_text_encoder
                 )
-                with open(f"./captions/{video_name}.txt", "r") as f:
+                with open(f"./data/Thumos14/captions/{video_name}.txt", "r") as f:
                     captions = f.readlines()
                 captions = [
                     (int(c.split("-")[0].split(".")[0]) * 3, c.split("-")[1])
@@ -537,4 +539,5 @@ class T3ALNet(nn.Module):
             gt_mask,
             unique_labels,
             sim_plot,
+            scores_to_return,
         )

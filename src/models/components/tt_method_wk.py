@@ -53,7 +53,7 @@ class T3ALNet(nn.Module):
         self.remove_background = remove_background
         self.ltype = ltype
         self.steps = 50
-        self.refine_with_captions = refine_with_captions
+        self.refine_with_captions = False
         self.split = 50
         self.setting = setting
         self.dataset = dataset
@@ -121,7 +121,7 @@ class T3ALNet(nn.Module):
         else:
             raise ValueError(f"Not implemented loss type: {self.ltype}")
         
-        self.optimizer = torch.optim.Adam(self.parameters(), lr=1e-3)
+        #self.optimizer = torch.optim.Adam(self.parameters(), lr=1e-3)
         
         
 

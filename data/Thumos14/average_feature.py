@@ -4,40 +4,42 @@ import os
 
 base_folder = './data/Thumos14/support_videos_features'
 
-def time_domain_adjust(array, target_length):
-    # Adjust length in time domain through padding/truncation
-    current_length = array.shape[0]
-    
-    if current_length > target_length:
-        return array[:target_length]  # Truncate temporal dimension
-    else:
-        # Pad with zeros along temporal dimension
-        pad_width = ((0, target_length - current_length),) + ((0, 0),) * (array.ndim - 1)
-        return np.pad(array, pad_width, mode='constant')
+def pad_array(arr, target_shape):
+    """Pad array with zeros to match target shape in all dimensions"""
+    pad_width = []
+    for dim, target_size in zip(arr.shape, target_shape):
+        pad_total = max(target_size - dim, 0)
+        pad_width.append((0, pad_total))
+    return np.pad(arr, pad_width, mode='constant')
 
-# Iterate through each subfolder in the base folder
 for subfolder in os.listdir(base_folder):
     subfolder_path = os.path.join(base_folder, subfolder)
-    if os.path.isdir(subfolder_path):
-        # Get all .npy files in the current subfolder
-        npy_files = glob.glob(os.path.join(subfolder_path, '*.npy'))
+    if not os.path.isdir(subfolder_path):
+        continue
 
-        if not npy_files:
-            print(f"No .npy files found in the folder {subfolder_path}.")
-            continue
+    # Load all arrays in subfolder
+    npy_files = glob.glob(os.path.join(subfolder_path, '*.npy'))
+    arrays = [np.load(f) for f in npy_files]
+    
+    print(f"Loaded {len(arrays)} arrays from {subfolder}")
+    # Find maximum dimensions across all arrays
+    if not arrays:
+        print(f"Skipping empty folder: {subfolder}")
+        continue
+    
+    # Get maximum shape across all dimensions
+    all_shapes = [arr.shape for arr in arrays]
 
-        arrays = [np.load(npy_file) for npy_file in npy_files]
-
-        # Determine a common target length (median of array lengths)
-        target_length = int(np.median([array.shape[0] for array in arrays]))
-
-        # Adjust arrays to common length in time domain
-        adjusted_arrays = [time_domain_adjust(array, target_length) for array in arrays]
-
-        # Simple element-wise average
-        average_array = np.mean(adjusted_arrays, axis=0)
-
-        # Save the averaged array
-        average_file_path = os.path.join(subfolder_path, f'{subfolder}_average.npy')
-        np.save(average_file_path, average_array)
-        print(f"Saved {subfolder}_average.npy in {subfolder_path}")
+    print(f"all shape {all_shapes}")
+    max_shape = tuple(np.max(all_shapes, axis=0))
+    
+    # Pad all arrays to max shape
+    padded_arrays = [pad_array(arr, max_shape) for arr in arrays]
+    
+    # Average all padded arrays
+    average_array = np.mean(padded_arrays, axis=0)
+    
+    # Save result
+    output_path = os.path.join(subfolder_path, f"{subfolder}_average.npy")
+    np.save(output_path, average_array)
+    print(f"Saved averaged features to {output_path}")

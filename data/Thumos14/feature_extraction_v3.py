@@ -9,7 +9,7 @@ from tqdm import tqdm
 # Configuration
 VIDEO_ROOT = './data/Thumos14/support_videos'
 FEATURE_ROOT = './data/Thumos14/support_videos_features'
-FRAME_STRIDE = 10  # Sample every 5th frame
+FRAME_STRIDE = 15  # Sample every 5th frame
 BATCH_SIZE = 64 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
