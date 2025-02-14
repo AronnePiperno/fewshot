@@ -1,0 +1,16 @@
+{"time":"2025-02-13T23:33:43.605069355+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-13_23-33-37/wandb/run-20250213_233343-yi2hyzrl/logs/debug-core.log"}
+{"time":"2025-02-13T23:33:43.819937045+01:00","level":"INFO","msg":"created new stream","id":"yi2hyzrl"}
+{"time":"2025-02-13T23:33:43.819972396+01:00","level":"INFO","msg":"stream: started","id":"yi2hyzrl"}
+{"time":"2025-02-13T23:33:43.820009295+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"yi2hyzrl"}
+{"time":"2025-02-13T23:33:43.820039594+01:00","level":"INFO","msg":"sender: started","stream_id":"yi2hyzrl"}
+{"time":"2025-02-13T23:33:43.820064785+01:00","level":"INFO","msg":"handler: started","stream_id":"yi2hyzrl"}
+{"time":"2025-02-13T23:33:44.296702003+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-13T23:37:52.097571863+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-13T23:37:52.098007687+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-13T23:37:53.098065944+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.76913592,"progress":"1.8MB/2.9MB"}],"total_operations":1}}
+{"time":"2025-02-13T23:37:53.630867006+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-13T23:37:55.033182294+01:00","level":"INFO","msg":"stream: closing","id":"yi2hyzrl"}
+{"time":"2025-02-13T23:37:55.033212727+01:00","level":"INFO","msg":"handler: closed","stream_id":"yi2hyzrl"}
+{"time":"2025-02-13T23:37:55.033224791+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"yi2hyzrl"}
+{"time":"2025-02-13T23:37:55.033244785+01:00","level":"INFO","msg":"sender: closed","stream_id":"yi2hyzrl"}
+{"time":"2025-02-13T23:37:55.033266929+01:00","level":"INFO","msg":"stream: closed","id":"yi2hyzrl"}

@@ -17,7 +17,7 @@ net:
   image_projection: True
   logit_scale: True
   normalize: True
-  steps: 60
+  steps: 10
   kernel_size: 20
   stride: 20
   randper: 10

@@ -1,0 +1,17 @@
+{"time":"2025-02-13T16:49:13.15804959+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-13_16-49-06/wandb/run-20250213_164912-up7dw560/logs/debug-core.log"}
+{"time":"2025-02-13T16:49:13.467011494+01:00","level":"INFO","msg":"created new stream","id":"up7dw560"}
+{"time":"2025-02-13T16:49:13.467052267+01:00","level":"INFO","msg":"stream: started","id":"up7dw560"}
+{"time":"2025-02-13T16:49:13.467089085+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"up7dw560"}
+{"time":"2025-02-13T16:49:13.467160747+01:00","level":"INFO","msg":"handler: started","stream_id":"up7dw560"}
+{"time":"2025-02-13T16:49:13.467281018+01:00","level":"INFO","msg":"sender: started","stream_id":"up7dw560"}
+{"time":"2025-02-13T16:49:14.092164455+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-13T16:50:10.27541691+01:00","level":"INFO","msg":"api: retrying HTTP error","status":500,"url":"https://api.wandb.ai/files/deferrari-alessandro-university-of-trento/TAD/up7dw560/file_stream","body":"{\"error\":\"context deadline exceeded\"}"}
+{"time":"2025-02-13T17:03:49.163020844+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-13T17:03:49.163694335+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-13T17:03:50.136770959+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-13T17:03:50.16333109+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 0-11, summary, console lines 1128-1453","runtime_seconds":0.026221575}],"total_operations":1}}
+{"time":"2025-02-13T17:03:51.468756289+01:00","level":"INFO","msg":"stream: closing","id":"up7dw560"}
+{"time":"2025-02-13T17:03:51.468801536+01:00","level":"INFO","msg":"handler: closed","stream_id":"up7dw560"}
+{"time":"2025-02-13T17:03:51.468812935+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"up7dw560"}
+{"time":"2025-02-13T17:03:51.468832917+01:00","level":"INFO","msg":"sender: closed","stream_id":"up7dw560"}
+{"time":"2025-02-13T17:03:51.468865422+01:00","level":"INFO","msg":"stream: closed","id":"up7dw560"}

@@ -1,0 +1,16 @@
+{"time":"2025-02-13T18:58:31.774209725+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-13_18-58-25/wandb/run-20250213_185831-tvvego6s/logs/debug-core.log"}
+{"time":"2025-02-13T18:58:31.971433883+01:00","level":"INFO","msg":"created new stream","id":"tvvego6s"}
+{"time":"2025-02-13T18:58:31.971479356+01:00","level":"INFO","msg":"stream: started","id":"tvvego6s"}
+{"time":"2025-02-13T18:58:31.971515938+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"tvvego6s"}
+{"time":"2025-02-13T18:58:31.97153152+01:00","level":"INFO","msg":"handler: started","stream_id":"tvvego6s"}
+{"time":"2025-02-13T18:58:31.971523269+01:00","level":"INFO","msg":"sender: started","stream_id":"tvvego6s"}
+{"time":"2025-02-13T18:58:32.678822392+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-13T19:02:20.964072757+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-13T19:02:20.966807607+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-13T19:02:21.859300397+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-13T19:02:21.963794115+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 0-11, summary, console lines 1124-1549","runtime_seconds":0.094372861}],"total_operations":1}}
+{"time":"2025-02-13T19:02:23.40033921+01:00","level":"INFO","msg":"stream: closing","id":"tvvego6s"}
+{"time":"2025-02-13T19:02:23.40036811+01:00","level":"INFO","msg":"handler: closed","stream_id":"tvvego6s"}
+{"time":"2025-02-13T19:02:23.400378417+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"tvvego6s"}
+{"time":"2025-02-13T19:02:23.40040889+01:00","level":"INFO","msg":"sender: closed","stream_id":"tvvego6s"}
+{"time":"2025-02-13T19:02:23.400425441+01:00","level":"INFO","msg":"stream: closed","id":"tvvego6s"}

@@ -1,0 +1,44 @@
+{
+  "os": "Linux-5.15.153.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "CPython 3.10.16",
+  "startedAt": "2025-02-13T17:22:37.981784Z",
+  "args": [
+    "experiment=tt_thumos",
+    "model.video_path=/home/def/fewshot/data/"
+  ],
+  "program": "/home/def/fewshot/src/train.py",
+  "codePath": "src/train.py",
+  "git": {
+    "commit": "0f4eb044633d56f4438a1febca6635dc629bd8dd"
+  },
+  "email": "deferrari.alessandro@gmail.com",
+  "root": "/home/def/fewshot/logs/train/runs/2025-02-13_18-22-31",
+  "host": "DESKTOP-K19UMPV",
+  "executable": "/home/def/miniforge3/envs/fewshot/bin/python",
+  "codePathLocal": "src/train.py",
+  "cpu_count": 8,
+  "cpu_count_logical": 16,
+  "gpu": "NVIDIA GeForce RTX 4070 SUPER",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "1081101176832",
+      "used": "993745301504"
+    }
+  },
+  "memory": {
+    "total": "16318296064"
+  },
+  "cpu": {
+    "count": 8,
+    "countLogical": 16
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 4070 SUPER",
+      "memoryTotal": "12878610432",
+      "architecture": "Ada"
+    }
+  ],
+  "cudaVersion": "12.7"
+}

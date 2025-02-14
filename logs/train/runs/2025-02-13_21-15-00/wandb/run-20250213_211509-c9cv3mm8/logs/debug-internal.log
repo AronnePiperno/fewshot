@@ -1,0 +1,16 @@
+{"time":"2025-02-13T21:15:09.233256051+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-13_21-15-00/wandb/run-20250213_211509-c9cv3mm8/logs/debug-core.log"}
+{"time":"2025-02-13T21:15:09.453423945+01:00","level":"INFO","msg":"created new stream","id":"c9cv3mm8"}
+{"time":"2025-02-13T21:15:09.453463923+01:00","level":"INFO","msg":"stream: started","id":"c9cv3mm8"}
+{"time":"2025-02-13T21:15:09.453502804+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"c9cv3mm8"}
+{"time":"2025-02-13T21:15:09.45355803+01:00","level":"INFO","msg":"sender: started","stream_id":"c9cv3mm8"}
+{"time":"2025-02-13T21:15:09.453559916+01:00","level":"INFO","msg":"handler: started","stream_id":"c9cv3mm8"}
+{"time":"2025-02-13T21:15:10.0320068+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-13T21:17:12.261294842+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-13T21:17:12.262169439+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-13T21:17:13.261938809+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.779030334,"progress":"1.6MB/1.6MB"},{"desc":"uploading config.yaml","runtime_seconds":0.272278885,"progress":"5.6KB/5.6KB"}],"total_operations":2}}
+{"time":"2025-02-13T21:17:13.542933539+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-13T21:17:15.458032865+01:00","level":"INFO","msg":"stream: closing","id":"c9cv3mm8"}
+{"time":"2025-02-13T21:17:15.458077153+01:00","level":"INFO","msg":"handler: closed","stream_id":"c9cv3mm8"}
+{"time":"2025-02-13T21:17:15.458089341+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"c9cv3mm8"}
+{"time":"2025-02-13T21:17:15.458104604+01:00","level":"INFO","msg":"sender: closed","stream_id":"c9cv3mm8"}
+{"time":"2025-02-13T21:17:15.458176687+01:00","level":"INFO","msg":"stream: closed","id":"c9cv3mm8"}

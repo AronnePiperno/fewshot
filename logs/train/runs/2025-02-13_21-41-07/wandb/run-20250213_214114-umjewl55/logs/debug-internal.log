@@ -1,0 +1,16 @@
+{"time":"2025-02-13T21:41:14.781568373+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-13_21-41-07/wandb/run-20250213_214114-umjewl55/logs/debug-core.log"}
+{"time":"2025-02-13T21:41:14.988403892+01:00","level":"INFO","msg":"created new stream","id":"umjewl55"}
+{"time":"2025-02-13T21:41:14.988477022+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"umjewl55"}
+{"time":"2025-02-13T21:41:14.988500843+01:00","level":"INFO","msg":"handler: started","stream_id":"umjewl55"}
+{"time":"2025-02-13T21:41:14.988527998+01:00","level":"INFO","msg":"sender: started","stream_id":"umjewl55"}
+{"time":"2025-02-13T21:41:14.988873912+01:00","level":"INFO","msg":"stream: started","id":"umjewl55"}
+{"time":"2025-02-13T21:41:15.597083727+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-13T21:45:42.04936874+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-13T21:45:42.050017703+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-13T21:45:43.050272118+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.763332184,"progress":"1.8MB/2.4MB"}],"total_operations":1}}
+{"time":"2025-02-13T21:45:43.550738107+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-13T21:45:44.963609008+01:00","level":"INFO","msg":"stream: closing","id":"umjewl55"}
+{"time":"2025-02-13T21:45:44.963673506+01:00","level":"INFO","msg":"handler: closed","stream_id":"umjewl55"}
+{"time":"2025-02-13T21:45:44.963685869+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"umjewl55"}
+{"time":"2025-02-13T21:45:44.96371752+01:00","level":"INFO","msg":"sender: closed","stream_id":"umjewl55"}
+{"time":"2025-02-13T21:45:44.963738629+01:00","level":"INFO","msg":"stream: closed","id":"umjewl55"}

@@ -1,0 +1,16 @@
+{"time":"2025-02-13T21:33:16.271813603+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-13_21-33-09/wandb/run-20250213_213316-nrpshb22/logs/debug-core.log"}
+{"time":"2025-02-13T21:33:16.582692247+01:00","level":"INFO","msg":"created new stream","id":"nrpshb22"}
+{"time":"2025-02-13T21:33:16.582759644+01:00","level":"INFO","msg":"stream: started","id":"nrpshb22"}
+{"time":"2025-02-13T21:33:16.582797614+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"nrpshb22"}
+{"time":"2025-02-13T21:33:16.582830689+01:00","level":"INFO","msg":"sender: started","stream_id":"nrpshb22"}
+{"time":"2025-02-13T21:33:16.582853323+01:00","level":"INFO","msg":"handler: started","stream_id":"nrpshb22"}
+{"time":"2025-02-13T21:33:17.148337705+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-13T21:36:07.417907459+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-13T21:36:07.418656898+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-13T21:36:08.38102502+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.746055995,"progress":"1.4MB/2.4MB"},{"desc":"uploading config.yaml","runtime_seconds":0.384545631,"progress":"5.6KB/5.6KB"}],"total_operations":2}}
+{"time":"2025-02-13T21:36:09.139492115+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-13T21:36:10.577459469+01:00","level":"INFO","msg":"stream: closing","id":"nrpshb22"}
+{"time":"2025-02-13T21:36:10.577494322+01:00","level":"INFO","msg":"handler: closed","stream_id":"nrpshb22"}
+{"time":"2025-02-13T21:36:10.577504341+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"nrpshb22"}
+{"time":"2025-02-13T21:36:10.577520512+01:00","level":"INFO","msg":"sender: closed","stream_id":"nrpshb22"}
+{"time":"2025-02-13T21:36:10.57759191+01:00","level":"INFO","msg":"stream: closed","id":"nrpshb22"}

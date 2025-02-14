@@ -1,0 +1,16 @@
+{"time":"2025-02-14T01:03:56.502556318+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-14_01-03-48/wandb/run-20250214_010356-chtlie63/logs/debug-core.log"}
+{"time":"2025-02-14T01:03:56.709993784+01:00","level":"INFO","msg":"created new stream","id":"chtlie63"}
+{"time":"2025-02-14T01:03:56.710030684+01:00","level":"INFO","msg":"stream: started","id":"chtlie63"}
+{"time":"2025-02-14T01:03:56.710068976+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"chtlie63"}
+{"time":"2025-02-14T01:03:56.710096604+01:00","level":"INFO","msg":"handler: started","stream_id":"chtlie63"}
+{"time":"2025-02-14T01:03:56.710331455+01:00","level":"INFO","msg":"sender: started","stream_id":"chtlie63"}
+{"time":"2025-02-14T01:03:57.329552271+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-14T01:04:04.831625084+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-14T01:04:04.832274939+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-14T01:04:05.632769441+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-14T01:04:05.832159047+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading summary, console lines 0-951","runtime_seconds":0.198815945}],"total_operations":1}}
+{"time":"2025-02-14T01:04:07.048851585+01:00","level":"INFO","msg":"stream: closing","id":"chtlie63"}
+{"time":"2025-02-14T01:04:07.04888066+01:00","level":"INFO","msg":"handler: closed","stream_id":"chtlie63"}
+{"time":"2025-02-14T01:04:07.048891461+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"chtlie63"}
+{"time":"2025-02-14T01:04:07.04891418+01:00","level":"INFO","msg":"sender: closed","stream_id":"chtlie63"}
+{"time":"2025-02-14T01:04:07.048930571+01:00","level":"INFO","msg":"stream: closed","id":"chtlie63"}

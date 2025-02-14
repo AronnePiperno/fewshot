@@ -1,0 +1,786 @@
+[[36m2025-02-13 20:38:08,442[0m][[34m__main__[0m][[32mINFO[0m] - Starting training![0m
+You are using a CUDA device ('NVIDIA GeForce RTX 4070 SUPER') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+No of videos in train is 214
+Loading train Video Information ...
+No of class 10
+No of videos in validation is 203
+Loading validation Video Information ...
+No of class 10
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┓
+┃[1;35m [0m[1;35m   [0m[1;35m [0m┃[1;35m [0m[1;35mName                                                   [0m[1;35m [0m┃[1;35m [0m[1;35mType                           [0m[1;35m [0m┃[1;35m [0m[1;35mParams[0m[1;35m [0m┃[1;35m [0m[1;35mMode [0m[1;35m [0m┃
+┡━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━┩
+│[2m [0m[2m0  [0m[2m [0m│ net                                                     │ T3ALNet                         │  639 M │ train │
+│[2m [0m[2m1  [0m[2m [0m│ net.model                                               │ CoCa                            │  638 M │ train │
+│[2m [0m[2m2  [0m[2m [0m│ net.model.text                                          │ TextTransformer                 │  123 M │ train │
+│[2m [0m[2m3  [0m[2m [0m│ net.model.text.token_embedding                          │ Embedding                       │ 37.9 M │ train │
+│[2m [0m[2m4  [0m[2m [0m│ net.model.text.transformer                              │ Transformer                     │ 85.1 M │ train │
+│[2m [0m[2m5  [0m[2m [0m│ net.model.text.transformer.resblocks                    │ ModuleList                      │ 85.1 M │ train │
+│[2m [0m[2m6  [0m[2m [0m│ net.model.text.transformer.resblocks.0                  │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m7  [0m[2m [0m│ net.model.text.transformer.resblocks.0.ln_1             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m8  [0m[2m [0m│ net.model.text.transformer.resblocks.0.attn             │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m9  [0m[2m [0m│ net.model.text.transformer.resblocks.0.attn.out_proj    │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m10 [0m[2m [0m│ net.model.text.transformer.resblocks.0.ls_1             │ Identity                        │      0 │ train │
+│[2m [0m[2m11 [0m[2m [0m│ net.model.text.transformer.resblocks.0.ln_2             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m12 [0m[2m [0m│ net.model.text.transformer.resblocks.0.mlp              │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m13 [0m[2m [0m│ net.model.text.transformer.resblocks.0.mlp.c_fc         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m14 [0m[2m [0m│ net.model.text.transformer.resblocks.0.mlp.gelu         │ GELU                            │      0 │ train │
+│[2m [0m[2m15 [0m[2m [0m│ net.model.text.transformer.resblocks.0.mlp.c_proj       │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m16 [0m[2m [0m│ net.model.text.transformer.resblocks.0.ls_2             │ Identity                        │      0 │ train │
+│[2m [0m[2m17 [0m[2m [0m│ net.model.text.transformer.resblocks.1                  │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m18 [0m[2m [0m│ net.model.text.transformer.resblocks.1.ln_1             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m19 [0m[2m [0m│ net.model.text.transformer.resblocks.1.attn             │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m20 [0m[2m [0m│ net.model.text.transformer.resblocks.1.attn.out_proj    │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m21 [0m[2m [0m│ net.model.text.transformer.resblocks.1.ls_1             │ Identity                        │      0 │ train │
+│[2m [0m[2m22 [0m[2m [0m│ net.model.text.transformer.resblocks.1.ln_2             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m23 [0m[2m [0m│ net.model.text.transformer.resblocks.1.mlp              │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m24 [0m[2m [0m│ net.model.text.transformer.resblocks.1.mlp.c_fc         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m25 [0m[2m [0m│ net.model.text.transformer.resblocks.1.mlp.gelu         │ GELU                            │      0 │ train │
+│[2m [0m[2m26 [0m[2m [0m│ net.model.text.transformer.resblocks.1.mlp.c_proj       │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m27 [0m[2m [0m│ net.model.text.transformer.resblocks.1.ls_2             │ Identity                        │      0 │ train │
+│[2m [0m[2m28 [0m[2m [0m│ net.model.text.transformer.resblocks.2                  │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m29 [0m[2m [0m│ net.model.text.transformer.resblocks.2.ln_1             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m30 [0m[2m [0m│ net.model.text.transformer.resblocks.2.attn             │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m31 [0m[2m [0m│ net.model.text.transformer.resblocks.2.attn.out_proj    │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m32 [0m[2m [0m│ net.model.text.transformer.resblocks.2.ls_1             │ Identity                        │      0 │ train │
+│[2m [0m[2m33 [0m[2m [0m│ net.model.text.transformer.resblocks.2.ln_2             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m34 [0m[2m [0m│ net.model.text.transformer.resblocks.2.mlp              │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m35 [0m[2m [0m│ net.model.text.transformer.resblocks.2.mlp.c_fc         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m36 [0m[2m [0m│ net.model.text.transformer.resblocks.2.mlp.gelu         │ GELU                            │      0 │ train │
+│[2m [0m[2m37 [0m[2m [0m│ net.model.text.transformer.resblocks.2.mlp.c_proj       │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m38 [0m[2m [0m│ net.model.text.transformer.resblocks.2.ls_2             │ Identity                        │      0 │ train │
+│[2m [0m[2m39 [0m[2m [0m│ net.model.text.transformer.resblocks.3                  │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m40 [0m[2m [0m│ net.model.text.transformer.resblocks.3.ln_1             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m41 [0m[2m [0m│ net.model.text.transformer.resblocks.3.attn             │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m42 [0m[2m [0m│ net.model.text.transformer.resblocks.3.attn.out_proj    │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m43 [0m[2m [0m│ net.model.text.transformer.resblocks.3.ls_1             │ Identity                        │      0 │ train │
+│[2m [0m[2m44 [0m[2m [0m│ net.model.text.transformer.resblocks.3.ln_2             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m45 [0m[2m [0m│ net.model.text.transformer.resblocks.3.mlp              │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m46 [0m[2m [0m│ net.model.text.transformer.resblocks.3.mlp.c_fc         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m47 [0m[2m [0m│ net.model.text.transformer.resblocks.3.mlp.gelu         │ GELU                            │      0 │ train │
+│[2m [0m[2m48 [0m[2m [0m│ net.model.text.transformer.resblocks.3.mlp.c_proj       │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m49 [0m[2m [0m│ net.model.text.transformer.resblocks.3.ls_2             │ Identity                        │      0 │ train │
+│[2m [0m[2m50 [0m[2m [0m│ net.model.text.transformer.resblocks.4                  │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m51 [0m[2m [0m│ net.model.text.transformer.resblocks.4.ln_1             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m52 [0m[2m [0m│ net.model.text.transformer.resblocks.4.attn             │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m53 [0m[2m [0m│ net.model.text.transformer.resblocks.4.attn.out_proj    │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m54 [0m[2m [0m│ net.model.text.transformer.resblocks.4.ls_1             │ Identity                        │      0 │ train │
+│[2m [0m[2m55 [0m[2m [0m│ net.model.text.transformer.resblocks.4.ln_2             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m56 [0m[2m [0m│ net.model.text.transformer.resblocks.4.mlp              │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m57 [0m[2m [0m│ net.model.text.transformer.resblocks.4.mlp.c_fc         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m58 [0m[2m [0m│ net.model.text.transformer.resblocks.4.mlp.gelu         │ GELU                            │      0 │ train │
+│[2m [0m[2m59 [0m[2m [0m│ net.model.text.transformer.resblocks.4.mlp.c_proj       │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m60 [0m[2m [0m│ net.model.text.transformer.resblocks.4.ls_2             │ Identity                        │      0 │ train │
+│[2m [0m[2m61 [0m[2m [0m│ net.model.text.transformer.resblocks.5                  │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m62 [0m[2m [0m│ net.model.text.transformer.resblocks.5.ln_1             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m63 [0m[2m [0m│ net.model.text.transformer.resblocks.5.attn             │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m64 [0m[2m [0m│ net.model.text.transformer.resblocks.5.attn.out_proj    │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m65 [0m[2m [0m│ net.model.text.transformer.resblocks.5.ls_1             │ Identity                        │      0 │ train │
+│[2m [0m[2m66 [0m[2m [0m│ net.model.text.transformer.resblocks.5.ln_2             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m67 [0m[2m [0m│ net.model.text.transformer.resblocks.5.mlp              │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m68 [0m[2m [0m│ net.model.text.transformer.resblocks.5.mlp.c_fc         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m69 [0m[2m [0m│ net.model.text.transformer.resblocks.5.mlp.gelu         │ GELU                            │      0 │ train │
+│[2m [0m[2m70 [0m[2m [0m│ net.model.text.transformer.resblocks.5.mlp.c_proj       │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m71 [0m[2m [0m│ net.model.text.transformer.resblocks.5.ls_2             │ Identity                        │      0 │ train │
+│[2m [0m[2m72 [0m[2m [0m│ net.model.text.transformer.resblocks.6                  │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m73 [0m[2m [0m│ net.model.text.transformer.resblocks.6.ln_1             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m74 [0m[2m [0m│ net.model.text.transformer.resblocks.6.attn             │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m75 [0m[2m [0m│ net.model.text.transformer.resblocks.6.attn.out_proj    │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m76 [0m[2m [0m│ net.model.text.transformer.resblocks.6.ls_1             │ Identity                        │      0 │ train │
+│[2m [0m[2m77 [0m[2m [0m│ net.model.text.transformer.resblocks.6.ln_2             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m78 [0m[2m [0m│ net.model.text.transformer.resblocks.6.mlp              │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m79 [0m[2m [0m│ net.model.text.transformer.resblocks.6.mlp.c_fc         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m80 [0m[2m [0m│ net.model.text.transformer.resblocks.6.mlp.gelu         │ GELU                            │      0 │ train │
+│[2m [0m[2m81 [0m[2m [0m│ net.model.text.transformer.resblocks.6.mlp.c_proj       │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m82 [0m[2m [0m│ net.model.text.transformer.resblocks.6.ls_2             │ Identity                        │      0 │ train │
+│[2m [0m[2m83 [0m[2m [0m│ net.model.text.transformer.resblocks.7                  │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m84 [0m[2m [0m│ net.model.text.transformer.resblocks.7.ln_1             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m85 [0m[2m [0m│ net.model.text.transformer.resblocks.7.attn             │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m86 [0m[2m [0m│ net.model.text.transformer.resblocks.7.attn.out_proj    │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m87 [0m[2m [0m│ net.model.text.transformer.resblocks.7.ls_1             │ Identity                        │      0 │ train │
+│[2m [0m[2m88 [0m[2m [0m│ net.model.text.transformer.resblocks.7.ln_2             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m89 [0m[2m [0m│ net.model.text.transformer.resblocks.7.mlp              │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m90 [0m[2m [0m│ net.model.text.transformer.resblocks.7.mlp.c_fc         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m91 [0m[2m [0m│ net.model.text.transformer.resblocks.7.mlp.gelu         │ GELU                            │      0 │ train │
+│[2m [0m[2m92 [0m[2m [0m│ net.model.text.transformer.resblocks.7.mlp.c_proj       │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m93 [0m[2m [0m│ net.model.text.transformer.resblocks.7.ls_2             │ Identity                        │      0 │ train │
+│[2m [0m[2m94 [0m[2m [0m│ net.model.text.transformer.resblocks.8                  │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m95 [0m[2m [0m│ net.model.text.transformer.resblocks.8.ln_1             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m96 [0m[2m [0m│ net.model.text.transformer.resblocks.8.attn             │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m97 [0m[2m [0m│ net.model.text.transformer.resblocks.8.attn.out_proj    │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m98 [0m[2m [0m│ net.model.text.transformer.resblocks.8.ls_1             │ Identity                        │      0 │ train │
+│[2m [0m[2m99 [0m[2m [0m│ net.model.text.transformer.resblocks.8.ln_2             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m100[0m[2m [0m│ net.model.text.transformer.resblocks.8.mlp              │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m101[0m[2m [0m│ net.model.text.transformer.resblocks.8.mlp.c_fc         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m102[0m[2m [0m│ net.model.text.transformer.resblocks.8.mlp.gelu         │ GELU                            │      0 │ train │
+│[2m [0m[2m103[0m[2m [0m│ net.model.text.transformer.resblocks.8.mlp.c_proj       │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m104[0m[2m [0m│ net.model.text.transformer.resblocks.8.ls_2             │ Identity                        │      0 │ train │
+│[2m [0m[2m105[0m[2m [0m│ net.model.text.transformer.resblocks.9                  │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m106[0m[2m [0m│ net.model.text.transformer.resblocks.9.ln_1             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m107[0m[2m [0m│ net.model.text.transformer.resblocks.9.attn             │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m108[0m[2m [0m│ net.model.text.transformer.resblocks.9.attn.out_proj    │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m109[0m[2m [0m│ net.model.text.transformer.resblocks.9.ls_1             │ Identity                        │      0 │ train │
+│[2m [0m[2m110[0m[2m [0m│ net.model.text.transformer.resblocks.9.ln_2             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m111[0m[2m [0m│ net.model.text.transformer.resblocks.9.mlp              │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m112[0m[2m [0m│ net.model.text.transformer.resblocks.9.mlp.c_fc         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m113[0m[2m [0m│ net.model.text.transformer.resblocks.9.mlp.gelu         │ GELU                            │      0 │ train │
+│[2m [0m[2m114[0m[2m [0m│ net.model.text.transformer.resblocks.9.mlp.c_proj       │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m115[0m[2m [0m│ net.model.text.transformer.resblocks.9.ls_2             │ Identity                        │      0 │ train │
+│[2m [0m[2m116[0m[2m [0m│ net.model.text.transformer.resblocks.10                 │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m117[0m[2m [0m│ net.model.text.transformer.resblocks.10.ln_1            │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m118[0m[2m [0m│ net.model.text.transformer.resblocks.10.attn            │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m119[0m[2m [0m│ net.model.text.transformer.resblocks.10.attn.out_proj   │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m120[0m[2m [0m│ net.model.text.transformer.resblocks.10.ls_1            │ Identity                        │      0 │ train │
+│[2m [0m[2m121[0m[2m [0m│ net.model.text.transformer.resblocks.10.ln_2            │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m122[0m[2m [0m│ net.model.text.transformer.resblocks.10.mlp             │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m123[0m[2m [0m│ net.model.text.transformer.resblocks.10.mlp.c_fc        │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m124[0m[2m [0m│ net.model.text.transformer.resblocks.10.mlp.gelu        │ GELU                            │      0 │ train │
+│[2m [0m[2m125[0m[2m [0m│ net.model.text.transformer.resblocks.10.mlp.c_proj      │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m126[0m[2m [0m│ net.model.text.transformer.resblocks.10.ls_2            │ Identity                        │      0 │ train │
+│[2m [0m[2m127[0m[2m [0m│ net.model.text.transformer.resblocks.11                 │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m128[0m[2m [0m│ net.model.text.transformer.resblocks.11.ln_1            │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m129[0m[2m [0m│ net.model.text.transformer.resblocks.11.attn            │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m130[0m[2m [0m│ net.model.text.transformer.resblocks.11.attn.out_proj   │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m131[0m[2m [0m│ net.model.text.transformer.resblocks.11.ls_1            │ Identity                        │      0 │ train │
+│[2m [0m[2m132[0m[2m [0m│ net.model.text.transformer.resblocks.11.ln_2            │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m133[0m[2m [0m│ net.model.text.transformer.resblocks.11.mlp             │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m134[0m[2m [0m│ net.model.text.transformer.resblocks.11.mlp.c_fc        │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m135[0m[2m [0m│ net.model.text.transformer.resblocks.11.mlp.gelu        │ GELU                            │      0 │ train │
+│[2m [0m[2m136[0m[2m [0m│ net.model.text.transformer.resblocks.11.mlp.c_proj      │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m137[0m[2m [0m│ net.model.text.transformer.resblocks.11.ls_2            │ Identity                        │      0 │ train │
+│[2m [0m[2m138[0m[2m [0m│ net.model.text.ln_final                                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m139[0m[2m [0m│ net.model.visual                                        │ VisionTransformer               │  306 M │ train │
+│[2m [0m[2m140[0m[2m [0m│ net.model.visual.conv1                                  │ Conv2d                          │  602 K │ train │
+│[2m [0m[2m141[0m[2m [0m│ net.model.visual.patch_dropout                          │ Identity                        │      0 │ train │
+│[2m [0m[2m142[0m[2m [0m│ net.model.visual.ln_pre                                 │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m143[0m[2m [0m│ net.model.visual.transformer                            │ Transformer                     │  302 M │ train │
+│[2m [0m[2m144[0m[2m [0m│ net.model.visual.transformer.resblocks                  │ ModuleList                      │  302 M │ train │
+│[2m [0m[2m145[0m[2m [0m│ net.model.visual.transformer.resblocks.0                │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m146[0m[2m [0m│ net.model.visual.transformer.resblocks.0.ln_1           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m147[0m[2m [0m│ net.model.visual.transformer.resblocks.0.attn           │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m148[0m[2m [0m│ net.model.visual.transformer.resblocks.0.attn.out_proj  │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m149[0m[2m [0m│ net.model.visual.transformer.resblocks.0.ls_1           │ Identity                        │      0 │ train │
+│[2m [0m[2m150[0m[2m [0m│ net.model.visual.transformer.resblocks.0.ln_2           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m151[0m[2m [0m│ net.model.visual.transformer.resblocks.0.mlp            │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m152[0m[2m [0m│ net.model.visual.transformer.resblocks.0.mlp.c_fc       │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m153[0m[2m [0m│ net.model.visual.transformer.resblocks.0.mlp.gelu       │ GELU                            │      0 │ train │
+│[2m [0m[2m154[0m[2m [0m│ net.model.visual.transformer.resblocks.0.mlp.c_proj     │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m155[0m[2m [0m│ net.model.visual.transformer.resblocks.0.ls_2           │ Identity                        │      0 │ train │
+│[2m [0m[2m156[0m[2m [0m│ net.model.visual.transformer.resblocks.1                │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m157[0m[2m [0m│ net.model.visual.transformer.resblocks.1.ln_1           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m158[0m[2m [0m│ net.model.visual.transformer.resblocks.1.attn           │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m159[0m[2m [0m│ net.model.visual.transformer.resblocks.1.attn.out_proj  │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m160[0m[2m [0m│ net.model.visual.transformer.resblocks.1.ls_1           │ Identity                        │      0 │ train │
+│[2m [0m[2m161[0m[2m [0m│ net.model.visual.transformer.resblocks.1.ln_2           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m162[0m[2m [0m│ net.model.visual.transformer.resblocks.1.mlp            │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m163[0m[2m [0m│ net.model.visual.transformer.resblocks.1.mlp.c_fc       │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m164[0m[2m [0m│ net.model.visual.transformer.resblocks.1.mlp.gelu       │ GELU                            │      0 │ train │
+│[2m [0m[2m165[0m[2m [0m│ net.model.visual.transformer.resblocks.1.mlp.c_proj     │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m166[0m[2m [0m│ net.model.visual.transformer.resblocks.1.ls_2           │ Identity                        │      0 │ train │
+│[2m [0m[2m167[0m[2m [0m│ net.model.visual.transformer.resblocks.2                │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m168[0m[2m [0m│ net.model.visual.transformer.resblocks.2.ln_1           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m169[0m[2m [0m│ net.model.visual.transformer.resblocks.2.attn           │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m170[0m[2m [0m│ net.model.visual.transformer.resblocks.2.attn.out_proj  │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m171[0m[2m [0m│ net.model.visual.transformer.resblocks.2.ls_1           │ Identity                        │      0 │ train │
+│[2m [0m[2m172[0m[2m [0m│ net.model.visual.transformer.resblocks.2.ln_2           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m173[0m[2m [0m│ net.model.visual.transformer.resblocks.2.mlp            │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m174[0m[2m [0m│ net.model.visual.transformer.resblocks.2.mlp.c_fc       │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m175[0m[2m [0m│ net.model.visual.transformer.resblocks.2.mlp.gelu       │ GELU                            │      0 │ train │
+│[2m [0m[2m176[0m[2m [0m│ net.model.visual.transformer.resblocks.2.mlp.c_proj     │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m177[0m[2m [0m│ net.model.visual.transformer.resblocks.2.ls_2           │ Identity                        │      0 │ train │
+│[2m [0m[2m178[0m[2m [0m│ net.model.visual.transformer.resblocks.3                │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m179[0m[2m [0m│ net.model.visual.transformer.resblocks.3.ln_1           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m180[0m[2m [0m│ net.model.visual.transformer.resblocks.3.attn           │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m181[0m[2m [0m│ net.model.visual.transformer.resblocks.3.attn.out_proj  │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m182[0m[2m [0m│ net.model.visual.transformer.resblocks.3.ls_1           │ Identity                        │      0 │ train │
+│[2m [0m[2m183[0m[2m [0m│ net.model.visual.transformer.resblocks.3.ln_2           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m184[0m[2m [0m│ net.model.visual.transformer.resblocks.3.mlp            │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m185[0m[2m [0m│ net.model.visual.transformer.resblocks.3.mlp.c_fc       │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m186[0m[2m [0m│ net.model.visual.transformer.resblocks.3.mlp.gelu       │ GELU                            │      0 │ train │
+│[2m [0m[2m187[0m[2m [0m│ net.model.visual.transformer.resblocks.3.mlp.c_proj     │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m188[0m[2m [0m│ net.model.visual.transformer.resblocks.3.ls_2           │ Identity                        │      0 │ train │
+│[2m [0m[2m189[0m[2m [0m│ net.model.visual.transformer.resblocks.4                │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m190[0m[2m [0m│ net.model.visual.transformer.resblocks.4.ln_1           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m191[0m[2m [0m│ net.model.visual.transformer.resblocks.4.attn           │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m192[0m[2m [0m│ net.model.visual.transformer.resblocks.4.attn.out_proj  │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m193[0m[2m [0m│ net.model.visual.transformer.resblocks.4.ls_1           │ Identity                        │      0 │ train │
+│[2m [0m[2m194[0m[2m [0m│ net.model.visual.transformer.resblocks.4.ln_2           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m195[0m[2m [0m│ net.model.visual.transformer.resblocks.4.mlp            │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m196[0m[2m [0m│ net.model.visual.transformer.resblocks.4.mlp.c_fc       │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m197[0m[2m [0m│ net.model.visual.transformer.resblocks.4.mlp.gelu       │ GELU                            │      0 │ train │
+│[2m [0m[2m198[0m[2m [0m│ net.model.visual.transformer.resblocks.4.mlp.c_proj     │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m199[0m[2m [0m│ net.model.visual.transformer.resblocks.4.ls_2           │ Identity                        │      0 │ train │
+│[2m [0m[2m200[0m[2m [0m│ net.model.visual.transformer.resblocks.5                │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m201[0m[2m [0m│ net.model.visual.transformer.resblocks.5.ln_1           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m202[0m[2m [0m│ net.model.visual.transformer.resblocks.5.attn           │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m203[0m[2m [0m│ net.model.visual.transformer.resblocks.5.attn.out_proj  │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m204[0m[2m [0m│ net.model.visual.transformer.resblocks.5.ls_1           │ Identity                        │      0 │ train │
+│[2m [0m[2m205[0m[2m [0m│ net.model.visual.transformer.resblocks.5.ln_2           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m206[0m[2m [0m│ net.model.visual.transformer.resblocks.5.mlp            │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m207[0m[2m [0m│ net.model.visual.transformer.resblocks.5.mlp.c_fc       │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m208[0m[2m [0m│ net.model.visual.transformer.resblocks.5.mlp.gelu       │ GELU                            │      0 │ train │
+│[2m [0m[2m209[0m[2m [0m│ net.model.visual.transformer.resblocks.5.mlp.c_proj     │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m210[0m[2m [0m│ net.model.visual.transformer.resblocks.5.ls_2           │ Identity                        │      0 │ train │
+│[2m [0m[2m211[0m[2m [0m│ net.model.visual.transformer.resblocks.6                │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m212[0m[2m [0m│ net.model.visual.transformer.resblocks.6.ln_1           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m213[0m[2m [0m│ net.model.visual.transformer.resblocks.6.attn           │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m214[0m[2m [0m│ net.model.visual.transformer.resblocks.6.attn.out_proj  │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m215[0m[2m [0m│ net.model.visual.transformer.resblocks.6.ls_1           │ Identity                        │      0 │ train │
+│[2m [0m[2m216[0m[2m [0m│ net.model.visual.transformer.resblocks.6.ln_2           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m217[0m[2m [0m│ net.model.visual.transformer.resblocks.6.mlp            │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m218[0m[2m [0m│ net.model.visual.transformer.resblocks.6.mlp.c_fc       │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m219[0m[2m [0m│ net.model.visual.transformer.resblocks.6.mlp.gelu       │ GELU                            │      0 │ train │
+│[2m [0m[2m220[0m[2m [0m│ net.model.visual.transformer.resblocks.6.mlp.c_proj     │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m221[0m[2m [0m│ net.model.visual.transformer.resblocks.6.ls_2           │ Identity                        │      0 │ train │
+│[2m [0m[2m222[0m[2m [0m│ net.model.visual.transformer.resblocks.7                │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m223[0m[2m [0m│ net.model.visual.transformer.resblocks.7.ln_1           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m224[0m[2m [0m│ net.model.visual.transformer.resblocks.7.attn           │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m225[0m[2m [0m│ net.model.visual.transformer.resblocks.7.attn.out_proj  │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m226[0m[2m [0m│ net.model.visual.transformer.resblocks.7.ls_1           │ Identity                        │      0 │ train │
+│[2m [0m[2m227[0m[2m [0m│ net.model.visual.transformer.resblocks.7.ln_2           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m228[0m[2m [0m│ net.model.visual.transformer.resblocks.7.mlp            │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m229[0m[2m [0m│ net.model.visual.transformer.resblocks.7.mlp.c_fc       │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m230[0m[2m [0m│ net.model.visual.transformer.resblocks.7.mlp.gelu       │ GELU                            │      0 │ train │
+│[2m [0m[2m231[0m[2m [0m│ net.model.visual.transformer.resblocks.7.mlp.c_proj     │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m232[0m[2m [0m│ net.model.visual.transformer.resblocks.7.ls_2           │ Identity                        │      0 │ train │
+│[2m [0m[2m233[0m[2m [0m│ net.model.visual.transformer.resblocks.8                │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m234[0m[2m [0m│ net.model.visual.transformer.resblocks.8.ln_1           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m235[0m[2m [0m│ net.model.visual.transformer.resblocks.8.attn           │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m236[0m[2m [0m│ net.model.visual.transformer.resblocks.8.attn.out_proj  │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m237[0m[2m [0m│ net.model.visual.transformer.resblocks.8.ls_1           │ Identity                        │      0 │ train │
+│[2m [0m[2m238[0m[2m [0m│ net.model.visual.transformer.resblocks.8.ln_2           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m239[0m[2m [0m│ net.model.visual.transformer.resblocks.8.mlp            │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m240[0m[2m [0m│ net.model.visual.transformer.resblocks.8.mlp.c_fc       │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m241[0m[2m [0m│ net.model.visual.transformer.resblocks.8.mlp.gelu       │ GELU                            │      0 │ train │
+│[2m [0m[2m242[0m[2m [0m│ net.model.visual.transformer.resblocks.8.mlp.c_proj     │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m243[0m[2m [0m│ net.model.visual.transformer.resblocks.8.ls_2           │ Identity                        │      0 │ train │
+│[2m [0m[2m244[0m[2m [0m│ net.model.visual.transformer.resblocks.9                │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m245[0m[2m [0m│ net.model.visual.transformer.resblocks.9.ln_1           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m246[0m[2m [0m│ net.model.visual.transformer.resblocks.9.attn           │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m247[0m[2m [0m│ net.model.visual.transformer.resblocks.9.attn.out_proj  │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m248[0m[2m [0m│ net.model.visual.transformer.resblocks.9.ls_1           │ Identity                        │      0 │ train │
+│[2m [0m[2m249[0m[2m [0m│ net.model.visual.transformer.resblocks.9.ln_2           │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m250[0m[2m [0m│ net.model.visual.transformer.resblocks.9.mlp            │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m251[0m[2m [0m│ net.model.visual.transformer.resblocks.9.mlp.c_fc       │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m252[0m[2m [0m│ net.model.visual.transformer.resblocks.9.mlp.gelu       │ GELU                            │      0 │ train │
+│[2m [0m[2m253[0m[2m [0m│ net.model.visual.transformer.resblocks.9.mlp.c_proj     │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m254[0m[2m [0m│ net.model.visual.transformer.resblocks.9.ls_2           │ Identity                        │      0 │ train │
+│[2m [0m[2m255[0m[2m [0m│ net.model.visual.transformer.resblocks.10               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m256[0m[2m [0m│ net.model.visual.transformer.resblocks.10.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m257[0m[2m [0m│ net.model.visual.transformer.resblocks.10.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m258[0m[2m [0m│ net.model.visual.transformer.resblocks.10.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m259[0m[2m [0m│ net.model.visual.transformer.resblocks.10.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m260[0m[2m [0m│ net.model.visual.transformer.resblocks.10.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m261[0m[2m [0m│ net.model.visual.transformer.resblocks.10.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m262[0m[2m [0m│ net.model.visual.transformer.resblocks.10.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m263[0m[2m [0m│ net.model.visual.transformer.resblocks.10.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m264[0m[2m [0m│ net.model.visual.transformer.resblocks.10.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m265[0m[2m [0m│ net.model.visual.transformer.resblocks.10.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m266[0m[2m [0m│ net.model.visual.transformer.resblocks.11               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m267[0m[2m [0m│ net.model.visual.transformer.resblocks.11.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m268[0m[2m [0m│ net.model.visual.transformer.resblocks.11.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m269[0m[2m [0m│ net.model.visual.transformer.resblocks.11.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m270[0m[2m [0m│ net.model.visual.transformer.resblocks.11.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m271[0m[2m [0m│ net.model.visual.transformer.resblocks.11.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m272[0m[2m [0m│ net.model.visual.transformer.resblocks.11.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m273[0m[2m [0m│ net.model.visual.transformer.resblocks.11.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m274[0m[2m [0m│ net.model.visual.transformer.resblocks.11.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m275[0m[2m [0m│ net.model.visual.transformer.resblocks.11.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m276[0m[2m [0m│ net.model.visual.transformer.resblocks.11.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m277[0m[2m [0m│ net.model.visual.transformer.resblocks.12               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m278[0m[2m [0m│ net.model.visual.transformer.resblocks.12.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m279[0m[2m [0m│ net.model.visual.transformer.resblocks.12.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m280[0m[2m [0m│ net.model.visual.transformer.resblocks.12.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m281[0m[2m [0m│ net.model.visual.transformer.resblocks.12.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m282[0m[2m [0m│ net.model.visual.transformer.resblocks.12.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m283[0m[2m [0m│ net.model.visual.transformer.resblocks.12.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m284[0m[2m [0m│ net.model.visual.transformer.resblocks.12.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m285[0m[2m [0m│ net.model.visual.transformer.resblocks.12.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m286[0m[2m [0m│ net.model.visual.transformer.resblocks.12.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m287[0m[2m [0m│ net.model.visual.transformer.resblocks.12.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m288[0m[2m [0m│ net.model.visual.transformer.resblocks.13               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m289[0m[2m [0m│ net.model.visual.transformer.resblocks.13.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m290[0m[2m [0m│ net.model.visual.transformer.resblocks.13.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m291[0m[2m [0m│ net.model.visual.transformer.resblocks.13.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m292[0m[2m [0m│ net.model.visual.transformer.resblocks.13.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m293[0m[2m [0m│ net.model.visual.transformer.resblocks.13.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m294[0m[2m [0m│ net.model.visual.transformer.resblocks.13.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m295[0m[2m [0m│ net.model.visual.transformer.resblocks.13.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m296[0m[2m [0m│ net.model.visual.transformer.resblocks.13.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m297[0m[2m [0m│ net.model.visual.transformer.resblocks.13.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m298[0m[2m [0m│ net.model.visual.transformer.resblocks.13.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m299[0m[2m [0m│ net.model.visual.transformer.resblocks.14               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m300[0m[2m [0m│ net.model.visual.transformer.resblocks.14.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m301[0m[2m [0m│ net.model.visual.transformer.resblocks.14.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m302[0m[2m [0m│ net.model.visual.transformer.resblocks.14.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m303[0m[2m [0m│ net.model.visual.transformer.resblocks.14.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m304[0m[2m [0m│ net.model.visual.transformer.resblocks.14.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m305[0m[2m [0m│ net.model.visual.transformer.resblocks.14.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m306[0m[2m [0m│ net.model.visual.transformer.resblocks.14.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m307[0m[2m [0m│ net.model.visual.transformer.resblocks.14.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m308[0m[2m [0m│ net.model.visual.transformer.resblocks.14.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m309[0m[2m [0m│ net.model.visual.transformer.resblocks.14.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m310[0m[2m [0m│ net.model.visual.transformer.resblocks.15               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m311[0m[2m [0m│ net.model.visual.transformer.resblocks.15.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m312[0m[2m [0m│ net.model.visual.transformer.resblocks.15.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m313[0m[2m [0m│ net.model.visual.transformer.resblocks.15.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m314[0m[2m [0m│ net.model.visual.transformer.resblocks.15.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m315[0m[2m [0m│ net.model.visual.transformer.resblocks.15.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m316[0m[2m [0m│ net.model.visual.transformer.resblocks.15.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m317[0m[2m [0m│ net.model.visual.transformer.resblocks.15.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m318[0m[2m [0m│ net.model.visual.transformer.resblocks.15.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m319[0m[2m [0m│ net.model.visual.transformer.resblocks.15.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m320[0m[2m [0m│ net.model.visual.transformer.resblocks.15.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m321[0m[2m [0m│ net.model.visual.transformer.resblocks.16               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m322[0m[2m [0m│ net.model.visual.transformer.resblocks.16.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m323[0m[2m [0m│ net.model.visual.transformer.resblocks.16.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m324[0m[2m [0m│ net.model.visual.transformer.resblocks.16.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m325[0m[2m [0m│ net.model.visual.transformer.resblocks.16.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m326[0m[2m [0m│ net.model.visual.transformer.resblocks.16.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m327[0m[2m [0m│ net.model.visual.transformer.resblocks.16.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m328[0m[2m [0m│ net.model.visual.transformer.resblocks.16.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m329[0m[2m [0m│ net.model.visual.transformer.resblocks.16.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m330[0m[2m [0m│ net.model.visual.transformer.resblocks.16.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m331[0m[2m [0m│ net.model.visual.transformer.resblocks.16.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m332[0m[2m [0m│ net.model.visual.transformer.resblocks.17               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m333[0m[2m [0m│ net.model.visual.transformer.resblocks.17.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m334[0m[2m [0m│ net.model.visual.transformer.resblocks.17.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m335[0m[2m [0m│ net.model.visual.transformer.resblocks.17.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m336[0m[2m [0m│ net.model.visual.transformer.resblocks.17.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m337[0m[2m [0m│ net.model.visual.transformer.resblocks.17.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m338[0m[2m [0m│ net.model.visual.transformer.resblocks.17.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m339[0m[2m [0m│ net.model.visual.transformer.resblocks.17.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m340[0m[2m [0m│ net.model.visual.transformer.resblocks.17.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m341[0m[2m [0m│ net.model.visual.transformer.resblocks.17.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m342[0m[2m [0m│ net.model.visual.transformer.resblocks.17.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m343[0m[2m [0m│ net.model.visual.transformer.resblocks.18               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m344[0m[2m [0m│ net.model.visual.transformer.resblocks.18.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m345[0m[2m [0m│ net.model.visual.transformer.resblocks.18.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m346[0m[2m [0m│ net.model.visual.transformer.resblocks.18.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m347[0m[2m [0m│ net.model.visual.transformer.resblocks.18.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m348[0m[2m [0m│ net.model.visual.transformer.resblocks.18.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m349[0m[2m [0m│ net.model.visual.transformer.resblocks.18.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m350[0m[2m [0m│ net.model.visual.transformer.resblocks.18.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m351[0m[2m [0m│ net.model.visual.transformer.resblocks.18.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m352[0m[2m [0m│ net.model.visual.transformer.resblocks.18.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m353[0m[2m [0m│ net.model.visual.transformer.resblocks.18.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m354[0m[2m [0m│ net.model.visual.transformer.resblocks.19               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m355[0m[2m [0m│ net.model.visual.transformer.resblocks.19.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m356[0m[2m [0m│ net.model.visual.transformer.resblocks.19.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m357[0m[2m [0m│ net.model.visual.transformer.resblocks.19.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m358[0m[2m [0m│ net.model.visual.transformer.resblocks.19.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m359[0m[2m [0m│ net.model.visual.transformer.resblocks.19.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m360[0m[2m [0m│ net.model.visual.transformer.resblocks.19.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m361[0m[2m [0m│ net.model.visual.transformer.resblocks.19.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m362[0m[2m [0m│ net.model.visual.transformer.resblocks.19.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m363[0m[2m [0m│ net.model.visual.transformer.resblocks.19.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m364[0m[2m [0m│ net.model.visual.transformer.resblocks.19.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m365[0m[2m [0m│ net.model.visual.transformer.resblocks.20               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m366[0m[2m [0m│ net.model.visual.transformer.resblocks.20.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m367[0m[2m [0m│ net.model.visual.transformer.resblocks.20.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m368[0m[2m [0m│ net.model.visual.transformer.resblocks.20.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m369[0m[2m [0m│ net.model.visual.transformer.resblocks.20.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m370[0m[2m [0m│ net.model.visual.transformer.resblocks.20.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m371[0m[2m [0m│ net.model.visual.transformer.resblocks.20.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m372[0m[2m [0m│ net.model.visual.transformer.resblocks.20.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m373[0m[2m [0m│ net.model.visual.transformer.resblocks.20.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m374[0m[2m [0m│ net.model.visual.transformer.resblocks.20.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m375[0m[2m [0m│ net.model.visual.transformer.resblocks.20.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m376[0m[2m [0m│ net.model.visual.transformer.resblocks.21               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m377[0m[2m [0m│ net.model.visual.transformer.resblocks.21.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m378[0m[2m [0m│ net.model.visual.transformer.resblocks.21.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m379[0m[2m [0m│ net.model.visual.transformer.resblocks.21.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m380[0m[2m [0m│ net.model.visual.transformer.resblocks.21.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m381[0m[2m [0m│ net.model.visual.transformer.resblocks.21.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m382[0m[2m [0m│ net.model.visual.transformer.resblocks.21.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m383[0m[2m [0m│ net.model.visual.transformer.resblocks.21.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m384[0m[2m [0m│ net.model.visual.transformer.resblocks.21.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m385[0m[2m [0m│ net.model.visual.transformer.resblocks.21.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m386[0m[2m [0m│ net.model.visual.transformer.resblocks.21.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m387[0m[2m [0m│ net.model.visual.transformer.resblocks.22               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m388[0m[2m [0m│ net.model.visual.transformer.resblocks.22.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m389[0m[2m [0m│ net.model.visual.transformer.resblocks.22.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m390[0m[2m [0m│ net.model.visual.transformer.resblocks.22.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m391[0m[2m [0m│ net.model.visual.transformer.resblocks.22.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m392[0m[2m [0m│ net.model.visual.transformer.resblocks.22.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m393[0m[2m [0m│ net.model.visual.transformer.resblocks.22.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m394[0m[2m [0m│ net.model.visual.transformer.resblocks.22.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m395[0m[2m [0m│ net.model.visual.transformer.resblocks.22.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m396[0m[2m [0m│ net.model.visual.transformer.resblocks.22.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m397[0m[2m [0m│ net.model.visual.transformer.resblocks.22.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m398[0m[2m [0m│ net.model.visual.transformer.resblocks.23               │ ResidualAttentionBlock          │ 12.6 M │ train │
+│[2m [0m[2m399[0m[2m [0m│ net.model.visual.transformer.resblocks.23.ln_1          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m400[0m[2m [0m│ net.model.visual.transformer.resblocks.23.attn          │ MultiheadAttention              │  4.2 M │ train │
+│[2m [0m[2m401[0m[2m [0m│ net.model.visual.transformer.resblocks.23.attn.out_proj │ NonDynamicallyQuantizableLinear │  1.0 M │ train │
+│[2m [0m[2m402[0m[2m [0m│ net.model.visual.transformer.resblocks.23.ls_1          │ Identity                        │      0 │ train │
+│[2m [0m[2m403[0m[2m [0m│ net.model.visual.transformer.resblocks.23.ln_2          │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m404[0m[2m [0m│ net.model.visual.transformer.resblocks.23.mlp           │ Sequential                      │  8.4 M │ train │
+│[2m [0m[2m405[0m[2m [0m│ net.model.visual.transformer.resblocks.23.mlp.c_fc      │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m406[0m[2m [0m│ net.model.visual.transformer.resblocks.23.mlp.gelu      │ GELU                            │      0 │ train │
+│[2m [0m[2m407[0m[2m [0m│ net.model.visual.transformer.resblocks.23.mlp.c_proj    │ Linear                          │  4.2 M │ train │
+│[2m [0m[2m408[0m[2m [0m│ net.model.visual.transformer.resblocks.23.ls_2          │ Identity                        │      0 │ train │
+│[2m [0m[2m409[0m[2m [0m│ net.model.visual.attn_pool                              │ AttentionalPooler               │  3.0 M │ train │
+│[2m [0m[2m410[0m[2m [0m│ net.model.visual.attn_pool.attn                         │ MultiheadAttention              │  2.8 M │ train │
+│[2m [0m[2m411[0m[2m [0m│ net.model.visual.attn_pool.attn.out_proj                │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m412[0m[2m [0m│ net.model.visual.attn_pool.ln_q                         │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m413[0m[2m [0m│ net.model.visual.attn_pool.ln_k                         │ LayerNorm                       │  2.0 K │ train │
+│[2m [0m[2m414[0m[2m [0m│ net.model.visual.ln_post                                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m415[0m[2m [0m│ net.model.text_decoder                                  │ MultimodalTransformer           │  208 M │ train │
+│[2m [0m[2m416[0m[2m [0m│ net.model.text_decoder.resblocks                        │ ModuleList                      │ 85.1 M │ train │
+│[2m [0m[2m417[0m[2m [0m│ net.model.text_decoder.resblocks.0                      │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m418[0m[2m [0m│ net.model.text_decoder.resblocks.0.ln_1                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m419[0m[2m [0m│ net.model.text_decoder.resblocks.0.attn                 │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m420[0m[2m [0m│ net.model.text_decoder.resblocks.0.attn.out_proj        │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m421[0m[2m [0m│ net.model.text_decoder.resblocks.0.ls_1                 │ Identity                        │      0 │ train │
+│[2m [0m[2m422[0m[2m [0m│ net.model.text_decoder.resblocks.0.ln_2                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m423[0m[2m [0m│ net.model.text_decoder.resblocks.0.mlp                  │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m424[0m[2m [0m│ net.model.text_decoder.resblocks.0.mlp.c_fc             │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m425[0m[2m [0m│ net.model.text_decoder.resblocks.0.mlp.gelu             │ GELU                            │      0 │ train │
+│[2m [0m[2m426[0m[2m [0m│ net.model.text_decoder.resblocks.0.mlp.c_proj           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m427[0m[2m [0m│ net.model.text_decoder.resblocks.0.ls_2                 │ Identity                        │      0 │ train │
+│[2m [0m[2m428[0m[2m [0m│ net.model.text_decoder.resblocks.1                      │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m429[0m[2m [0m│ net.model.text_decoder.resblocks.1.ln_1                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m430[0m[2m [0m│ net.model.text_decoder.resblocks.1.attn                 │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m431[0m[2m [0m│ net.model.text_decoder.resblocks.1.attn.out_proj        │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m432[0m[2m [0m│ net.model.text_decoder.resblocks.1.ls_1                 │ Identity                        │      0 │ train │
+│[2m [0m[2m433[0m[2m [0m│ net.model.text_decoder.resblocks.1.ln_2                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m434[0m[2m [0m│ net.model.text_decoder.resblocks.1.mlp                  │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m435[0m[2m [0m│ net.model.text_decoder.resblocks.1.mlp.c_fc             │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m436[0m[2m [0m│ net.model.text_decoder.resblocks.1.mlp.gelu             │ GELU                            │      0 │ train │
+│[2m [0m[2m437[0m[2m [0m│ net.model.text_decoder.resblocks.1.mlp.c_proj           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m438[0m[2m [0m│ net.model.text_decoder.resblocks.1.ls_2                 │ Identity                        │      0 │ train │
+│[2m [0m[2m439[0m[2m [0m│ net.model.text_decoder.resblocks.2                      │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m440[0m[2m [0m│ net.model.text_decoder.resblocks.2.ln_1                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m441[0m[2m [0m│ net.model.text_decoder.resblocks.2.attn                 │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m442[0m[2m [0m│ net.model.text_decoder.resblocks.2.attn.out_proj        │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m443[0m[2m [0m│ net.model.text_decoder.resblocks.2.ls_1                 │ Identity                        │      0 │ train │
+│[2m [0m[2m444[0m[2m [0m│ net.model.text_decoder.resblocks.2.ln_2                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m445[0m[2m [0m│ net.model.text_decoder.resblocks.2.mlp                  │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m446[0m[2m [0m│ net.model.text_decoder.resblocks.2.mlp.c_fc             │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m447[0m[2m [0m│ net.model.text_decoder.resblocks.2.mlp.gelu             │ GELU                            │      0 │ train │
+│[2m [0m[2m448[0m[2m [0m│ net.model.text_decoder.resblocks.2.mlp.c_proj           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m449[0m[2m [0m│ net.model.text_decoder.resblocks.2.ls_2                 │ Identity                        │      0 │ train │
+│[2m [0m[2m450[0m[2m [0m│ net.model.text_decoder.resblocks.3                      │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m451[0m[2m [0m│ net.model.text_decoder.resblocks.3.ln_1                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m452[0m[2m [0m│ net.model.text_decoder.resblocks.3.attn                 │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m453[0m[2m [0m│ net.model.text_decoder.resblocks.3.attn.out_proj        │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m454[0m[2m [0m│ net.model.text_decoder.resblocks.3.ls_1                 │ Identity                        │      0 │ train │
+│[2m [0m[2m455[0m[2m [0m│ net.model.text_decoder.resblocks.3.ln_2                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m456[0m[2m [0m│ net.model.text_decoder.resblocks.3.mlp                  │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m457[0m[2m [0m│ net.model.text_decoder.resblocks.3.mlp.c_fc             │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m458[0m[2m [0m│ net.model.text_decoder.resblocks.3.mlp.gelu             │ GELU                            │      0 │ train │
+│[2m [0m[2m459[0m[2m [0m│ net.model.text_decoder.resblocks.3.mlp.c_proj           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m460[0m[2m [0m│ net.model.text_decoder.resblocks.3.ls_2                 │ Identity                        │      0 │ train │
+│[2m [0m[2m461[0m[2m [0m│ net.model.text_decoder.resblocks.4                      │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m462[0m[2m [0m│ net.model.text_decoder.resblocks.4.ln_1                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m463[0m[2m [0m│ net.model.text_decoder.resblocks.4.attn                 │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m464[0m[2m [0m│ net.model.text_decoder.resblocks.4.attn.out_proj        │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m465[0m[2m [0m│ net.model.text_decoder.resblocks.4.ls_1                 │ Identity                        │      0 │ train │
+│[2m [0m[2m466[0m[2m [0m│ net.model.text_decoder.resblocks.4.ln_2                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m467[0m[2m [0m│ net.model.text_decoder.resblocks.4.mlp                  │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m468[0m[2m [0m│ net.model.text_decoder.resblocks.4.mlp.c_fc             │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m469[0m[2m [0m│ net.model.text_decoder.resblocks.4.mlp.gelu             │ GELU                            │      0 │ train │
+│[2m [0m[2m470[0m[2m [0m│ net.model.text_decoder.resblocks.4.mlp.c_proj           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m471[0m[2m [0m│ net.model.text_decoder.resblocks.4.ls_2                 │ Identity                        │      0 │ train │
+│[2m [0m[2m472[0m[2m [0m│ net.model.text_decoder.resblocks.5                      │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m473[0m[2m [0m│ net.model.text_decoder.resblocks.5.ln_1                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m474[0m[2m [0m│ net.model.text_decoder.resblocks.5.attn                 │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m475[0m[2m [0m│ net.model.text_decoder.resblocks.5.attn.out_proj        │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m476[0m[2m [0m│ net.model.text_decoder.resblocks.5.ls_1                 │ Identity                        │      0 │ train │
+│[2m [0m[2m477[0m[2m [0m│ net.model.text_decoder.resblocks.5.ln_2                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m478[0m[2m [0m│ net.model.text_decoder.resblocks.5.mlp                  │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m479[0m[2m [0m│ net.model.text_decoder.resblocks.5.mlp.c_fc             │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m480[0m[2m [0m│ net.model.text_decoder.resblocks.5.mlp.gelu             │ GELU                            │      0 │ train │
+│[2m [0m[2m481[0m[2m [0m│ net.model.text_decoder.resblocks.5.mlp.c_proj           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m482[0m[2m [0m│ net.model.text_decoder.resblocks.5.ls_2                 │ Identity                        │      0 │ train │
+│[2m [0m[2m483[0m[2m [0m│ net.model.text_decoder.resblocks.6                      │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m484[0m[2m [0m│ net.model.text_decoder.resblocks.6.ln_1                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m485[0m[2m [0m│ net.model.text_decoder.resblocks.6.attn                 │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m486[0m[2m [0m│ net.model.text_decoder.resblocks.6.attn.out_proj        │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m487[0m[2m [0m│ net.model.text_decoder.resblocks.6.ls_1                 │ Identity                        │      0 │ train │
+│[2m [0m[2m488[0m[2m [0m│ net.model.text_decoder.resblocks.6.ln_2                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m489[0m[2m [0m│ net.model.text_decoder.resblocks.6.mlp                  │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m490[0m[2m [0m│ net.model.text_decoder.resblocks.6.mlp.c_fc             │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m491[0m[2m [0m│ net.model.text_decoder.resblocks.6.mlp.gelu             │ GELU                            │      0 │ train │
+│[2m [0m[2m492[0m[2m [0m│ net.model.text_decoder.resblocks.6.mlp.c_proj           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m493[0m[2m [0m│ net.model.text_decoder.resblocks.6.ls_2                 │ Identity                        │      0 │ train │
+│[2m [0m[2m494[0m[2m [0m│ net.model.text_decoder.resblocks.7                      │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m495[0m[2m [0m│ net.model.text_decoder.resblocks.7.ln_1                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m496[0m[2m [0m│ net.model.text_decoder.resblocks.7.attn                 │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m497[0m[2m [0m│ net.model.text_decoder.resblocks.7.attn.out_proj        │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m498[0m[2m [0m│ net.model.text_decoder.resblocks.7.ls_1                 │ Identity                        │      0 │ train │
+│[2m [0m[2m499[0m[2m [0m│ net.model.text_decoder.resblocks.7.ln_2                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m500[0m[2m [0m│ net.model.text_decoder.resblocks.7.mlp                  │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m501[0m[2m [0m│ net.model.text_decoder.resblocks.7.mlp.c_fc             │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m502[0m[2m [0m│ net.model.text_decoder.resblocks.7.mlp.gelu             │ GELU                            │      0 │ train │
+│[2m [0m[2m503[0m[2m [0m│ net.model.text_decoder.resblocks.7.mlp.c_proj           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m504[0m[2m [0m│ net.model.text_decoder.resblocks.7.ls_2                 │ Identity                        │      0 │ train │
+│[2m [0m[2m505[0m[2m [0m│ net.model.text_decoder.resblocks.8                      │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m506[0m[2m [0m│ net.model.text_decoder.resblocks.8.ln_1                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m507[0m[2m [0m│ net.model.text_decoder.resblocks.8.attn                 │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m508[0m[2m [0m│ net.model.text_decoder.resblocks.8.attn.out_proj        │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m509[0m[2m [0m│ net.model.text_decoder.resblocks.8.ls_1                 │ Identity                        │      0 │ train │
+│[2m [0m[2m510[0m[2m [0m│ net.model.text_decoder.resblocks.8.ln_2                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m511[0m[2m [0m│ net.model.text_decoder.resblocks.8.mlp                  │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m512[0m[2m [0m│ net.model.text_decoder.resblocks.8.mlp.c_fc             │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m513[0m[2m [0m│ net.model.text_decoder.resblocks.8.mlp.gelu             │ GELU                            │      0 │ train │
+│[2m [0m[2m514[0m[2m [0m│ net.model.text_decoder.resblocks.8.mlp.c_proj           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m515[0m[2m [0m│ net.model.text_decoder.resblocks.8.ls_2                 │ Identity                        │      0 │ train │
+│[2m [0m[2m516[0m[2m [0m│ net.model.text_decoder.resblocks.9                      │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m517[0m[2m [0m│ net.model.text_decoder.resblocks.9.ln_1                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m518[0m[2m [0m│ net.model.text_decoder.resblocks.9.attn                 │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m519[0m[2m [0m│ net.model.text_decoder.resblocks.9.attn.out_proj        │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m520[0m[2m [0m│ net.model.text_decoder.resblocks.9.ls_1                 │ Identity                        │      0 │ train │
+│[2m [0m[2m521[0m[2m [0m│ net.model.text_decoder.resblocks.9.ln_2                 │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m522[0m[2m [0m│ net.model.text_decoder.resblocks.9.mlp                  │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m523[0m[2m [0m│ net.model.text_decoder.resblocks.9.mlp.c_fc             │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m524[0m[2m [0m│ net.model.text_decoder.resblocks.9.mlp.gelu             │ GELU                            │      0 │ train │
+│[2m [0m[2m525[0m[2m [0m│ net.model.text_decoder.resblocks.9.mlp.c_proj           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m526[0m[2m [0m│ net.model.text_decoder.resblocks.9.ls_2                 │ Identity                        │      0 │ train │
+│[2m [0m[2m527[0m[2m [0m│ net.model.text_decoder.resblocks.10                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m528[0m[2m [0m│ net.model.text_decoder.resblocks.10.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m529[0m[2m [0m│ net.model.text_decoder.resblocks.10.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m530[0m[2m [0m│ net.model.text_decoder.resblocks.10.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m531[0m[2m [0m│ net.model.text_decoder.resblocks.10.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m532[0m[2m [0m│ net.model.text_decoder.resblocks.10.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m533[0m[2m [0m│ net.model.text_decoder.resblocks.10.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m534[0m[2m [0m│ net.model.text_decoder.resblocks.10.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m535[0m[2m [0m│ net.model.text_decoder.resblocks.10.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m536[0m[2m [0m│ net.model.text_decoder.resblocks.10.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m537[0m[2m [0m│ net.model.text_decoder.resblocks.10.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m538[0m[2m [0m│ net.model.text_decoder.resblocks.11                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m539[0m[2m [0m│ net.model.text_decoder.resblocks.11.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m540[0m[2m [0m│ net.model.text_decoder.resblocks.11.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m541[0m[2m [0m│ net.model.text_decoder.resblocks.11.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m542[0m[2m [0m│ net.model.text_decoder.resblocks.11.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m543[0m[2m [0m│ net.model.text_decoder.resblocks.11.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m544[0m[2m [0m│ net.model.text_decoder.resblocks.11.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m545[0m[2m [0m│ net.model.text_decoder.resblocks.11.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m546[0m[2m [0m│ net.model.text_decoder.resblocks.11.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m547[0m[2m [0m│ net.model.text_decoder.resblocks.11.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m548[0m[2m [0m│ net.model.text_decoder.resblocks.11.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m549[0m[2m [0m│ net.model.text_decoder.cross_attn                       │ ModuleList                      │ 85.1 M │ train │
+│[2m [0m[2m550[0m[2m [0m│ net.model.text_decoder.cross_attn.0                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m551[0m[2m [0m│ net.model.text_decoder.cross_attn.0.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m552[0m[2m [0m│ net.model.text_decoder.cross_attn.0.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m553[0m[2m [0m│ net.model.text_decoder.cross_attn.0.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m554[0m[2m [0m│ net.model.text_decoder.cross_attn.0.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m555[0m[2m [0m│ net.model.text_decoder.cross_attn.0.ln_1_kv             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m556[0m[2m [0m│ net.model.text_decoder.cross_attn.0.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m557[0m[2m [0m│ net.model.text_decoder.cross_attn.0.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m558[0m[2m [0m│ net.model.text_decoder.cross_attn.0.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m559[0m[2m [0m│ net.model.text_decoder.cross_attn.0.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m560[0m[2m [0m│ net.model.text_decoder.cross_attn.0.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m561[0m[2m [0m│ net.model.text_decoder.cross_attn.0.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m562[0m[2m [0m│ net.model.text_decoder.cross_attn.1                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m563[0m[2m [0m│ net.model.text_decoder.cross_attn.1.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m564[0m[2m [0m│ net.model.text_decoder.cross_attn.1.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m565[0m[2m [0m│ net.model.text_decoder.cross_attn.1.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m566[0m[2m [0m│ net.model.text_decoder.cross_attn.1.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m567[0m[2m [0m│ net.model.text_decoder.cross_attn.1.ln_1_kv             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m568[0m[2m [0m│ net.model.text_decoder.cross_attn.1.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m569[0m[2m [0m│ net.model.text_decoder.cross_attn.1.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m570[0m[2m [0m│ net.model.text_decoder.cross_attn.1.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m571[0m[2m [0m│ net.model.text_decoder.cross_attn.1.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m572[0m[2m [0m│ net.model.text_decoder.cross_attn.1.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m573[0m[2m [0m│ net.model.text_decoder.cross_attn.1.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m574[0m[2m [0m│ net.model.text_decoder.cross_attn.2                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m575[0m[2m [0m│ net.model.text_decoder.cross_attn.2.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m576[0m[2m [0m│ net.model.text_decoder.cross_attn.2.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m577[0m[2m [0m│ net.model.text_decoder.cross_attn.2.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m578[0m[2m [0m│ net.model.text_decoder.cross_attn.2.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m579[0m[2m [0m│ net.model.text_decoder.cross_attn.2.ln_1_kv             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m580[0m[2m [0m│ net.model.text_decoder.cross_attn.2.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m581[0m[2m [0m│ net.model.text_decoder.cross_attn.2.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m582[0m[2m [0m│ net.model.text_decoder.cross_attn.2.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m583[0m[2m [0m│ net.model.text_decoder.cross_attn.2.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m584[0m[2m [0m│ net.model.text_decoder.cross_attn.2.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m585[0m[2m [0m│ net.model.text_decoder.cross_attn.2.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m586[0m[2m [0m│ net.model.text_decoder.cross_attn.3                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m587[0m[2m [0m│ net.model.text_decoder.cross_attn.3.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m588[0m[2m [0m│ net.model.text_decoder.cross_attn.3.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m589[0m[2m [0m│ net.model.text_decoder.cross_attn.3.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m590[0m[2m [0m│ net.model.text_decoder.cross_attn.3.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m591[0m[2m [0m│ net.model.text_decoder.cross_attn.3.ln_1_kv             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m592[0m[2m [0m│ net.model.text_decoder.cross_attn.3.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m593[0m[2m [0m│ net.model.text_decoder.cross_attn.3.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m594[0m[2m [0m│ net.model.text_decoder.cross_attn.3.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m595[0m[2m [0m│ net.model.text_decoder.cross_attn.3.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m596[0m[2m [0m│ net.model.text_decoder.cross_attn.3.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m597[0m[2m [0m│ net.model.text_decoder.cross_attn.3.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m598[0m[2m [0m│ net.model.text_decoder.cross_attn.4                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m599[0m[2m [0m│ net.model.text_decoder.cross_attn.4.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m600[0m[2m [0m│ net.model.text_decoder.cross_attn.4.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m601[0m[2m [0m│ net.model.text_decoder.cross_attn.4.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m602[0m[2m [0m│ net.model.text_decoder.cross_attn.4.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m603[0m[2m [0m│ net.model.text_decoder.cross_attn.4.ln_1_kv             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m604[0m[2m [0m│ net.model.text_decoder.cross_attn.4.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m605[0m[2m [0m│ net.model.text_decoder.cross_attn.4.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m606[0m[2m [0m│ net.model.text_decoder.cross_attn.4.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m607[0m[2m [0m│ net.model.text_decoder.cross_attn.4.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m608[0m[2m [0m│ net.model.text_decoder.cross_attn.4.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m609[0m[2m [0m│ net.model.text_decoder.cross_attn.4.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m610[0m[2m [0m│ net.model.text_decoder.cross_attn.5                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m611[0m[2m [0m│ net.model.text_decoder.cross_attn.5.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m612[0m[2m [0m│ net.model.text_decoder.cross_attn.5.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m613[0m[2m [0m│ net.model.text_decoder.cross_attn.5.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m614[0m[2m [0m│ net.model.text_decoder.cross_attn.5.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m615[0m[2m [0m│ net.model.text_decoder.cross_attn.5.ln_1_kv             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m616[0m[2m [0m│ net.model.text_decoder.cross_attn.5.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m617[0m[2m [0m│ net.model.text_decoder.cross_attn.5.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m618[0m[2m [0m│ net.model.text_decoder.cross_attn.5.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m619[0m[2m [0m│ net.model.text_decoder.cross_attn.5.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m620[0m[2m [0m│ net.model.text_decoder.cross_attn.5.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m621[0m[2m [0m│ net.model.text_decoder.cross_attn.5.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m622[0m[2m [0m│ net.model.text_decoder.cross_attn.6                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m623[0m[2m [0m│ net.model.text_decoder.cross_attn.6.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m624[0m[2m [0m│ net.model.text_decoder.cross_attn.6.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m625[0m[2m [0m│ net.model.text_decoder.cross_attn.6.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m626[0m[2m [0m│ net.model.text_decoder.cross_attn.6.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m627[0m[2m [0m│ net.model.text_decoder.cross_attn.6.ln_1_kv             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m628[0m[2m [0m│ net.model.text_decoder.cross_attn.6.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m629[0m[2m [0m│ net.model.text_decoder.cross_attn.6.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m630[0m[2m [0m│ net.model.text_decoder.cross_attn.6.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m631[0m[2m [0m│ net.model.text_decoder.cross_attn.6.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m632[0m[2m [0m│ net.model.text_decoder.cross_attn.6.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m633[0m[2m [0m│ net.model.text_decoder.cross_attn.6.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m634[0m[2m [0m│ net.model.text_decoder.cross_attn.7                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m635[0m[2m [0m│ net.model.text_decoder.cross_attn.7.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m636[0m[2m [0m│ net.model.text_decoder.cross_attn.7.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m637[0m[2m [0m│ net.model.text_decoder.cross_attn.7.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m638[0m[2m [0m│ net.model.text_decoder.cross_attn.7.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m639[0m[2m [0m│ net.model.text_decoder.cross_attn.7.ln_1_kv             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m640[0m[2m [0m│ net.model.text_decoder.cross_attn.7.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m641[0m[2m [0m│ net.model.text_decoder.cross_attn.7.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m642[0m[2m [0m│ net.model.text_decoder.cross_attn.7.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m643[0m[2m [0m│ net.model.text_decoder.cross_attn.7.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m644[0m[2m [0m│ net.model.text_decoder.cross_attn.7.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m645[0m[2m [0m│ net.model.text_decoder.cross_attn.7.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m646[0m[2m [0m│ net.model.text_decoder.cross_attn.8                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m647[0m[2m [0m│ net.model.text_decoder.cross_attn.8.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m648[0m[2m [0m│ net.model.text_decoder.cross_attn.8.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m649[0m[2m [0m│ net.model.text_decoder.cross_attn.8.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m650[0m[2m [0m│ net.model.text_decoder.cross_attn.8.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m651[0m[2m [0m│ net.model.text_decoder.cross_attn.8.ln_1_kv             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m652[0m[2m [0m│ net.model.text_decoder.cross_attn.8.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m653[0m[2m [0m│ net.model.text_decoder.cross_attn.8.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m654[0m[2m [0m│ net.model.text_decoder.cross_attn.8.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m655[0m[2m [0m│ net.model.text_decoder.cross_attn.8.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m656[0m[2m [0m│ net.model.text_decoder.cross_attn.8.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m657[0m[2m [0m│ net.model.text_decoder.cross_attn.8.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m658[0m[2m [0m│ net.model.text_decoder.cross_attn.9                     │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m659[0m[2m [0m│ net.model.text_decoder.cross_attn.9.ln_1                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m660[0m[2m [0m│ net.model.text_decoder.cross_attn.9.attn                │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m661[0m[2m [0m│ net.model.text_decoder.cross_attn.9.attn.out_proj       │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m662[0m[2m [0m│ net.model.text_decoder.cross_attn.9.ls_1                │ Identity                        │      0 │ train │
+│[2m [0m[2m663[0m[2m [0m│ net.model.text_decoder.cross_attn.9.ln_1_kv             │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m664[0m[2m [0m│ net.model.text_decoder.cross_attn.9.ln_2                │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m665[0m[2m [0m│ net.model.text_decoder.cross_attn.9.mlp                 │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m666[0m[2m [0m│ net.model.text_decoder.cross_attn.9.mlp.c_fc            │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m667[0m[2m [0m│ net.model.text_decoder.cross_attn.9.mlp.gelu            │ GELU                            │      0 │ train │
+│[2m [0m[2m668[0m[2m [0m│ net.model.text_decoder.cross_attn.9.mlp.c_proj          │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m669[0m[2m [0m│ net.model.text_decoder.cross_attn.9.ls_2                │ Identity                        │      0 │ train │
+│[2m [0m[2m670[0m[2m [0m│ net.model.text_decoder.cross_attn.10                    │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m671[0m[2m [0m│ net.model.text_decoder.cross_attn.10.ln_1               │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m672[0m[2m [0m│ net.model.text_decoder.cross_attn.10.attn               │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m673[0m[2m [0m│ net.model.text_decoder.cross_attn.10.attn.out_proj      │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m674[0m[2m [0m│ net.model.text_decoder.cross_attn.10.ls_1               │ Identity                        │      0 │ train │
+│[2m [0m[2m675[0m[2m [0m│ net.model.text_decoder.cross_attn.10.ln_1_kv            │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m676[0m[2m [0m│ net.model.text_decoder.cross_attn.10.ln_2               │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m677[0m[2m [0m│ net.model.text_decoder.cross_attn.10.mlp                │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m678[0m[2m [0m│ net.model.text_decoder.cross_attn.10.mlp.c_fc           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m679[0m[2m [0m│ net.model.text_decoder.cross_attn.10.mlp.gelu           │ GELU                            │      0 │ train │
+│[2m [0m[2m680[0m[2m [0m│ net.model.text_decoder.cross_attn.10.mlp.c_proj         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m681[0m[2m [0m│ net.model.text_decoder.cross_attn.10.ls_2               │ Identity                        │      0 │ train │
+│[2m [0m[2m682[0m[2m [0m│ net.model.text_decoder.cross_attn.11                    │ ResidualAttentionBlock          │  7.1 M │ train │
+│[2m [0m[2m683[0m[2m [0m│ net.model.text_decoder.cross_attn.11.ln_1               │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m684[0m[2m [0m│ net.model.text_decoder.cross_attn.11.attn               │ MultiheadAttention              │  2.4 M │ train │
+│[2m [0m[2m685[0m[2m [0m│ net.model.text_decoder.cross_attn.11.attn.out_proj      │ NonDynamicallyQuantizableLinear │  590 K │ train │
+│[2m [0m[2m686[0m[2m [0m│ net.model.text_decoder.cross_attn.11.ls_1               │ Identity                        │      0 │ train │
+│[2m [0m[2m687[0m[2m [0m│ net.model.text_decoder.cross_attn.11.ln_1_kv            │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m688[0m[2m [0m│ net.model.text_decoder.cross_attn.11.ln_2               │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m689[0m[2m [0m│ net.model.text_decoder.cross_attn.11.mlp                │ Sequential                      │  4.7 M │ train │
+│[2m [0m[2m690[0m[2m [0m│ net.model.text_decoder.cross_attn.11.mlp.c_fc           │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m691[0m[2m [0m│ net.model.text_decoder.cross_attn.11.mlp.gelu           │ GELU                            │      0 │ train │
+│[2m [0m[2m692[0m[2m [0m│ net.model.text_decoder.cross_attn.11.mlp.c_proj         │ Linear                          │  2.4 M │ train │
+│[2m [0m[2m693[0m[2m [0m│ net.model.text_decoder.cross_attn.11.ls_2               │ Identity                        │      0 │ train │
+│[2m [0m[2m694[0m[2m [0m│ net.model.text_decoder.ln_final                         │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m695[0m[2m [0m│ net.tta_loss                                            │ BCEWithLogitsLoss               │      0 │ train │
+│[2m [0m[2m696[0m[2m [0m│ net.video_proj                                          │ VideoProjector                  │  591 K │ train │
+│[2m [0m[2m697[0m[2m [0m│ net.video_proj.transform                                │ Sequential                      │  1.5 K │ train │
+│[2m [0m[2m698[0m[2m [0m│ net.video_proj.transform.0                              │ LayerNorm                       │  1.5 K │ train │
+│[2m [0m[2m699[0m[2m [0m│ net.video_proj.transform.1                              │ Dropout                         │      0 │ train │
+│[2m [0m[2m700[0m[2m [0m│ binary_acc                                              │ BinaryAccuracy                  │      0 │ train │
+└─────┴─────────────────────────────────────────────────────────┴─────────────────────────────────┴────────┴───────┘
+[1mTrainable params[0m: 1.2 M
+[1mNon-trainable params[0m: 637 M
+[1mTotal params[0m: 639 M
+[1mTotal estimated model params size (MB)[0m: 2.6 K
+[1mModules in train mode[0m: 701
+[1mModules in eval mode[0m: 0
+/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:425: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=15` in the `DataLoader` to improve performance.
+`Trainer.fit` stopped: `max_epochs=0` reached.
+[[36m2025-02-13 20:38:09,958[0m][[34m__main__[0m][[32mINFO[0m] - Starting testing![0m
+[[36m2025-02-13 20:38:09,959[0m][[34m__main__[0m][[33mWARNING[0m] - Best ckpt not found! Using current weights for testing...[0m
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:425: The 'test_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=15` in the `DataLoader` to improve performance.
+[2KStart testing...
+[2Kself.avg_features.shape torch.Size([10, 768])━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m  
+[2Kavg_feature.shape torch.Size([1, 768])━━━━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m  
+[2Kavg_feature.shape torch.Size([1, 768])━━━━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m  
+[2Kavg_feature.shape torch.Size([1, 768])━━━━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m  
+[2Kavg_feature.shape torch.Size([1, 768])━━━━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m  
+[2Kavg_feature.shape torch.Size([1, 768])━━━━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m  
+[2Kavg_feature.shape torch.Size([1, 768])━━━━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m  
+[2Kavg_feature.shape torch.Size([1, 768])━━━━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m  
+[2Kavg_feature.shape torch.Size([1, 768])━━━━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m  
+[2Kavg_feature.shape torch.Size([1, 768])━━━━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m  
+[2Kavg_feature.shape torch.Size([1, 768])━━━━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m  
+[2KTesting [38;5;237m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m 0/203 [2m0:00:00 • -:--:--[0m [2;4m0.00it/s[0m
+[?25h[[36m2025-02-13 20:38:12,210[0m][[34msrc.utils.utils[0m][[31mERROR[0m] - [0m
+Traceback (most recent call last):
+  File "/home/def/fewshot/src/utils/utils.py", line 65, in wrap
+    metric_dict, object_dict = task_func(cfg=cfg)
+  File "/home/def/fewshot/src/train.py", line 103, in train
+    trainer.test(model=model, datamodule=datamodule, ckpt_path=ckpt_path)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 749, in test
+    return call._call_and_handle_interrupt(
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/trainer/call.py", line 47, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 789, in _test_impl
+    results = self._run(model, ckpt_path=ckpt_path)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 982, in _run
+    results = self._run_stage()
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/trainer/trainer.py", line 1019, in _run_stage
+    return self._evaluation_loop.run()
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/loops/utilities.py", line 179, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 144, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/loops/evaluation_loop.py", line 433, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/trainer/call.py", line 323, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/lightning/pytorch/strategies/strategy.py", line 425, in test_step
+    return self.lightning_module.test_step(*args, **kwargs)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/def/fewshot/src/models/tt_method_module.py", line 107, in test_step
+    self.model_step(
+  File "/home/def/fewshot/src/models/tt_method_module.py", line 85, in model_step
+    return self.forward(batch, opt)
+  File "/home/def/fewshot/src/models/tt_method_module.py", line 79, in forward
+    return self.net(x, opt)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/def/fewshot/src/models/components/tt_method.py", line 479, in forward
+    indexes, scores_to_return = self.infer_pseudo_labels(image_features)
+  File "/home/def/fewshot/src/models/components/tt_method.py", line 243, in infer_pseudo_labels
+    _, index = torch.topk(scores, self.topk)
+RuntimeError: selected index k out of range
+[[36m2025-02-13 20:38:12,213[0m][[34msrc.utils.utils[0m][[32mINFO[0m] - Output dir: /home/def/fewshot/logs/train/runs/2025-02-13_20-38-00[0m
+[[36m2025-02-13 20:38:12,213[0m][[34msrc.utils.utils[0m][[32mINFO[0m] - Closing wandb![0m

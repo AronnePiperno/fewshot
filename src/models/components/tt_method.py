@@ -35,7 +35,7 @@ class Fusion(nn.Module):
         combined = torch.cat([text_feats, video_feats], dim=-1)
 
         weights = self.attn(combined)
-        #print(f"Attention weights: {weights}")
+        print(f"Attention weights: {weights}")
 
         return weights[:, 0:1] * text_feats + weights[:, 1:2] * video_feats
     
@@ -96,14 +96,14 @@ class T3ALNet(nn.Module):
         self.p = p
         self.n = n
         self.normalize = normalize
-        self.text_projection = True
+        self.text_projection = text_projection
         self.text_encoder = text_encoder
         self.image_projection = image_projection
         self.logit_scale = logit_scale
         self.remove_background = remove_background
-        self.ltype = "BCE"
-        self.steps = 30
-        self.refine_with_captions = True
+        self.ltype = ltype
+        self.steps = steps
+        self.refine_with_captions = refine_with_captions
         self.split = 50
         self.setting = setting
         self.dataset = dataset
@@ -192,7 +192,7 @@ class T3ALNet(nn.Module):
                 {"params": self.model.text.text_projection},
                 {"params": self.model.visual.proj, "lr": 0.00001*0.001},
                 {"params": self.fusion.parameters()},
-                {"params": self.video_proj.parameters(), "lr": 1e-6},
+                {"params": self.video_proj.parameters(), "lr": 1e-3},
                 {"params": self.model.logit_scale},
             ], 
             lr= 0.00001, weight_decay=1e-4
@@ -224,7 +224,7 @@ class T3ALNet(nn.Module):
         print(f"Loaded {len(avg_features)} class-specific average features.")
 
 
-        avg_features_tensor = torch.stack([feature.mean(dim=0) for feature in avg_features.values()])
+        avg_features_tensor = torch.stack([feature for feature in avg_features.values()])
 
         return avg_features_tensor
     
@@ -260,7 +260,6 @@ class T3ALNet(nn.Module):
 
             # Move avg_feature to the same device as image_features_avg
             avg_feature = avg_feature.to(image_features_avg.device)
-            
             # Ensure avg_feature matches the shape of image_features_avg
 
             #avg_feature = avg_feature.mean(dim=0)
@@ -532,12 +531,6 @@ class T3ALNet(nn.Module):
             with torch.no_grad():
                 image_features = image_features_pre @ self.model.visual.proj
                 image_features = image_features.squeeze(0)
-                before_optimization_parameters_image_encoder = copy.deepcopy(self.model.visual.state_dict())
-                before_optimization_image_projection = copy.deepcopy(self.model.visual.proj)
-
-        if self.text_projection:
-            before_optimization_text_projection = copy.deepcopy(self.model.text.text_projection)
-            before_optimization_parameters_text_encoder = copy.deepcopy(self.model.text.state_dict())
 
         if not self.only_support_videos:
             text_features = self.get_text_features(self.model).to(image_features.device)
@@ -570,11 +563,13 @@ class T3ALNet(nn.Module):
         for _ in range(self.steps):
             if self.image_projection:
                 image_features = (image_features_pre @ self.model.visual.proj).squeeze(0)
-
+                before_optimization_parameters_image_encoder = copy.deepcopy(self.model.visual.state_dict())
+                before_optimization_image_projection = copy.deepcopy(self.model.visual.proj)
                 
 
             if self.text_projection:
-                pass
+                before_optimization_text_projection = copy.deepcopy(self.model.text.text_projection)
+                before_optimization_parameters_text_encoder = copy.deepcopy(self.model.text.state_dict())
             else:
                 before_optimization_parameters_text_encoder = copy.deepcopy(
                     self.model.text.state_dict()

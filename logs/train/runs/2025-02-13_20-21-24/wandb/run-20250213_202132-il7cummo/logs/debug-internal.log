@@ -1,0 +1,16 @@
+{"time":"2025-02-13T20:21:32.324043367+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-13_20-21-24/wandb/run-20250213_202132-il7cummo/logs/debug-core.log"}
+{"time":"2025-02-13T20:21:32.536797472+01:00","level":"INFO","msg":"created new stream","id":"il7cummo"}
+{"time":"2025-02-13T20:21:32.536837059+01:00","level":"INFO","msg":"stream: started","id":"il7cummo"}
+{"time":"2025-02-13T20:21:32.536881661+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"il7cummo"}
+{"time":"2025-02-13T20:21:32.536915635+01:00","level":"INFO","msg":"handler: started","stream_id":"il7cummo"}
+{"time":"2025-02-13T20:21:32.53695426+01:00","level":"INFO","msg":"sender: started","stream_id":"il7cummo"}
+{"time":"2025-02-13T20:21:32.997865237+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-13T20:22:39.186548837+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-13T20:22:39.187706455+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-13T20:22:40.114320748+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-13T20:22:40.187786147+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 0-11, summary, console lines 1142-1552","runtime_seconds":0.072289011}],"total_operations":1}}
+{"time":"2025-02-13T20:22:41.557502647+01:00","level":"INFO","msg":"stream: closing","id":"il7cummo"}
+{"time":"2025-02-13T20:22:41.557548092+01:00","level":"INFO","msg":"handler: closed","stream_id":"il7cummo"}
+{"time":"2025-02-13T20:22:41.557576313+01:00","level":"INFO","msg":"sender: closed","stream_id":"il7cummo"}
+{"time":"2025-02-13T20:22:41.557570907+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"il7cummo"}
+{"time":"2025-02-13T20:22:41.557663842+01:00","level":"INFO","msg":"stream: closed","id":"il7cummo"}
