@@ -1,0 +1,19 @@
+{
+  "os": "Linux-5.15.153.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "CPython 3.10.16",
+  "startedAt": "2025-02-14T14:00:06.747337Z",
+  "args": [
+    "experiment=tt_thumos",
+    "model.video_path=/home/def/fewshot/data/"
+  ],
+  "program": "/home/def/fewshot/src/train.py",
+  "codePath": "src/train.py",
+  "git": {
+    "commit": "8328c560b0d8f16861b324a611048594b3a2ef6b"
+  },
+  "email": "deferrari.alessandro@gmail.com",
+  "root": "/home/def/fewshot/logs/train/runs/2025-02-14_14-59-59",
+  "host": "DESKTOP-K19UMPV",
+  "executable": "/home/def/miniforge3/envs/fewshot/bin/python",
+  "codePathLocal": "src/train.py"
+}

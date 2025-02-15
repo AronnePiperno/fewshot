@@ -1,0 +1,16 @@
+{"time":"2025-02-14T14:44:46.162174288+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-14_14-44-38/wandb/run-20250214_144445-gunireds/logs/debug-core.log"}
+{"time":"2025-02-14T14:44:46.373671076+01:00","level":"INFO","msg":"created new stream","id":"gunireds"}
+{"time":"2025-02-14T14:44:46.373710114+01:00","level":"INFO","msg":"stream: started","id":"gunireds"}
+{"time":"2025-02-14T14:44:46.37379436+01:00","level":"INFO","msg":"handler: started","stream_id":"gunireds"}
+{"time":"2025-02-14T14:44:46.374166334+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"gunireds"}
+{"time":"2025-02-14T14:44:46.374625302+01:00","level":"INFO","msg":"sender: started","stream_id":"gunireds"}
+{"time":"2025-02-14T14:44:46.934912267+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-14T14:45:49.769624632+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-14T14:45:49.77027672+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-14T14:45:50.71139923+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-14T14:45:50.770138492+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading history steps 0-10, summary, console lines 1154-1509","runtime_seconds":0.058290549}],"total_operations":1}}
+{"time":"2025-02-14T14:45:52.026080446+01:00","level":"INFO","msg":"stream: closing","id":"gunireds"}
+{"time":"2025-02-14T14:45:52.02612586+01:00","level":"INFO","msg":"handler: closed","stream_id":"gunireds"}
+{"time":"2025-02-14T14:45:52.026140426+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"gunireds"}
+{"time":"2025-02-14T14:45:52.026162904+01:00","level":"INFO","msg":"sender: closed","stream_id":"gunireds"}
+{"time":"2025-02-14T14:45:52.026191196+01:00","level":"INFO","msg":"stream: closed","id":"gunireds"}

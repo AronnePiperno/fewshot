@@ -1,0 +1,16 @@
+{"time":"2025-02-14T11:35:03.437863828+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-14_11-34-57/wandb/run-20250214_113503-reqt9aix/logs/debug-core.log"}
+{"time":"2025-02-14T11:35:03.743550402+01:00","level":"INFO","msg":"created new stream","id":"reqt9aix"}
+{"time":"2025-02-14T11:35:03.743590417+01:00","level":"INFO","msg":"stream: started","id":"reqt9aix"}
+{"time":"2025-02-14T11:35:03.743629889+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"reqt9aix"}
+{"time":"2025-02-14T11:35:03.743654134+01:00","level":"INFO","msg":"handler: started","stream_id":"reqt9aix"}
+{"time":"2025-02-14T11:35:03.743739405+01:00","level":"INFO","msg":"sender: started","stream_id":"reqt9aix"}
+{"time":"2025-02-14T11:35:04.325963522+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-14T11:36:20.195464666+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-14T11:36:20.196113992+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-14T11:36:21.196027795+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.773909792,"progress":"1.7MB/1.7MB"}],"total_operations":1}}
+{"time":"2025-02-14T11:36:21.591553834+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-14T11:36:22.91300414+01:00","level":"INFO","msg":"stream: closing","id":"reqt9aix"}
+{"time":"2025-02-14T11:36:22.913051259+01:00","level":"INFO","msg":"handler: closed","stream_id":"reqt9aix"}
+{"time":"2025-02-14T11:36:22.913064142+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"reqt9aix"}
+{"time":"2025-02-14T11:36:22.913082141+01:00","level":"INFO","msg":"sender: closed","stream_id":"reqt9aix"}
+{"time":"2025-02-14T11:36:22.913127578+01:00","level":"INFO","msg":"stream: closed","id":"reqt9aix"}

@@ -14,7 +14,7 @@ BATCH_SIZE = 64
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Initialize DINOv2 model and processor
-model_name = "facebook/dinov2-large"
+model_name = "facebook/dinov2-base"
 processor = AutoImageProcessor.from_pretrained(model_name)
 model = AutoModel.from_pretrained(model_name).eval().to(DEVICE)
 
@@ -63,7 +63,7 @@ def main():
     os.makedirs(FEATURE_ROOT, exist_ok=True)
 
     # Process videos based on existing features_old names
-    for video_file in tqdm(os.listdir('./data/Thumos14/features_old'), desc="Processing videos"):
+    for video_file in tqdm(os.listdir('./data/Thumos14/features_CoCa'), desc="Processing videos"):
         video_name = os.path.splitext(video_file)[0]
         video_path = os.path.join(VIDEO_ROOT, f"{video_name}.mp4")
         

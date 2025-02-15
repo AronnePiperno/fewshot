@@ -1,0 +1,16 @@
+{"time":"2025-02-14T11:51:53.003617594+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-14_11-51-46/wandb/run-20250214_115152-trd9bqml/logs/debug-core.log"}
+{"time":"2025-02-14T11:51:53.220236519+01:00","level":"INFO","msg":"created new stream","id":"trd9bqml"}
+{"time":"2025-02-14T11:51:53.22027663+01:00","level":"INFO","msg":"stream: started","id":"trd9bqml"}
+{"time":"2025-02-14T11:51:53.220323813+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"trd9bqml"}
+{"time":"2025-02-14T11:51:53.220363232+01:00","level":"INFO","msg":"handler: started","stream_id":"trd9bqml"}
+{"time":"2025-02-14T11:51:53.220403403+01:00","level":"INFO","msg":"sender: started","stream_id":"trd9bqml"}
+{"time":"2025-02-14T11:51:53.792232719+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-14T11:54:23.42042806+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-14T11:54:23.421051654+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-14T11:54:24.421215444+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.781379373,"progress":"2.1MB/3.5MB"},{"desc":"uploading history steps 0-11, summary, console lines 16528-18080","runtime_seconds":0.176480976}],"total_operations":2}}
+{"time":"2025-02-14T11:54:24.899514747+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-14T11:54:26.168890609+01:00","level":"INFO","msg":"stream: closing","id":"trd9bqml"}
+{"time":"2025-02-14T11:54:26.168944651+01:00","level":"INFO","msg":"handler: closed","stream_id":"trd9bqml"}
+{"time":"2025-02-14T11:54:26.168958155+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"trd9bqml"}
+{"time":"2025-02-14T11:54:26.169035645+01:00","level":"INFO","msg":"sender: closed","stream_id":"trd9bqml"}
+{"time":"2025-02-14T11:54:26.169064971+01:00","level":"INFO","msg":"stream: closed","id":"trd9bqml"}

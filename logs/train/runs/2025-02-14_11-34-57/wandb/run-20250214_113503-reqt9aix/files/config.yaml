@@ -1,0 +1,237 @@
+_wandb:
+    value:
+        cli_version: 0.19.4
+        m:
+            - "1": AP_1
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": trainer/global_step
+              "6":
+                - 3
+              "7": []
+            - "1": AP_2
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": Localization/Binary Accuracy
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": Localization/FN
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": Localization/TN
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": AP_0
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": Localization/TP
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": Localization/FP
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": label top-1 accuracy
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": AP_3
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": AP_4
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": Localization/IOU
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": avg_AP
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": label top-3 accuracy
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": epoch
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+            - "1": label top-5 accuracy
+              "5": 2
+              "6":
+                - 1
+                - 3
+              "7": []
+        python_version: 3.10.16
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 50
+                - 53
+                - 55
+                - 63
+                - 106
+            "2":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 50
+                - 53
+                - 55
+                - 63
+                - 106
+            "3":
+                - 2
+                - 7
+                - 13
+                - 15
+                - 23
+                - 55
+                - 66
+            "4": 3.10.16
+            "5": 0.19.4
+            "6": 4.48.2
+            "8":
+                - 5
+            "12": 0.19.4
+            "13": linux-x86_64
+callbacks:
+    value:
+        model_checkpoint:
+            _target_: lightning.pytorch.callbacks.ModelCheckpoint
+            auto_insert_metric_name: false
+            dirpath: ${paths.output_dir}/checkpoints
+            every_n_epochs: null
+            every_n_train_steps: null
+            filename: epoch_{epoch:03d}
+            mode: max
+            monitor: null
+            save_last: true
+            save_on_train_epoch_end: null
+            save_top_k: 1
+            save_weights_only: false
+            train_time_interval: null
+            verbose: false
+        model_summary:
+            _target_: lightning.pytorch.callbacks.RichModelSummary
+            max_depth: -1
+        rich_progress_bar:
+            _target_: lightning.pytorch.callbacks.RichProgressBar
+ckpt_path:
+    value: null
+data:
+    value:
+        _target_: src.data.custom_datamodule.T3ALDataModule
+        batch_size: 1
+        config: ./config/thumos.yaml
+        nsplit: 0
+        num_workers: 1
+        pin_memory: false
+extras:
+    value:
+        enforce_tags: true
+        ignore_warnings: false
+        print_config: true
+model:
+    value:
+        _target_: src.models.tt_method_module.T3ALModule
+        dataset: thumos
+        net:
+            _target_: src.models.components.tt_method.T3ALNet
+            avg_features_path: ./data/Thumos14/support_videos_features/
+            dataset: ${model.dataset}
+            image_projection: true
+            kernel_size: 20
+            logit_scale: true
+            ltype: BYOLfeat
+            "n": 4
+            normalize: true
+            p: 0.75
+            randper: 10
+            refine_with_captions: false
+            remove_background: true
+            setting: ${model.setting}
+            split: ${model.split}
+            steps: 1
+            stride: 20
+            text_encoder: false
+            text_projection: true
+            video_path: ./data/
+            visualize: false
+        optimizer:
+            _partial_: true
+            _target_: torch.optim.Adam
+            lr: 1e-05
+            weight_decay: 0.0001
+        setting: 50
+        split: 0
+        video_path: /home/def/fewshot/data/
+model/params/non_trainable:
+    value: 0
+model/params/total:
+    value: 639639055
+model/params/trainable:
+    value: 639639055
+seed:
+    value: 12345
+tags:
+    value:
+        - dev
+task_name:
+    value: train
+trainer:
+    value:
+        _target_: lightning.pytorch.trainer.Trainer
+        accelerator: gpu
+        check_val_every_n_epoch: 1
+        default_root_dir: ${paths.output_dir}
+        deterministic: false
+        devices: 1
+        max_epochs: 0
+        min_epochs: 1

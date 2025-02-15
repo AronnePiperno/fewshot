@@ -148,9 +148,11 @@ class T3ALModule(LightningModule):
         self.log("avg_AP", np.mean(aps))
         self.log("AP_0", aps[0])
 
-        self.log("label top-1 accuracy", top_k_accuracy(self.scores, self.label_gt, 1))
-        self.log("label top-3 accuracy", top_k_accuracy(self.scores, self.label_gt, 3))
-        self.log("label top-5 accuracy", top_k_accuracy(self.scores, self.label_gt, 5))
+        if self.scores[0] is not None:
+            self.log("label top-1 accuracy", top_k_accuracy(self.scores, self.label_gt, 1))
+            self.log("label top-3 accuracy", top_k_accuracy(self.scores, self.label_gt, 3))
+            self.log("label top-5 accuracy", top_k_accuracy(self.scores, self.label_gt, 5))
+        
         return
 
     def configure_optimizers(self):

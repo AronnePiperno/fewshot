@@ -192,7 +192,7 @@ class T3ALNet(nn.Module):
                 {"params": self.model.text.text_projection},
                 {"params": self.model.visual.proj, "lr": 0.00001*0.001},
                 {"params": self.fusion.parameters()},
-                {"params": self.video_proj.parameters(), "lr": 1e-3},
+                {"params": self.video_proj.parameters(), "lr": 1e-4},
                 {"params": self.model.logit_scale},
             ], 
             lr= 0.00001, weight_decay=1e-4
@@ -929,5 +929,6 @@ class T3ALNet(nn.Module):
             gt_mask,
             unique_labels,
             sim_plot,
-            scores_to_return,
+            #scores_to_return,
+            None,
         )

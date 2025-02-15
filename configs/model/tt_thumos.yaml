@@ -2,7 +2,7 @@ _target_: src.models.tt_method_module.T3ALModule
 
 split: 0
 dataset: thumos
-setting: 50
+setting: 75
 video_path: 
 
 net:

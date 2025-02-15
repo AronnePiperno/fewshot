@@ -1,0 +1,7 @@
+{"time":"2025-02-15T12:25:26.826897181+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-15_12-25-18/wandb/run-20250215_122526-1fvdgtdb/logs/debug-core.log"}
+{"time":"2025-02-15T12:25:27.016500498+01:00","level":"INFO","msg":"created new stream","id":"1fvdgtdb"}
+{"time":"2025-02-15T12:25:27.016542618+01:00","level":"INFO","msg":"stream: started","id":"1fvdgtdb"}
+{"time":"2025-02-15T12:25:27.016610868+01:00","level":"INFO","msg":"handler: started","stream_id":"1fvdgtdb"}
+{"time":"2025-02-15T12:25:27.017033966+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"1fvdgtdb"}
+{"time":"2025-02-15T12:25:27.017438978+01:00","level":"INFO","msg":"sender: started","stream_id":"1fvdgtdb"}
+{"time":"2025-02-15T12:25:27.509487172+01:00","level":"INFO","msg":"Starting system monitor"}

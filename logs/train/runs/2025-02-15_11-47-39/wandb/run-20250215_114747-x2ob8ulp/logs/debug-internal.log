@@ -1,0 +1,16 @@
+{"time":"2025-02-15T11:47:47.952000504+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/def/fewshot/logs/train/runs/2025-02-15_11-47-39/wandb/run-20250215_114747-x2ob8ulp/logs/debug-core.log"}
+{"time":"2025-02-15T11:47:48.259635093+01:00","level":"INFO","msg":"created new stream","id":"x2ob8ulp"}
+{"time":"2025-02-15T11:47:48.259673647+01:00","level":"INFO","msg":"stream: started","id":"x2ob8ulp"}
+{"time":"2025-02-15T11:47:48.259792053+01:00","level":"INFO","msg":"handler: started","stream_id":"x2ob8ulp"}
+{"time":"2025-02-15T11:47:48.26014097+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"x2ob8ulp"}
+{"time":"2025-02-15T11:47:48.260567657+01:00","level":"INFO","msg":"sender: started","stream_id":"x2ob8ulp"}
+{"time":"2025-02-15T11:47:48.857089168+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-15T11:49:04.348767127+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-15T11:49:04.349320533+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-15T11:49:05.349367774+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading output.log","runtime_seconds":0.603097158,"progress":"574.9KB/574.9KB"},{"desc":"uploading config.yaml","runtime_seconds":0.18342219,"progress":"3.5KB/3.5KB"}],"total_operations":2}}
+{"time":"2025-02-15T11:49:05.419570562+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-15T11:49:06.68313901+01:00","level":"INFO","msg":"stream: closing","id":"x2ob8ulp"}
+{"time":"2025-02-15T11:49:06.683188166+01:00","level":"INFO","msg":"handler: closed","stream_id":"x2ob8ulp"}
+{"time":"2025-02-15T11:49:06.683202694+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"x2ob8ulp"}
+{"time":"2025-02-15T11:49:06.683235949+01:00","level":"INFO","msg":"sender: closed","stream_id":"x2ob8ulp"}
+{"time":"2025-02-15T11:49:06.683263062+01:00","level":"INFO","msg":"stream: closed","id":"x2ob8ulp"}

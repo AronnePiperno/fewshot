@@ -682,5 +682,6 @@ class T3ALNet(nn.Module):
             gt_mask,
             unique_labels,
             sim_plot,
-            scores_to_return,
+            #scores_to_return,
+            None,
         )

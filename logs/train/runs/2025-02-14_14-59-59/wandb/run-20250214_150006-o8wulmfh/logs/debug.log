@@ -1,0 +1,51 @@
+2025-02-14 15:00:06,540 INFO    MainThread:50751 [wandb_setup.py:_flush():68] Current SDK version is 0.19.4
+2025-02-14 15:00:06,540 INFO    MainThread:50751 [wandb_setup.py:_flush():68] Configure stats pid to 50751
+2025-02-14 15:00:06,540 INFO    MainThread:50751 [wandb_setup.py:_flush():68] Loading settings from /home/def/.config/wandb/settings
+2025-02-14 15:00:06,540 INFO    MainThread:50751 [wandb_setup.py:_flush():68] Loading settings from /home/def/fewshot/wandb/settings
+2025-02-14 15:00:06,540 INFO    MainThread:50751 [wandb_setup.py:_flush():68] Loading settings from environment variables
+2025-02-14 15:00:06,540 INFO    MainThread:50751 [wandb_init.py:setup_run_log_directory():624] Logging user logs to /home/def/fewshot/logs/train/runs/2025-02-14_14-59-59/wandb/run-20250214_150006-o8wulmfh/logs/debug.log
+2025-02-14 15:00:06,540 INFO    MainThread:50751 [wandb_init.py:setup_run_log_directory():625] Logging internal logs to /home/def/fewshot/logs/train/runs/2025-02-14_14-59-59/wandb/run-20250214_150006-o8wulmfh/logs/debug-internal.log
+2025-02-14 15:00:06,540 INFO    MainThread:50751 [wandb_init.py:init():743] calling init triggers
+2025-02-14 15:00:06,540 INFO    MainThread:50751 [wandb_init.py:init():748] wandb.init called with sweep_config: {}
+config: {}
+2025-02-14 15:00:06,540 INFO    MainThread:50751 [wandb_init.py:init():776] starting backend
+2025-02-14 15:00:06,744 INFO    MainThread:50751 [wandb_init.py:init():780] sending inform_init request
+2025-02-14 15:00:06,746 INFO    MainThread:50751 [backend.py:_multiprocessing_setup():97] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-02-14 15:00:06,747 INFO    MainThread:50751 [wandb_init.py:init():795] backend started and connected
+2025-02-14 15:00:06,748 INFO    MainThread:50751 [wandb_init.py:init():888] updated telemetry
+2025-02-14 15:00:06,750 INFO    MainThread:50751 [wandb_init.py:init():915] communicating run to backend with 90.0 second timeout
+2025-02-14 15:00:07,449 INFO    MainThread:50751 [wandb_init.py:init():967] starting run threads in backend
+2025-02-14 15:00:07,464 WARNING MainThread:50751 [wandb_init.py:init():1448] interrupted
+Traceback (most recent call last):
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1444, in init
+    return wi.init(run_settings, run_config)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/wandb/sdk/wandb_init.py", line 1008, in init
+    run._on_start()
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/wandb/sdk/wandb_run.py", line 2444, in _on_start
+    self._backend.interface.publish_python_packages(working_set())
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/wandb/sdk/interface/interface.py", line 346, in publish_python_packages
+    for pkg in working_set:
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/site-packages/wandb/util.py", line 1903, in working_set
+    yield InstalledDistribution(key=d.metadata["Name"], version=d.version)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/importlib/metadata/__init__.py", line 627, in version
+    return self.metadata['Version']
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/importlib/metadata/__init__.py", line 612, in metadata
+    return _adapters.Message(email.message_from_string(text))
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/importlib/metadata/_adapters.py", line 36, in __init__
+    self._headers = self._repair_headers()
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/importlib/metadata/_adapters.py", line 49, in _repair_headers
+    headers = [(key, redent(value)) for key, value in vars(self)['_headers']]
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/importlib/metadata/_adapters.py", line 49, in <listcomp>
+    headers = [(key, redent(value)) for key, value in vars(self)['_headers']]
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/importlib/metadata/_adapters.py", line 47, in redent
+    return textwrap.dedent(' ' * 8 + value)
+  File "/home/def/miniforge3/envs/fewshot/lib/python3.10/textwrap.py", line 438, in dedent
+    text = _whitespace_only_re.sub('', text)
+KeyboardInterrupt
+2025-02-14 15:00:07,480 INFO    MainThread:50751 [wandb_run.py:_finish():2134] finishing run deferrari-alessandro-university-of-trento/TAD/o8wulmfh
+2025-02-14 15:00:07,480 INFO    MainThread:50751 [wandb_run.py:_atexit_cleanup():2374] got exitcode: 0
+2025-02-14 15:00:07,480 INFO    MainThread:50751 [wandb_run.py:_restore():2356] restore
+2025-02-14 15:00:07,480 INFO    MainThread:50751 [wandb_run.py:_restore():2362] restore done
+2025-02-14 15:00:09,359 INFO    MainThread:50751 [wandb_run.py:_footer_history_summary_info():3976] rendering history
+2025-02-14 15:00:09,359 INFO    MainThread:50751 [wandb_run.py:_footer_history_summary_info():4008] rendering summary
+2025-02-14 15:00:09,360 INFO    MainThread:50751 [wandb_run.py:_footer_sync_info():3937] logging synced files
